@@ -1,4 +1,5 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
 import 'package:theaccounts/screens/loginprocess/components/widgets.dart';
 import 'package:theaccounts/screens/loginprocess/components/inputfield.widget.dart';
 import 'package:theaccounts/screens/loginprocess/loginscreens/verification_method.dart';
@@ -40,29 +41,14 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               height: 30,
             ),
-            Container(
+            AnimatedCircularBar(
               child: Image.asset(
-                'assets/images/ot.png',
-                color: Color.fromARGB(255, 67, 153, 223),
+                "assets/images/ot.png",
+                color: Colors.blue,
               ),
-              margin: EdgeInsets.only(top: 50),
-              height: 150,
-              width: 150,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                boxShadow: [
-                  BoxShadow(
-                    color: Theme.of(context).shadowColor,
-                    spreadRadius: 10,
-                    blurRadius: 15,
-                    blurStyle: BlurStyle.outer,
-                    offset: Offset(
-                      1,
-                      1,
-                    ),
-                  ),
-                ],
-              ),
+              offset: 2,
+              radius: 180,
+              color: Colors.blue,
             ),
             SizedBox(
               height: 50,

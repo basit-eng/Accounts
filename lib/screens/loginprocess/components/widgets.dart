@@ -1,8 +1,8 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:theaccounts/screens/setting/capital_history.dart';
 import 'package:theaccounts/screens/dashboard/dashboard.screens/closingPayment.dart';
-import 'package:theaccounts/screens/loginprocess/loginscreens/profile_screen.dart';
-import 'package:theaccounts/screens/loginprocess/loginscreens/update_bank_details.dart';
+import 'package:theaccounts/screens/setting/profile_screen.dart';
+import 'package:theaccounts/screens/setting/update_bank_details.dart';
 
 class CustomButton extends StatefulWidget {
   const CustomButton({

@@ -17,77 +17,95 @@ class _ImageGalleryScreenState extends State<ImageGalleryScreen> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      body: Column(
-        children: [
-          SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: CustomTopBar(topbartitle: 'Image Gallery'),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Container(
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          children: [
+            SizedBox(height: 30),
+            CustomTopBar(topbartitle: 'Image Gallery'),
+            Container(
               alignment: Alignment.center,
-              height: size.height * 0.2,
-              width: size.width * 0.9,
+              height: size.height * 0.15,
+              width: size.width * 0.85,
+              // margin: const EdgeInsets.all(24.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
+                gradient: LinearGradient(
+                    colors: [Color(0xFFFEA64C), Color(0xFFF4EEAB)]),
                 boxShadow: [
                   BoxShadow(
-                      // color: Color(0xFFC22ED0),
-                      spreadRadius: 14,
-                      blurRadius: 20,
-                      blurStyle: BlurStyle.outer),
+                    color: Theme.of(context).cardColor,
+                    spreadRadius: 0.33,
+                    blurRadius: 0.4,
+                  ),
                 ],
               ),
               child: Text(
                 "Explore the Business",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle1!
+                    .copyWith(color: Colors.white, fontWeight: FontWeight.w400),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Container(
-              height: size.height * 0.2,
-              width: size.width * 0.9,
-              child: Column(
-                children: [
-                  Text("Categories",
-                      style: Theme.of(context).textTheme.subtitle2),
-                  CustomHorizontalListView(
-                    title: "New Built Office",
-                    child: Image(
-                      image: AssetImage("assets/images/imagegalery.png"),
+            Padding(
+              padding: const EdgeInsets.only(left: 24.0, top: 28, bottom: 24),
+              child: Container(
+                  width: double.maxFinite,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Categories",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1!
+                              .copyWith(fontWeight: FontWeight.bold)),
+                      Container(
+                        height: size.height * 0.18,
+                        width: double.maxFinite,
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: 20,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return CustomHorizontalListView(
+                              title: "New Built Office",
+                              child: Image(
+                                image:
+                                    AssetImage("assets/images/imagegalery.png"),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  )),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: Container(
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                      borderRadius: BorderRadius.circular(24),
                     ),
-                  )
-                ],
+                    child: Image.asset(
+                      "assets/images/gallery.png",
+                      // height: size.height * 0.2,
+                      width: double.maxFinite,
+                      fit: BoxFit.fill,
+                    )),
               ),
             ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Container(
-                alignment: Alignment.center,
-                height: size.height * 0.2,
-                width: size.width,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                        // color: Color(0xFFC22ED0),
-                        spreadRadius: 14,
-                        blurRadius: 20,
-                        blurStyle: BlurStyle.outer),
-                  ],
-                ),
-                child: Image.asset("assets/images/ot.png")),
-          ),
-          AnimatedBottomBar(),
-        ],
+            // Spacer(),
+            SizedBox(
+              height: 30,
+            ),
+            AnimatedBottomBar(),
+          ],
+        ),
       ),
     );
   }

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
 import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
 
@@ -41,25 +39,14 @@ class _RecievedAmountState extends State<RecievedAmount> {
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: Expanded(
-                  flex: 1,
-                  child: Neumorphic(
-                    style: NeumorphicStyle(
-                      border: NeumorphicBorder.none(),
-                    ),
-                    child: Container(
-                      alignment: Alignment.center,
-                      width: 100,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        color: Color(0x606060),
-                      ),
-                      child: Text(
-                        '20-22-2022',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ),
+                    flex: 1,
+                    child: SmallRadiusButton(
+                      text: "05-10-2021",
+                      color: [
+                        Colors.grey.withOpacity(1),
+                        Colors.grey.withOpacity(1)
+                      ],
+                    )),
               )
             ],
           ),
@@ -77,7 +64,7 @@ class _RecievedAmountState extends State<RecievedAmount> {
                   leading: CircleAvatar(
                       radius: 45,
                       backgroundColor: Colors.purple,
-                      child: Image.asset("asset/images/coin.png")),
+                      child: Image.asset("assets/images/coin.png")),
                 );
               }),
             ),

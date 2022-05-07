@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:theaccounts/screens/dashboard/dashboard.screens/dashboard.dart';
 import 'package:theaccounts/screens/loginprocess/loginscreens/myhomepage.dart';
-import 'package:theaccounts/screens/loginprocess/loginscreens/profile_screen.dart';
-import 'package:theaccounts/screens/loginprocess/loginscreens/update_profile.dart';
+import 'package:theaccounts/screens/setting/profile_screen.dart';
+import 'package:theaccounts/screens/setting/update_profile.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key}) : super(key: key);

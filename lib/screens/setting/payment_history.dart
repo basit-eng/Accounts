@@ -15,17 +15,14 @@ class _PaymentHistoryState extends State<PaymentHistory> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        // backgroundColor: Color.fromARGB(255, 231, 231, 234),
-        body: Column(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Theme.of(context).backgroundColor,
+        bottomNavigationBar: AnimatedBottomBar(),
+        body: ListView(
+          physics: NeverScrollableScrollPhysics(),
           children: [
-            SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: CustomTopBar(topbartitle: 'Payment History'),
-            ),
+            CustomTopBar(topbartitle: 'Payment History'),
             CustomBriefCard(
               title_v1: "Total Roll Over",
               subtitle_v1: "16,240,000",
@@ -36,21 +33,69 @@ class _PaymentHistoryState extends State<PaymentHistory> {
               icon_v2: Icons.arrow_downward,
               color_v2: Color(0xFF92298D),
             ),
-            Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: 20,
-                itemBuilder: ((context, index) {
-                  return PaymentHistoryCard(
-                      amount: "165,203,000",
-                      type: "CP",
-                      date: "24-07-2021",
-                      color: Color(0xFFF6921E),
-                      imagePath: "assets/images/coin.png");
-                }),
-              ),
+            SizedBox(
+              height: 12,
             ),
-            AnimatedBottomBar(),
+            CustomTabBar(
+              child: [
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 20,
+                    itemBuilder: ((context, index) {
+                      return PaymentHistoryCard(
+                          amount: "165,203,000",
+                          type: "CP",
+                          date: "24-07-2021",
+                          color: Color(0xFFF6921E),
+                          imagePath: "assets/images/coin.png");
+                    }),
+                  ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 20,
+                    itemBuilder: ((context, index) {
+                      return PaymentHistoryCard(
+                          amount: "165,203,000",
+                          type: "CP",
+                          date: "24-07-2021",
+                          color: Color(0xFFF6921E),
+                          imagePath: "assets/images/coin.png");
+                    }),
+                  ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 20,
+                    itemBuilder: ((context, index) {
+                      return PaymentHistoryCard(
+                          amount: "165,203,000",
+                          type: "CP",
+                          date: "24-07-2021",
+                          color: Color(0xFFF6921E),
+                          imagePath: "assets/images/coin.png");
+                    }),
+                  ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 20,
+                    itemBuilder: ((context, index) {
+                      return PaymentHistoryCard(
+                          amount: "165,203,000",
+                          type: "CP",
+                          date: "24-07-2021",
+                          color: Color(0xFFF6921E),
+                          imagePath: "assets/images/coin.png");
+                    }),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),

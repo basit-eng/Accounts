@@ -133,11 +133,14 @@ class _BottomBarState extends State<AnimatedBottomBar>
 //Animated circular bar
 
 class AnimatedCircularBar extends StatefulWidget {
-  AnimatedCircularBar({required this.title, this.radius, Key? key})
+  AnimatedCircularBar(
+      {this.radius, this.offset, this.child, this.color, Key? key})
       : super(key: key);
 
-  final String title;
   final double? radius;
+  final Color? color;
+  final Widget? child;
+  final double? offset;
 
   @override
   State<AnimatedCircularBar> createState() => _AnimatedCircularBarState();
@@ -180,22 +183,25 @@ class _AnimatedCircularBarState extends State<AnimatedCircularBar>
       },
       child: Container(
         alignment: Alignment.center,
-        height: widget.radius != null ? 180 : 190,
-        width: widget.radius != null ? 180 : 190,
+        height: widget.radius ?? 190,
+        width: widget.radius ?? 190,
         decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
-                color: Color(0xFFC22ED0),
-                spreadRadius: widget.radius ?? 14,
-                blurRadius: 20,
-                blurStyle: BlurStyle.outer),
+              color: widget.color ??
+                  Theme.of(context).shadowColor.withOpacity(0.2),
+              blurRadius: 25.0, // soften the shadow
+              spreadRadius: 5.0, //extend the shadow
+              offset: Offset(
+                widget.offset ?? 15.0, // Move to right 10  horizontally
+                widget.offset ?? 15.0, // Move to bottom 10 Vertically
+              ),
+            )
           ],
         ),
-        child: Text(
-          widget.title,
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-        ),
+        child: widget.child,
       ),
     );
   }
@@ -257,7 +263,10 @@ class _AnimatedTopBarTileState extends State<AnimatedTopBarTile>
           leading: Transform(
             transform:
                 Matrix4.translationValues(_animateleft.value * width, 0.0, 0.0),
-            child: Icon(Icons.shopping_bag),
+            child: CircleAvatar(
+                backgroundColor: Colors.transparent,
+                radius: 24,
+                child: Image.asset("assets/images/logo_bg_removed.png")),
           ),
           title: Row(
             children: [
@@ -277,11 +286,11 @@ class _AnimatedTopBarTileState extends State<AnimatedTopBarTile>
                     _animateleft.value * width, 0.0, 0.0),
                 child: Text(
                   "\t ACCOUNTS",
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0,
-                    color: Colors.purple,
-                  ),
+                  style: Theme.of(context).textTheme.headline6!.copyWith(
+                        fontSize: 16.0,
+                        color: Colors.purple,
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
               )
             ],
@@ -289,7 +298,10 @@ class _AnimatedTopBarTileState extends State<AnimatedTopBarTile>
           trailing: Transform(
             transform: Matrix4.translationValues(
                 _intervaltween.value * width, 0.0, 0.0),
-            child: Icon(Icons.notifications),
+            child: Padding(
+              padding: const EdgeInsets.only(right: 12.0),
+              child: Icon(Icons.notifications),
+            ),
           ),
         );
       },
@@ -600,7 +612,7 @@ class _AnimatedCircularButtonState extends State<AnimatedCircularButton> {
             borderRadius: BorderRadius.circular(90),
             boxShadow: [
               BoxShadow(
-                color: Theme.of(context).shadowColor,
+                color: Theme.of(context).shadowColor.withOpacity(0.2),
                 // color: Colors.green,
                 // blurStyle: BlurStyle.outer,
                 blurRadius: 3,
@@ -640,8 +652,11 @@ class _AnimatedCircularButtonState extends State<AnimatedCircularButton> {
 //Animated title tile
 class AnimatedTitle extends StatefulWidget {
   AnimatedTitle({
+    this.trailing,
     Key? key,
   }) : super(key: key);
+
+  final Widget? trailing;
 
   @override
   State<AnimatedTitle> createState() => _AnimatedTitleState();
@@ -680,35 +695,38 @@ class _AnimatedTitleState extends State<AnimatedTitle>
         animation: _controller.view,
         builder: (context, child) {
           return ListTile(
-            title: Transform(
-              transform: Matrix4.translationValues(
-                  _animateleft.value * size, 0.0, 0.0),
-              child: AnimatedOpacity(
-                duration: _duration,
-                opacity: _animateopacity.value,
-                child: Text(
-                  "Good Morning",
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.grey.withOpacity(0.8)),
+              contentPadding: EdgeInsets.all(0),
+              title: Transform(
+                transform: Matrix4.translationValues(
+                    _animateleft.value * size, 0.0, 0.0),
+                child: AnimatedOpacity(
+                  duration: _duration,
+                  opacity: _animateopacity.value,
+                  child: Text(
+                    "Good Morning",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1!
+                        .copyWith(color: Colors.black.withOpacity(0.6)),
+                  ),
                 ),
               ),
-            ),
-            subtitle: Transform(
-              transform: Matrix4.translationValues(
-                  _animateleft.value * size, 0.0, 0.0),
-              child: AnimatedOpacity(
-                duration: _duration,
-                opacity: _animateopacity.value,
-                child: Text("Khurram Shahbaz",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        height: 1.6)),
+              subtitle: Transform(
+                transform: Matrix4.translationValues(
+                    _animateleft.value * size, 0.0, 0.0),
+                child: AnimatedOpacity(
+                  duration: _duration,
+                  opacity: _animateopacity.value,
+                  child: Text(
+                    "Khurram Shahbaz",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1!
+                        .copyWith(color: Colors.black.withOpacity(0.8)),
+                  ),
+                ),
               ),
-            ),
-          );
+              trailing: widget.trailing ?? null);
         });
   }
 }

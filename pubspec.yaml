@@ -87,21 +87,17 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: KhandBold
+    - family: Monstserrat
       fonts:
-      - asset: fonts/Roboto_Bold.ttf
+      - asset: fonts/Montserrat-Regular.ttf
 
     - family: LatoBold
       fonts:
           - asset: fonts/Roboto_Bold.ttf
-
-    - family: LatoRegular
-      fonts:
-          - asset: fonts/Roboto_Regular.ttf
-
+          
     - family: Monstserrat
       fonts:
-          - asset: fonts/Roboto_Regular.ttf
+        - asset: fonts/Montserrat-Regular.ttf
 
     - family:  NopCart
       fonts:

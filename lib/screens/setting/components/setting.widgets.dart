@@ -216,30 +216,29 @@ class ProfileListTile extends StatelessWidget {
     Key? key,
     required this.labelText,
     this.details,
+    this.trailinig,
   }) : super(key: key);
   final String labelText;
   final String? details;
+  final Widget? trailinig;
   @override
   Widget build(BuildContext context) {
-    return Neumorphic(
-      margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
-      style: NeumorphicStyle(
-          border: NeumorphicBorder.none(), color: Theme.of(context).cardColor),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Theme.of(context).cardColor,
+            borderRadius: BorderRadius.circular(16)),
         child: ListTile(
-          title: Text(
-            '$labelText',
-            style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                  color: Color(0xFFF15B28),
-                ),
-          ),
+          title: Text(labelText,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText2!
+                  .copyWith(color: Color(0xFFF15B28))),
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 6),
-            child: Text(
-              details ?? "",
-              style: Theme.of(context).textTheme.subtitle2,
-            ),
+            child: Text(details ?? "",
+                style: Theme.of(context).textTheme.subtitle1),
           ),
         ),
       ),
@@ -247,56 +246,162 @@ class ProfileListTile extends StatelessWidget {
   }
 }
 
-// class CustomTabBar extends StatefulWidget {
-//   const CustomTabBar({Key? key}) : super(key: key);
+class CustomTabBar extends StatefulWidget {
+  const CustomTabBar({this.child, Key? key}) : super(key: key);
+  final List<Widget>? child;
 
-//   @override
-//   State<CustomTabBar> createState() => _CustomTabBarState();
-// }
+  @override
+  State<CustomTabBar> createState() => _CustomTabBarState();
+}
 
-// class _CustomTabBarState extends State<CustomTabBar>
-//     with TickerProviderStateMixin {
-//   late TabController _tabController;
+class _CustomTabBarState extends State<CustomTabBar>
+    with TickerProviderStateMixin {
+  late TabController _tabController;
+  int _selectedIndex = 0;
 
-//   @override
-//   void initState() {
-//     super.initState();
-//     _tabController = TabController(length: _tabs.length, vsync: this);
-//     _tabController.animateTo(2);
-//   }
+  @override
+  void initState() {
+    _tabController =
+        TabController(length: _tabs.length, vsync: this, initialIndex: 0);
+    _tabController.addListener(() {
+      setState(() {
+        _selectedIndex = _tabController.index;
+      });
+      print("Selected Index: " + _tabController.index.toString());
+    });
+    super.initState();
+  }
 
-//   static const List<Tab> _tabs = [
-//     const Tab(icon: Icon(Icons.looks_one), child: const Text('D')),
-//     const Tab(icon: Icon(Icons.looks_two), text: 'W'),
-//     const Tab(icon: Icon(Icons.looks_3), text: 'M'),
-//     const Tab(icon: Icon(Icons.looks_3), text: 'Y'),
-//   ];
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
-//   static const List<Widget> _views = [
-//     const Center(child: const Text('Content of Tab One')),
-//     const Center(child: const Text('Content of Tab Two')),
-//     const Center(child: const Text('Content of Tab Three')),
-//     const Center(child: const Text('Content of Tab Four')),
-//   ];
-//   @override
-//   Widget build(BuildContext context) {
-//     Size size = MediaQuery.of(context).size;
-//     return Scaffold(
-//       appBar: TabBar(
-//         labelColor: Colors.blue,
-//         unselectedLabelColor: Colors.grey,
-//         labelStyle: const TextStyle(fontWeight: FontWeight.bold),
-//         indicatorWeight: 3,
-//         indicatorColor: Colors.blue,
-//         indicatorSize: TabBarIndicatorSize.tab,
-//         indicatorPadding: const EdgeInsets.all(10),
-//         controller: _tabController,
-//         tabs: _tabs,
-//       ),
-//       body: TabBarView(controller: _tabController, children: _views),
-//     );
-//   }
-// }
+  List _tabs = ["D", "W", "M", "Y"];
+
+  List<Widget> _views = [
+    const Center(child: const Text('Content of Tab One')),
+    const Center(child: const Text('Content of Tab Two')),
+    const Center(child: const Text('Content of Tab Three')),
+    const Center(child: const Text('Content of Tab Four')),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+              flex: 09,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 14.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Colors.grey.withOpacity(0.3),
+                    // color: Theme.of(context).shadowColor.withOpacity(0.8)
+                  ),
+                  child: TabBar(
+                    controller: _tabController,
+                    labelColor: Theme.of(context).cardColor,
+                    labelStyle: const TextStyle(fontWeight: FontWeight.bold),
+                    indicatorColor: Colors.transparent,
+                    tabs: [
+                      for (int i = 0; i < _tabs.length; i++)
+                        Container(
+                          alignment: Alignment.center,
+                          child: Text(_tabs[i],
+                              style: Theme.of(context).textTheme.bodyText2),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 20, horizontal: 20),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: _selectedIndex == i
+                                ? Colors.white
+                                : Colors.transparent,
+                          ),
+                        )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 02,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 08.0, vertical: 10),
+                child: Container(
+                  alignment: Alignment.center,
+                  height: size.height * 0.068,
+                  // width: 30,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.grey.withOpacity(0.3)),
+                  child: Image.asset("assets/images/slider.png"),
+                ),
+              ),
+            )
+          ],
+        ),
+        Container(
+            height: size.height * 0.4,
+            width: double.maxFinite,
+            child: TabBarView(
+                controller: _tabController, children: widget.child ?? _views)),
+      ],
+    );
+  }
+}
+
+class CustomSearchBar extends StatelessWidget {
+  const CustomSearchBar({
+    Key? key,
+    required TextEditingController searchtextcontroller,
+  })  : _searchtextcontroller = searchtextcontroller,
+        super(key: key);
+
+  final TextEditingController _searchtextcontroller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
+          borderRadius: BorderRadius.circular(14),
+          boxShadow: [
+            BoxShadow(
+              color: Theme.of(context).shadowColor.withOpacity(0.2),
+              blurRadius: 3,
+              spreadRadius: 3,
+              offset: Offset(3, 4),
+            ),
+          ],
+        ),
+        child: TextField(
+          style: TextStyle(fontSize: 14),
+          controller: _searchtextcontroller,
+          decoration: InputDecoration(
+            icon: Padding(
+              padding: const EdgeInsets.only(left: 18.0),
+              child: Icon(
+                Icons.search,
+                size: 30,
+                color: Colors.purple,
+              ),
+            ),
+            border: InputBorder.none,
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 class CustomHorizontalListView extends StatefulWidget {
   CustomHorizontalListView({
@@ -329,6 +434,7 @@ class _CustomHorizontalListViewState extends State<CustomHorizontalListView> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             height: box,
@@ -403,8 +509,7 @@ class CustomTopBar extends StatelessWidget {
             alignment: Alignment.topLeft,
             child: Text(
               topbartitle,
-              style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                    fontSize: 20,
+              style: Theme.of(context).textTheme.headline6!.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
             ),
@@ -450,41 +555,47 @@ class CustomBriefCard extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Container(
-      height: size.height * 0.2,
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: Container(
+        height: size.height * 0.18,
+        decoration: BoxDecoration(
+            color: Theme.of(context).cardColor,
+            borderRadius: BorderRadius.circular(26)),
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          ListTile(
+            leading: CircleAvatar(
+                radius: 24,
+                backgroundColor: color_v1,
+                child: Icon(
+                  icon_v1,
+                  color: Colors.white,
+                )),
+            title: Text(title_v1 ?? "",
+                style: Theme.of(context).textTheme.bodyText2),
+            subtitle: Text(subtitle_v1 ?? "",
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle1!
+                    .copyWith(fontWeight: FontWeight.w400)),
+            trailing: trailing_v1,
+          ),
+          ListTile(
+            leading: CircleAvatar(
+                radius: 24,
+                backgroundColor: color_v2 ?? Colors.transparent,
+                child: Icon(
+                  icon_v2,
+                  color: Colors.white,
+                )),
+            subtitle: Text(subtitle_v2 ?? "",
+                style: Theme.of(context).textTheme.bodyText1),
+            title: Text(title_v2 ?? "",
+                style: Theme.of(context).textTheme.bodyText2),
+            trailing: trailing_v2,
+          )
+        ]),
       ),
-      child: Column(children: [
-        ListTile(
-          leading: CircleAvatar(
-              radius: 24,
-              backgroundColor: color_v1,
-              child: Icon(
-                icon_v1,
-                color: Colors.white,
-              )),
-          title: Text(title_v1 ?? "",
-              style: Theme.of(context).textTheme.bodyText2),
-          subtitle: Text(title_v1 ?? "",
-              style: Theme.of(context).textTheme.bodyText1),
-          trailing: trailing_v1,
-        ),
-        ListTile(
-          leading: CircleAvatar(
-              radius: 24,
-              backgroundColor: color_v2,
-              child: Icon(
-                icon_v2,
-                color: Colors.white,
-              )),
-          subtitle: Text(subtitle_v2 ?? "",
-              style: Theme.of(context).textTheme.bodyText1),
-          title: Text(title_v2 ?? "",
-              style: Theme.of(context).textTheme.bodyText2),
-          trailing: trailing_v2,
-        )
-      ]),
     );
   }
 }
@@ -510,23 +621,41 @@ class PaymentHistoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Container(
-      height: size.height * 0.1,
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          CircleAvatar(
-            backgroundColor: color,
-            radius: 45,
-            foregroundImage: AssetImage(imagePath),
-          ),
-          Text(amount ?? "", style: Theme.of(context).textTheme.subtitle1),
-          Text(type ?? "", style: Theme.of(context).textTheme.bodyText2),
-          Text(date ?? "", style: Theme.of(context).textTheme.bodyText2),
-        ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 12),
+      child: Container(
+        height: size.height * 0.1,
+        decoration: BoxDecoration(
+            color: Theme.of(context).cardColor,
+            borderRadius: BorderRadius.circular(16)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 12.0),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: color,
+                    radius: 24,
+                    foregroundImage: AssetImage(imagePath),
+                  ),
+                  SizedBox(
+                    width: 14,
+                  ),
+                  Text(amount ?? "",
+                      style: Theme.of(context).textTheme.subtitle1),
+                ],
+              ),
+            ),
+            Text(type ?? "", style: Theme.of(context).textTheme.bodyText2),
+            Padding(
+              padding: const EdgeInsets.only(right: 12.0),
+              child: Text(date ?? "",
+                  style: Theme.of(context).textTheme.bodyText2),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -625,37 +754,70 @@ class CustomReferenceInCard extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Container(
-      height: size.height * 0.1,
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          CircleAvatar(
-            backgroundColor: color,
-            radius: 8,
-            child: Icon(
-              icon,
-              color: color,
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Container(
+        height: size.height * 0.1,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: Theme.of(context).cardColor,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: CircleAvatar(
+                      backgroundColor: color,
+                      radius: 08,
+                      child: Icon(
+                        icon,
+                        color: color ?? null,
+                        size: 08,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        name ?? "",
+                        style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                            fontSize: 10, fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        token_no ?? "",
+                        style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                            fontSize: 10, fontWeight: FontWeight.w300),
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(name ?? "", style: Theme.of(context).textTheme.subtitle1),
-              Text(token_no ?? "",
-                  style: Theme.of(context).textTheme.bodyText2),
-            ],
-          ),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(amount ?? "", style: Theme.of(context).textTheme.subtitle1),
-            ],
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(amount ?? "",
+                      style: Theme.of(context).textTheme.bodyText2),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -665,11 +827,13 @@ class CustomReferenceInCard extends StatelessWidget {
 class SmallRadiusButton extends StatelessWidget {
   const SmallRadiusButton({
     required this.text,
+    this.textcolor,
     this.color,
     Key? key,
   }) : super(key: key);
 
   final String text;
+  final Color? textcolor;
   final List<Color>? color;
   @override
   Widget build(BuildContext context) {
@@ -694,6 +858,7 @@ class SmallRadiusButton extends StatelessWidget {
           text,
           style: Theme.of(context).textTheme.bodyText1!.copyWith(
                 fontSize: 14,
+                color: textcolor ?? Colors.white,
                 fontWeight: FontWeight.w500,
               ),
         ),
