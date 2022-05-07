@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:scoped_model/scoped_model.dart';
-import 'package:theaccounts/ScopedModelWrapper.dart';
 import 'package:theaccounts/screens/dashboard/dashboard.screens/dashboard.dart';
 import 'package:theaccounts/screens/loginprocess/loginscreens/main_setting.dart';
 import 'package:theaccounts/screens/loginprocess/loginscreens/myhomepage.dart';
+import 'package:theaccounts/screens/loginprocess/loginscreens/profile_screen.dart';
+import 'package:theaccounts/screens/loginprocess/loginscreens/update_profile.dart';
 import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
-import 'package:theaccounts/screens/setting/screens/profile_screen.dart';
-import 'package:theaccounts/screens/setting/screens/update_profile.dart';
-import 'package:theaccounts/utils/shared_pref.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key}) : super(key: key);

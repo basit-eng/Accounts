@@ -29,7 +29,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   height: 170,
                   width: 170,
                   child: Image.asset(
-                    'images/notifi.png',
+                    'assets/images/notifi.png',
                     color: Colors.blue[200],
                   ),
                   decoration: BoxDecoration(
@@ -55,7 +55,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   height: 170,
                   width: 170,
                   child: Image.asset(
-                    'images/message.png',
+                    'assets/images/message.png',
                     color: Colors.blue[200],
                   ),
                   decoration: BoxDecoration(

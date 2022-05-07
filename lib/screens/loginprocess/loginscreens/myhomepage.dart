@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Container(
               child: Image.asset(
-                'images/ot.png',
+                'assets/images/ot.png',
                 color: Color.fromARGB(255, 67, 153, 223),
               ),
               margin: EdgeInsets.only(top: 50),

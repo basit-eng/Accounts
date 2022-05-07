@@ -88,7 +88,7 @@ class CustomGridview extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'images/capital.png',
+                  'assets/images/capital.png',
                   height: 40,
                   width: 40,
                 ),
@@ -137,7 +137,7 @@ class CustomGridview extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'images/closingpayment.png',
+                  'assets/images/closingpayment.png',
                   height: 40,
                   width: 40,
                 ),
@@ -177,7 +177,7 @@ class CustomGridview extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'images/recieved.png',
+                'assets/images/recieved.png',
                 height: 40,
                 width: 40,
               ),
@@ -216,7 +216,7 @@ class CustomGridview extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'images/paymentclose.png',
+                'assets/images/paymentclose.png',
                 height: 40,
                 width: 40,
               ),
@@ -255,7 +255,7 @@ class CustomGridview extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'images/monthlyratio.png',
+                'assets/images/monthlyratio.png',
                 height: 40,
                 width: 40,
               ),
@@ -294,7 +294,7 @@ class CustomGridview extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'images/referencein.png',
+                'assets/images/referencein.png',
                 height: 40,
                 width: 40,
               ),
@@ -342,7 +342,7 @@ class CustomGridview extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'images/updateprofile.png',
+                  'assets/images/updateprofile.png',
                   height: 40,
                   width: 40,
                 ),
@@ -391,7 +391,7 @@ class CustomGridview extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'images/bankuupdate.png',
+                  'assets/images/bankuupdate.png',
                   height: 40,
                   width: 40,
                 ),
@@ -431,7 +431,7 @@ class CustomGridview extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'images/lstDeposit.png',
+                'assets/images/lstDeposit.png',
                 height: 40,
                 width: 40,
               ),
@@ -470,7 +470,7 @@ class CustomGridview extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'images/personalprofile.png',
+                'assets/images/personalprofile.png',
                 height: 40,
                 width: 40,
               ),
@@ -509,7 +509,7 @@ class CustomGridview extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'images/imagegalery.png',
+                'assets/images/imagegalery.png',
                 height: 40,
                 width: 40,
               ),
@@ -548,7 +548,7 @@ class CustomGridview extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'images/password.png',
+                'assets/images/password.png',
                 height: 40,
                 width: 40,
               ),

@@ -57,7 +57,7 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
               child: Column(
                 children: [
-                  Image.asset('images/user.png',
+                  Image.asset('assets/imagesuser.png',
                       color: Theme.of(context).backgroundColor),
                   ListTile(
                     title: Center(
@@ -143,7 +143,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   },
                   child: Cards(
                     title: 'Update Profile',
-                    iconPath: "images/user.png",
+                    iconPath: "assets/imagesuser.png",
                   ),
                 ),
                 GestureDetector(
@@ -158,7 +158,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   },
                   child: Cards(
                     title: 'Update Bank Details',
-                    iconPath: "images/user.png",
+                    iconPath: "assets/imagesuser.png",
                   ),
                 ),
               ],
@@ -205,7 +205,7 @@ class _SettingScreenState extends State<SettingScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Image.asset(
-                            'images/dashboard.png',
+                            'assets/imagesdashboard.png',
                             height: 30,
                             width: 30,
                           ),
@@ -241,7 +241,7 @@ class _SettingScreenState extends State<SettingScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Image.asset(
-                            'images/messages.png',
+                            'assets/imagesmessages.png',
                             height: 30,
                             width: 30,
                           ),

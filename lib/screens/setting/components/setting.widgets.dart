@@ -388,10 +388,10 @@ class calenderWidget extends StatelessWidget {
 class CustomTopBar extends StatelessWidget {
   const CustomTopBar({
     Key? key,
-    required this.bartitle,
+    required this.topbartitle,
   }) : super(key: key);
 
-  final String bartitle;
+  final String topbartitle;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -402,7 +402,7 @@ class CustomTopBar extends StatelessWidget {
           Container(
             alignment: Alignment.topLeft,
             child: Text(
-              bartitle,
+              topbartitle,
               style: Theme.of(context).textTheme.bodyText1!.copyWith(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -426,6 +426,241 @@ class CustomTopBar extends StatelessWidget {
     );
   }
 }
+
+class CustomBriefCard extends StatelessWidget {
+  const CustomBriefCard({
+    Key? key,
+    this.title_v1,
+    this.title_v2,
+    this.subtitle_v1,
+    this.subtitle_v2,
+    this.icon_v1,
+    this.icon_v2,
+    this.color_v1,
+    this.color_v2,
+    this.trailing_v1,
+    this.trailing_v2,
+  }) : super(key: key);
+  final String? title_v1, subtitle_v1;
+  final String? title_v2, subtitle_v2;
+  final IconData? icon_v1, icon_v2;
+  final Color? color_v1, color_v2;
+  final Widget? trailing_v1, trailing_v2;
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
+    return Container(
+      height: size.height * 0.2,
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+      ),
+      child: Column(children: [
+        ListTile(
+          leading: CircleAvatar(
+              radius: 24,
+              backgroundColor: color_v1,
+              child: Icon(
+                icon_v1,
+                color: Colors.white,
+              )),
+          title: Text(title_v1 ?? "",
+              style: Theme.of(context).textTheme.bodyText2),
+          subtitle: Text(title_v1 ?? "",
+              style: Theme.of(context).textTheme.bodyText1),
+          trailing: trailing_v1,
+        ),
+        ListTile(
+          leading: CircleAvatar(
+              radius: 24,
+              backgroundColor: color_v2,
+              child: Icon(
+                icon_v2,
+                color: Colors.white,
+              )),
+          subtitle: Text(subtitle_v2 ?? "",
+              style: Theme.of(context).textTheme.bodyText1),
+          title: Text(title_v2 ?? "",
+              style: Theme.of(context).textTheme.bodyText2),
+          trailing: trailing_v2,
+        )
+      ]),
+    );
+  }
+}
+//-------------------
+
+class PaymentHistoryCard extends StatelessWidget {
+  const PaymentHistoryCard({
+    Key? key,
+    this.amount,
+    required this.imagePath,
+    this.color,
+    this.type,
+    this.date,
+  }) : super(key: key);
+  final String? amount;
+  final String? type;
+
+  final String? date;
+
+  final String imagePath;
+  final Color? color;
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
+    return Container(
+      height: size.height * 0.1,
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          CircleAvatar(
+            backgroundColor: color,
+            radius: 45,
+            foregroundImage: AssetImage(imagePath),
+          ),
+          Text(amount ?? "", style: Theme.of(context).textTheme.subtitle1),
+          Text(type ?? "", style: Theme.of(context).textTheme.bodyText2),
+          Text(date ?? "", style: Theme.of(context).textTheme.bodyText2),
+        ],
+      ),
+    );
+  }
+}
+
+//-------------------------------capital History
+
+class CapitalPaymentHistoryCard extends StatelessWidget {
+  const CapitalPaymentHistoryCard({
+    Key? key,
+    this.closing_amount,
+    this.paid_amount,
+    this.pay_date,
+    this.icon,
+    this.color,
+    this.type,
+    this.closing,
+  }) : super(key: key);
+  final String? paid_amount, closing_amount;
+  final String? type;
+
+  final String? pay_date, closing;
+
+  final Widget? icon;
+  final Color? color;
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
+    return Padding(
+      padding: const EdgeInsets.all(18.0),
+      child: Container(
+        height: size.height * 0.1,
+        decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
+          borderRadius: BorderRadius.circular(18),
+          boxShadow: [
+            BoxShadow(
+                color: Theme.of(context).shadowColor.withOpacity(0.1),
+                spreadRadius: 0.2,
+                blurRadius: 1,
+                blurStyle: BlurStyle.outer),
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(14.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              CircleAvatar(
+                backgroundColor: color,
+                child: icon,
+              ),
+              SizedBox(
+                width: 18,
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(paid_amount ?? "",
+                      style: Theme.of(context).textTheme.subtitle1),
+                  Text(pay_date ?? "",
+                      style: Theme.of(context).textTheme.bodyText2),
+                ],
+              ),
+              Spacer(),
+              Text(type ?? "", style: Theme.of(context).textTheme.bodyText2),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(closing_amount ?? "",
+                      style: Theme.of(context).textTheme.subtitle1),
+                  Text(closing ?? "",
+                      style: Theme.of(context).textTheme.bodyText2),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+//---------------------
+
+//-------------------Reference in tile custom widget
+
+class CustomReferenceInCard extends StatelessWidget {
+  const CustomReferenceInCard(
+      {Key? key, this.name, this.token_no, this.icon, this.color, this.amount})
+      : super(key: key);
+  final String? name, token_no, amount;
+  final Color? color;
+  final IconData? icon;
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
+    return Container(
+      height: size.height * 0.1,
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          CircleAvatar(
+            backgroundColor: color,
+            radius: 8,
+            child: Icon(
+              icon,
+              color: color,
+            ),
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(name ?? "", style: Theme.of(context).textTheme.subtitle1),
+              Text(token_no ?? "",
+                  style: Theme.of(context).textTheme.bodyText2),
+            ],
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(amount ?? "", style: Theme.of(context).textTheme.subtitle1),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+//---------------------
 
 class SmallRadiusButton extends StatelessWidget {
   const SmallRadiusButton({

@@ -53,7 +53,7 @@ class _SettingScreenState extends State<SettingScreen> {
               child: Column(
                 children: [
                   Image.asset(
-                    'images/user.png',
+                    'assets/imagesuser.png',
                     color: Colors.white,
                   ),
                   ListTile(
@@ -197,7 +197,7 @@ class _SettingScreenState extends State<SettingScreen> {
                           },
                           child: ListTile(
                             leading: Image.asset(
-                              'images/dashboard.png',
+                              'assets/imagesdashboard.png',
                               height: 30,
                               width: 30,
                             ),
@@ -226,7 +226,7 @@ class _SettingScreenState extends State<SettingScreen> {
                         margin: EdgeInsets.symmetric(horizontal: 70),
                         child: ListTile(
                           leading: Image.asset(
-                            'images/messages.png',
+                            'assets/imagesmessages.png',
                             height: 30,
                             width: 30,
                           ),
@@ -311,7 +311,7 @@ class Cards extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            'images/person.png',
+            'assets/imagesperson.png',
             color: Colors.black54,
             height: 50,
             width: 50,

@@ -36,7 +36,7 @@ class _ForgetPsswordScreenState extends State<ForgetPsswordScreen> {
             Center(
               child: Container(
                 child: Image.asset(
-                  'images/unlock.png',
+                  'assets/images/unlock.png',
                   color: Color.fromARGB(255, 67, 153, 223),
                 ),
                 margin: EdgeInsets.only(top: 40),

@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
+import 'package:theaccounts/screens/dashboard/dashboard.screens/closingPayment.dart';
+import 'package:theaccounts/screens/loginprocess/loginscreens/profile_screen.dart';
+import 'package:theaccounts/screens/loginprocess/loginscreens/update_bank_details.dart';
+import 'package:theaccounts/screens/loginprocess/loginscreens/update_profile.dart';
+import 'package:theaccounts/screens/setting/bi_monthly.dart';
 import 'package:theaccounts/screens/setting/capital_history.dart';
-import 'package:theaccounts/screens/setting/custom_setting.dart';
+import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
+import 'package:theaccounts/screens/setting/image_galleryscreen.dart';
+import 'package:theaccounts/screens/setting/last_deposite.dart';
+import 'package:theaccounts/screens/setting/payment_history.dart';
+import 'package:theaccounts/screens/setting/recieved_amount.dart';
+import 'package:theaccounts/screens/setting/referenceIn_screen.dart';
 
 class DashBoardScreen extends StatefulWidget {
   DashBoardScreen({Key? key}) : super(key: key);
@@ -13,6 +23,49 @@ class DashBoardScreen extends StatefulWidget {
 }
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
+  List<String> grid_menu_name = [
+    "Capital History",
+    "Capital Payment History",
+    "Received Amount",
+    "Closing Payment",
+    "Bi Monthly Payment",
+    "Reference In",
+    "Profile View ",
+    "Update Profile",
+    "Update Bank detail",
+    "Last amount added",
+    "Image Gallery",
+    "Password"
+  ];
+
+  List<String> grid_menu_icons = [
+    "assets/images/capital.png",
+    "assets/images/paymentclose.png",
+    "assets/images/recieved.png",
+    "assets/images/paymentclose.png",
+    "assets/images/monthlyratio.png",
+    "assets/images/referencein.png",
+    "assets/images/updateprofile.png",
+    "assets/images/bankuupdate.png",
+    "assets/images/lstDeposit.png",
+    "assets/images/personalprofile.png",
+    "assets/images/imagegalery.png",
+    "assets/images/password.png",
+  ];
+  List<Widget> views = [
+    CapitalHistory(),
+    PaymentHistory(),
+    RecievedAmount(),
+    ClosingPaymentScreen(),
+    BiMonthlyScreen(),
+    ReferenceInScreen(),
+    UpdateProfile(),
+    ProfileScreen(),
+    UpdateBankDetails(),
+    LastDepositeScreen(),
+    ImageGalleryScreen(),
+    CapitalHistory(),
+  ];
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -37,13 +90,13 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     );
   }
 
-  Column dashboardbody(BuildContext context) {
+  Widget dashboardbody(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: CustomTopBar(bartitle: 'Dashboard'),
+          child: CustomTopBar(topbartitle: 'Dashboard'),
         ),
 
         SizedBox(
@@ -74,7 +127,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CapitalHistory(),
+                            builder: (context) => views[index],
                           ),
                         );
                       },
@@ -94,7 +147,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset(
-                              'images/coin.png',
+                              grid_menu_icons[index],
                               height: 30,
                               width: 30,
                               fit: BoxFit.contain,
@@ -105,7 +158,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                             ),
                             SizedBox(
                               width: 70,
-                              child: Text("Capital History",
+                              child: Text(grid_menu_name[index],
                                   textAlign: TextAlign.center,
                                   maxLines: 2,
                                   overflow: TextOverflow.visible,
