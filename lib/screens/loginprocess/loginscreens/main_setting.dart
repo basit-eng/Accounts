@@ -1,4 +1,5 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
 
 class MainSettings extends StatefulWidget {
   const MainSettings({Key? key}) : super(key: key);
@@ -71,34 +72,6 @@ class _MainSettingsState extends State<MainSettings> {
                 )
               ],
             ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class ProfileListTile extends StatelessWidget {
-  const ProfileListTile({
-    Key? key,
-    required this.labelText,
-  }) : super(key: key);
-  final String labelText;
-  @override
-  Widget build(BuildContext context) {
-    return Neumorphic(
-      margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
-      style:
-          NeumorphicStyle(border: NeumorphicBorder.none(), color: Colors.white),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        child: ListTile(
-          title: Text(
-            '$labelText',
-            style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
           ),
         ),
       ),

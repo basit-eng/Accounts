@@ -3,14 +3,14 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 class CustomInputField extends StatelessWidget {
   CustomInputField(
       {required textcontroller,
-      required this.icon,
+      this.icon,
       this.hint,
       this.suffixicon,
       Key? key})
       : super(key: key);
 
   final TextEditingController textcontroller = TextEditingController();
-  final IconData icon;
+  final IconData? icon;
   final String? hint;
   final Widget? suffixicon;
 
@@ -35,11 +35,12 @@ class CustomInputField extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(left: 20.0),
         child: TextField(
+          style: TextStyle(fontSize: 14),
           controller: textcontroller,
           decoration: InputDecoration(
             suffixIcon: suffixicon ?? null,
             hintText: hint,
-            hintStyle: Theme.of(context).textTheme.bodyText1,
+            hintStyle: Theme.of(context).textTheme.bodyText2,
             icon: Icon(
               icon,
               size: 30,

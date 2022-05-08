@@ -64,7 +64,16 @@ class _HideCapitalScreenState extends State<HideCapitalScreen>
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     AnimatedTopBarTile(),
-                    AnimatedTitle(),
+                    AnimatedTitle(
+                        trailing: Transform(
+                      transform: Matrix4.translationValues(
+                          _animright.value * width, 0.0, 0.0),
+                      child: CircleAvatar(
+                        radius: 24,
+                        backgroundColor: Colors.transparent,
+                        backgroundImage: AssetImage("assets/images/user.png"),
+                      ),
+                    )),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,7 +91,14 @@ class _HideCapitalScreenState extends State<HideCapitalScreen>
                                 );
                               },
                               child: AnimatedCircularBar(
-                                  title: "Hide Capital", radius: 02),
+                                  child: Text(
+                                    "Hide Capital",
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1,
+                                  ),
+                                  color: Colors.blue,
+                                  offset: 02,
+                                  radius: 200),
                             ),
                           ),
                           Transform(

@@ -4,8 +4,8 @@ import 'package:theaccounts/ScopedModelWrapper.dart';
 import 'package:theaccounts/screens/dashboard/dashboard.screens/dashboard.dart';
 import 'package:theaccounts/screens/loginprocess/loginscreens/main_setting.dart';
 import 'package:theaccounts/screens/loginprocess/loginscreens/myhomepage.dart';
-import 'package:theaccounts/screens/loginprocess/loginscreens/profile_screen.dart';
-import 'package:theaccounts/screens/loginprocess/loginscreens/update_profile.dart';
+import 'package:theaccounts/screens/setting/profile_screen.dart';
+import 'package:theaccounts/screens/setting/update_profile.dart';
 import 'package:theaccounts/utils/shared_pref.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -57,7 +57,7 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
               child: Column(
                 children: [
-                  Image.asset('images/user.png',
+                  Image.asset('assets/images/user.png',
                       color: Theme.of(context).backgroundColor),
                   ListTile(
                     title: Center(
@@ -143,7 +143,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   },
                   child: Cards(
                     title: 'Update Profile',
-                    iconPath: "images/user.png",
+                    iconPath: "assets/images/user.png",
                   ),
                 ),
                 GestureDetector(
@@ -158,7 +158,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   },
                   child: Cards(
                     title: 'Update Bank Details',
-                    iconPath: "images/user.png",
+                    iconPath: "assets/images/user.png",
                   ),
                 ),
               ],
@@ -205,7 +205,7 @@ class _SettingScreenState extends State<SettingScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Image.asset(
-                            'images/dashboard.png',
+                            'assets/images/dashboard.png',
                             height: 30,
                             width: 30,
                           ),
@@ -241,7 +241,7 @@ class _SettingScreenState extends State<SettingScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Image.asset(
-                            'images/messages.png',
+                            'assets/images/messages.png',
                             height: 30,
                             width: 30,
                           ),

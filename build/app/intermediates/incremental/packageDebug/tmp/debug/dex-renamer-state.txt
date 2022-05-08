@@ -1,4 +1,4 @@
-#Sat Apr 30 00:20:45 PKT 2022
-base.0=E\:\\Practice\\theaccounts\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Sun May 08 03:13:32 PKT 2022
+base.0=E\:\\vkonnect\\theaccounts\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

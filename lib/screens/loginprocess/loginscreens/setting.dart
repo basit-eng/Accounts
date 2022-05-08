@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:theaccounts/screens/dashboard/dashboard.screens/dashboard.dart';
 import 'package:theaccounts/screens/loginprocess/loginscreens/myhomepage.dart';
-import 'package:theaccounts/screens/loginprocess/loginscreens/profile_screen.dart';
-import 'package:theaccounts/screens/loginprocess/loginscreens/update_profile.dart';
+import 'package:theaccounts/screens/setting/profile_screen.dart';
+import 'package:theaccounts/screens/setting/update_profile.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -53,7 +53,7 @@ class _SettingScreenState extends State<SettingScreen> {
               child: Column(
                 children: [
                   Image.asset(
-                    'images/user.png',
+                    'assets/imagesuser.png',
                     color: Colors.white,
                   ),
                   ListTile(
@@ -197,7 +197,7 @@ class _SettingScreenState extends State<SettingScreen> {
                           },
                           child: ListTile(
                             leading: Image.asset(
-                              'images/dashboard.png',
+                              'assets/imagesdashboard.png',
                               height: 30,
                               width: 30,
                             ),
@@ -226,7 +226,7 @@ class _SettingScreenState extends State<SettingScreen> {
                         margin: EdgeInsets.symmetric(horizontal: 70),
                         child: ListTile(
                           leading: Image.asset(
-                            'images/messages.png',
+                            'assets/imagesmessages.png',
                             height: 30,
                             width: 30,
                           ),
@@ -311,7 +311,7 @@ class Cards extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            'images/person.png',
+            'assets/imagesperson.png',
             color: Colors.black54,
             height: 50,
             width: 50,

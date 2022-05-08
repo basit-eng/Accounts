@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
 import 'package:theaccounts/screens/loginprocess/components/widgets.dart';
 import 'package:theaccounts/screens/dashboard/dashboard.screens/dashboard.dart';
 import 'package:theaccounts/screens/dashboard/dashboard.screens/showcapital.screen.dart';
@@ -25,54 +26,24 @@ class _VerificationScreenState extends State<VerificationScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                Container(
-                  height: 170,
-                  width: 170,
+                AnimatedCircularBar(
                   child: Image.asset(
-                    'images/notifi.png',
+                    'assets/images/notifi.png',
                     color: Colors.blue[200],
                   ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        spreadRadius: 2,
-                        blurRadius: 15,
-                        blurStyle: BlurStyle.outer,
-                        offset: Offset(
-                          1,
-                          1,
-                        ),
-                      ),
-                    ],
-                  ),
+                  radius: 170,
+                  color: Colors.grey.withOpacity(0.3),
                 ),
                 SizedBox(
                   height: 70,
                 ),
-                Container(
-                  height: 170,
-                  width: 170,
+                AnimatedCircularBar(
                   child: Image.asset(
-                    'images/message.png',
+                    'assets/images/message.png',
                     color: Colors.blue[200],
                   ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        spreadRadius: 2,
-                        blurRadius: 15,
-                        blurStyle: BlurStyle.outer,
-                        offset: Offset(
-                          1,
-                          1,
-                        ),
-                      ),
-                    ],
-                  ),
+                  radius: 170,
+                  color: Colors.grey.withOpacity(0.3),
                 ),
                 SizedBox(
                   height: 70,

@@ -79,7 +79,12 @@ class _ShowCapitalScreenState extends State<ShowCapitalScreen>
                           );
                         },
                         child: AnimatedCircularBar(
-                          title: "Show Title",
+                          child: Text(
+                            "Show Capital",
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                          color: Colors.blue,
+                          offset: 02,
                         ),
                       ),
                     ),
