@@ -91,13 +91,18 @@ class _HideCapitalScreenState extends State<HideCapitalScreen>
                                 );
                               },
                               child: AnimatedCircularBar(
-                                  child: Text(
-                                    "Hide Capital",
-                                    style:
-                                        Theme.of(context).textTheme.bodyText1,
-                                  ),
-                                  color: Colors.blue,
-                                  offset: 02,
+                                  child: Text("Hide Capital",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1),
+                                  color: Colors.blue.withOpacity(0.6),
+                                  color1: Colors.purple.withOpacity(0.6),
+                                  spreadradius: 04,
+                                  blurradius: 08,
+                                  negativeOffsetx: -6.8,
+                                  negativeOffsety: -6.5,
+                                  offsetx: 6.5,
+                                  offsety: 6.8,
                                   radius: 200),
                             ),
                           ),

@@ -43,7 +43,7 @@ class _CustomButtonState extends State<CustomButton> {
                     NeumorphicBoxShape.roundRect(BorderRadius.circular(100)),
                 lightSource: LightSource.topLeft,
                 intensity: 1.0,
-                color: Color(0xFFF3F3F3),
+                color: Color(0xFFFFFFFF),
               ),
             ),
           ),

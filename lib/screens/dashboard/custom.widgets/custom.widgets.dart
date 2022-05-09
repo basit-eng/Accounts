@@ -133,14 +133,26 @@ class _BottomBarState extends State<AnimatedBottomBar>
 //Animated circular bar
 
 class AnimatedCircularBar extends StatefulWidget {
-  AnimatedCircularBar(
-      {this.radius, this.offset, this.child, this.color, Key? key})
-      : super(key: key);
+  AnimatedCircularBar({
+    this.radius,
+    this.color1,
+    this.offsetx,
+    this.offsety,
+    this.negativeOffsetx,
+    this.negativeOffsety,
+    this.child,
+    this.color,
+    this.blurradius,
+    this.spreadradius,
+    Key? key,
+  }) : super(key: key);
 
   final double? radius;
-  final Color? color;
+  final Color? color, color1;
   final Widget? child;
-  final double? offset;
+  final double? offsetx, offsety;
+  final double? negativeOffsetx, negativeOffsety;
+  final double? blurradius, spreadradius;
 
   @override
   State<AnimatedCircularBar> createState() => _AnimatedCircularBarState();
@@ -190,15 +202,27 @@ class _AnimatedCircularBarState extends State<AnimatedCircularBar>
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
+              // color: Colors.purple,
               color: widget.color ??
                   Theme.of(context).shadowColor.withOpacity(0.2),
-              blurRadius: 25.0, // soften the shadow
-              spreadRadius: 5.0, //extend the shadow
+              blurRadius: widget.blurradius ?? 03.0, // soften the shadow
+              spreadRadius: widget.spreadradius ?? 04.0,
               offset: Offset(
-                widget.offset ?? 15.0, // Move to right 10  horizontally
-                widget.offset ?? 15.0, // Move to bottom 10 Vertically
+                widget.negativeOffsetx ?? -02.0,
+                widget.negativeOffsety ?? -03.0,
               ),
-            )
+            ),
+            BoxShadow(
+              // color: Colors.blue,
+              color: widget.color1 ??
+                  Theme.of(context).shadowColor.withOpacity(0.2),
+              blurRadius: widget.blurradius ?? 04.0, // soften the shadow
+              spreadRadius: widget.spreadradius ?? 0.40,
+              offset: Offset(
+                widget.offsetx ?? 12.0,
+                widget.offsety ?? 10.0,
+              ),
+            ),
           ],
         ),
         child: widget.child,

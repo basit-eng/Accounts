@@ -163,29 +163,29 @@ class Styles {
       ),
       textTheme: ThemeData.light().textTheme.copyWith(
             headline6: TextStyle(
-              fontFamily: 'Montserrat',
+              fontFamily: 'Monstserrat',
               color: Colors.grey[600],
               fontSize: 22,
             ),
             subtitle1: TextStyle(
-                fontFamily: 'Montserrat',
+                fontFamily: 'Monstserrat',
                 color: Colors.grey[600],
                 fontSize: 18,
                 fontWeight: FontWeight.bold),
             subtitle2: TextStyle(
-                fontFamily: 'Montserrat',
+                fontFamily: 'Monstserrat',
                 fontSize: 16,
                 fontWeight: FontWeight.w600),
             bodyText1: TextStyle(
-                fontFamily: 'Montserrat',
+                fontFamily: 'Monstserrat',
                 fontSize: 14,
                 fontWeight: FontWeight.w500),
             bodyText2: TextStyle(
-                fontFamily: 'Montserrat',
+                fontFamily: 'Monstserrat',
                 fontSize: 12,
                 fontWeight: FontWeight.w400),
             button: TextStyle(
-              fontFamily: 'Montserrat',
+              fontFamily: 'Monstserrat',
               fontSize: 15,
             ),
             labelMedium: TextStyle(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
-import 'package:theaccounts/screens/dashboard/dashboard.screens/hidecapital.screen.dart';
+import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
 
 class BimonthlyRatioScreen extends StatefulWidget {
   BimonthlyRatioScreen({
@@ -39,6 +39,7 @@ class _BimonthlyRatioScreenState extends State<BimonthlyRatioScreen>
     double height = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: AnimatedBottomBar(),
         body: AnimatedBuilder(
           animation: _controller.view,
           builder: (context, child) {
@@ -63,20 +64,41 @@ class _BimonthlyRatioScreenState extends State<BimonthlyRatioScreen>
                     //     ),
                     //   ),
                     // ),
-                    AnimatedTopBarTile(),
-                    AnimatedTitle(),
-                    Spacer(),
+                    CustomTopBar(topbartitle: "Bi Monthly Ratio"),
+                    Spacer(
+                      flex: 3,
+                    ),
                     Center(
                       child: AnimatedCircularBar(
                         child: Text(
                           "11,000",
                           style: Theme.of(context).textTheme.bodyText1,
                         ),
+                        color: Colors.blue.withOpacity(0.6),
+                        color1: Colors.blue.withOpacity(0.6),
+                        spreadradius: 04,
+                        blurradius: 08,
+                        negativeOffsetx: -1.0,
+                        negativeOffsety: -1.0,
+                        offsetx: 12.5,
+                        offsety: 12.8,
                         radius: 190,
                       ),
                     ),
-                    Spacer(),
-                    AnimatedBottomBar(),
+                    Spacer(
+                      flex: 1,
+                    ),
+                    Center(
+                      child: Text(
+                        "18-01-2022",
+                        style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                              fontSize: 10,
+                            ),
+                      ),
+                    ),
+                    Spacer(
+                      flex: 1,
+                    ),
                   ],
                 ),
               ),

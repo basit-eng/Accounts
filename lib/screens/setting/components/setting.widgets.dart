@@ -247,8 +247,15 @@ class ProfileListTile extends StatelessWidget {
 }
 
 class CustomTabBar extends StatefulWidget {
-  const CustomTabBar({this.child, Key? key}) : super(key: key);
-  final List<Widget>? child;
+  const CustomTabBar(
+      {required this.child,
+      required this.tab_length,
+      required this.tabs,
+      Key? key})
+      : super(key: key);
+  final List<Widget> child;
+  final int tab_length;
+  final List<String> tabs;
 
   @override
   State<CustomTabBar> createState() => _CustomTabBarState();
@@ -262,7 +269,7 @@ class _CustomTabBarState extends State<CustomTabBar>
   @override
   void initState() {
     _tabController =
-        TabController(length: _tabs.length, vsync: this, initialIndex: 0);
+        TabController(length: widget.tabs.length, vsync: this, initialIndex: 0);
     _tabController.addListener(() {
       setState(() {
         _selectedIndex = _tabController.index;
@@ -278,14 +285,15 @@ class _CustomTabBarState extends State<CustomTabBar>
     super.dispose();
   }
 
-  List _tabs = ["D", "W", "M", "Y"];
+  // List _tabs = widget.tabs;
+  // ["D", "W", "M", "Y"];
 
-  List<Widget> _views = [
-    const Center(child: const Text('Content of Tab One')),
-    const Center(child: const Text('Content of Tab Two')),
-    const Center(child: const Text('Content of Tab Three')),
-    const Center(child: const Text('Content of Tab Four')),
-  ];
+  // List<Widget> _views = [
+  //   const Center(child: const Text('Content of Tab One')),
+  //   const Center(child: const Text('Content of Tab Two')),
+  //   const Center(child: const Text('Content of Tab Three')),
+  //   const Center(child: const Text('Content of Tab Four')),
+  // ];
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -309,10 +317,10 @@ class _CustomTabBarState extends State<CustomTabBar>
                     labelStyle: const TextStyle(fontWeight: FontWeight.bold),
                     indicatorColor: Colors.transparent,
                     tabs: [
-                      for (int i = 0; i < _tabs.length; i++)
+                      for (int i = 0; i < widget.tabs.length; i++)
                         Container(
                           alignment: Alignment.center,
-                          child: Text(_tabs[i],
+                          child: Text(widget.tabs[i],
                               style: Theme.of(context).textTheme.bodyText2),
                           padding: const EdgeInsets.symmetric(
                               vertical: 20, horizontal: 20),
@@ -347,10 +355,10 @@ class _CustomTabBarState extends State<CustomTabBar>
           ],
         ),
         Container(
-            height: size.height * 0.4,
+            height: size.height * 0.9,
             width: double.maxFinite,
-            child: TabBarView(
-                controller: _tabController, children: widget.child ?? _views)),
+            child:
+                TabBarView(controller: _tabController, children: widget.child)),
       ],
     );
   }

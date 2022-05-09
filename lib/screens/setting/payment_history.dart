@@ -37,6 +37,8 @@ class _PaymentHistoryState extends State<PaymentHistory> {
               height: 12,
             ),
             CustomTabBar(
+              tab_length: 4,
+              tabs: ["D", "W", "M", "Y"],
               child: [
                 Expanded(
                   child: ListView.builder(

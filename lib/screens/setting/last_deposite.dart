@@ -47,6 +47,8 @@ class _LastDepositeScreenState extends State<LastDepositeScreen> {
           CustomSearchBar(searchtextcontroller: _searchtextcontroller),
           SingleChildScrollView(
             child: CustomTabBar(
+              tab_length: 4,
+              tabs: ["D", "W", "M", "Y"],
               child: [
                 Expanded(
                   child: ListView.builder(

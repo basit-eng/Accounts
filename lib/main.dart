@@ -8,6 +8,7 @@ import 'package:theaccounts/screens/dashboard/dashboard.screens/hidecapital.scre
 import 'package:theaccounts/screens/dashboard/dashboard.screens/rollover.screen.dart';
 import 'package:theaccounts/screens/dashboard/dashboard.screens/showcapital.screen.dart';
 import 'package:theaccounts/screens/dashboard/dashboard.screens/withdrawbotttomsheet.dart';
+import 'package:theaccounts/screens/loginprocess/loginscreens/animated_slide.dart';
 import 'package:theaccounts/screens/loginprocess/loginscreens/forget_pass.dart';
 import 'package:theaccounts/screens/loginprocess/loginscreens/myhomepage.dart';
 import 'package:theaccounts/screens/setting/profile_screen.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
             darkTheme: Styles.darkTheme(),
             themeMode: model.isDarkTheme ? ThemeMode.dark : ThemeMode.light,
             routes: {
-              '/': (context) => MyHomePage(),
+              '/': (context) => AnimatedSlideScreen(),
               ShowCapitalScreen.routeName: (context) => ShowCapitalScreen(),
               HideCapitalScreen.routeName: (context) => HideCapitalScreen(),
               WithDrawPaymentAlert.routeName: (context) =>

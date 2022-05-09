@@ -46,9 +46,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 "assets/images/ot.png",
                 color: Colors.blue,
               ),
-              offset: 2,
+              color: Colors.blue.withOpacity(0.6),
+              color1: Colors.purple.withOpacity(0.6),
+              spreadradius: 04,
+              blurradius: 08,
+              negativeOffsetx: -6.8,
+              negativeOffsety: -6.5,
+              offsetx: 6.5,
+              offsety: 6.8,
               radius: 180,
-              color: Colors.blue,
             ),
             SizedBox(
               height: 50,
@@ -113,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
               child: CustomButton(
-                title: 'sign In',
+                title: 'Sign In',
               ),
             ),
             SizedBox(
