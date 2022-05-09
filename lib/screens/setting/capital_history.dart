@@ -22,7 +22,8 @@ class _CapitalHistoryState extends State<CapitalHistory> {
         child: Scaffold(
           backgroundColor: Theme.of(context).backgroundColor,
           bottomNavigationBar: AnimatedBottomBar(),
-          body: Column(
+          body: ListView(
+            physics: NeverScrollableScrollPhysics(),
             children: [
               CustomTopBar(topbartitle: 'Capital History'),
               CustomBriefCard(
@@ -38,93 +39,97 @@ class _CapitalHistoryState extends State<CapitalHistory> {
               SizedBox(
                 height: 10,
               ),
-              CustomTabBar(
-                child: [
-                  Expanded(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: 20,
-                      itemBuilder: ((context, index) {
-                        return CapitalPaymentHistoryCard(
-                          icon: CircleAvatar(
-                              radius: 24,
-                              backgroundColor: Color(0xFF92298D),
-                              child: Icon(
-                                Icons.arrow_downward,
-                                color: Colors.white,
-                              )),
-                          paid_amount: "1,20,38,954",
-                          pay_date: "Apr 04-2022",
-                          closing_amount: "12,650,034",
-                          closing: "Closing balance",
-                        );
-                      }),
+              SingleChildScrollView(
+                child: CustomTabBar(
+                  tab_length: 4,
+                  tabs: ["D", "W", "M", "Y"],
+                  child: [
+                    Expanded(
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: 20,
+                        itemBuilder: ((context, index) {
+                          return CapitalPaymentHistoryCard(
+                            icon: CircleAvatar(
+                                radius: 24,
+                                backgroundColor: Color(0xFF92298D),
+                                child: Icon(
+                                  Icons.arrow_downward,
+                                  color: Colors.white,
+                                )),
+                            paid_amount: "1,20,38,954",
+                            pay_date: "Apr 04-2022",
+                            closing_amount: "12,650,034",
+                            closing: "Closing balance",
+                          );
+                        }),
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: 20,
-                      itemBuilder: ((context, index) {
-                        return CapitalPaymentHistoryCard(
-                          icon: CircleAvatar(
-                              radius: 24,
-                              backgroundColor: Color(0xFF92298D),
-                              child: Icon(
-                                Icons.arrow_downward,
-                                color: Colors.white,
-                              )),
-                          paid_amount: "1,20,38,954",
-                          pay_date: "Apr 04-2022",
-                          closing_amount: "12,650,034",
-                          closing: "Closing balance",
-                        );
-                      }),
+                    Expanded(
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: 20,
+                        itemBuilder: ((context, index) {
+                          return CapitalPaymentHistoryCard(
+                            icon: CircleAvatar(
+                                radius: 24,
+                                backgroundColor: Color(0xFF92298D),
+                                child: Icon(
+                                  Icons.arrow_downward,
+                                  color: Colors.white,
+                                )),
+                            paid_amount: "1,20,38,954",
+                            pay_date: "Apr 04-2022",
+                            closing_amount: "12,650,034",
+                            closing: "Closing balance",
+                          );
+                        }),
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: 20,
-                      itemBuilder: ((context, index) {
-                        return CapitalPaymentHistoryCard(
-                          icon: CircleAvatar(
-                              radius: 24,
-                              backgroundColor: Color(0xFF92298D),
-                              child: Icon(
-                                Icons.arrow_downward,
-                                color: Colors.white,
-                              )),
-                          paid_amount: "1,20,38,954",
-                          pay_date: "Apr 04-2022",
-                          closing_amount: "12,650,034",
-                          closing: "Closing balance",
-                        );
-                      }),
+                    Expanded(
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: 20,
+                        itemBuilder: ((context, index) {
+                          return CapitalPaymentHistoryCard(
+                            icon: CircleAvatar(
+                                radius: 24,
+                                backgroundColor: Color(0xFF92298D),
+                                child: Icon(
+                                  Icons.arrow_downward,
+                                  color: Colors.white,
+                                )),
+                            paid_amount: "1,20,38,954",
+                            pay_date: "Apr 04-2022",
+                            closing_amount: "12,650,034",
+                            closing: "Closing balance",
+                          );
+                        }),
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: 20,
-                      itemBuilder: ((context, index) {
-                        return CapitalPaymentHistoryCard(
-                          icon: CircleAvatar(
-                              radius: 24,
-                              backgroundColor: Color(0xFF92298D),
-                              child: Icon(
-                                Icons.arrow_downward,
-                                color: Colors.white,
-                              )),
-                          paid_amount: "1,20,38,954",
-                          pay_date: "Apr 04-2022",
-                          closing_amount: "12,650,034",
-                          closing: "Closing balance",
-                        );
-                      }),
+                    Expanded(
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: 20,
+                        itemBuilder: ((context, index) {
+                          return CapitalPaymentHistoryCard(
+                            icon: CircleAvatar(
+                                radius: 24,
+                                backgroundColor: Color(0xFF92298D),
+                                child: Icon(
+                                  Icons.arrow_downward,
+                                  color: Colors.white,
+                                )),
+                            paid_amount: "1,20,38,954",
+                            pay_date: "Apr 04-2022",
+                            closing_amount: "12,650,034",
+                            closing: "Closing balance",
+                          );
+                        }),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
