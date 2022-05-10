@@ -420,12 +420,19 @@ class _DashboardButtonState extends State<DashboardButton>
 
 class AnimatedLongButton extends StatefulWidget {
   AnimatedLongButton(
-      {required this.text, this.color, Key? key, required this.isBgColorWhite})
+      {required this.text,
+      this.fontsize,
+      this.Prefixtext,
+      this.color,
+      Key? key,
+      required this.isBgColorWhite})
       : super(key: key);
 
   final String text;
   final List<Color>? color;
   final bool isBgColorWhite;
+  final double? fontsize;
+  final String? Prefixtext;
 
   @override
   State<AnimatedLongButton> createState() => _AnimatedLongButtonState();
@@ -433,7 +440,7 @@ class AnimatedLongButton extends StatefulWidget {
 
 class _AnimatedLongButtonState extends State<AnimatedLongButton>
     with TickerProviderStateMixin {
-  final _duration = Duration(milliseconds: 1500);
+  final _duration = Duration(milliseconds: 1000);
 
   late AnimationController _animationcontroller;
   late Animation<double> _animateopacity;
@@ -478,8 +485,8 @@ class _AnimatedLongButtonState extends State<AnimatedLongButton>
                   color: Colors.grey.withOpacity(0.3),
                   blurStyle: BlurStyle.outer,
                   blurRadius: 10,
-                  spreadRadius: 0.0,
-                  offset: Offset(0.5, 00),
+                  spreadRadius: 0.7,
+                  offset: Offset(3, 4),
                 ),
               ],
               gradient: LinearGradient(
@@ -494,15 +501,30 @@ class _AnimatedLongButtonState extends State<AnimatedLongButton>
               child: AnimatedOpacity(
                 duration: _duration,
                 opacity: _animateopacity.value,
-                child: Text(
-                  widget.text,
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: widget.isBgColorWhite
-                            ? Colors.black.withOpacity(0.7)
-                            : Colors.white.withOpacity(1.0),
-                      ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      widget.Prefixtext ?? "",
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w300,
+                            color: widget.isBgColorWhite
+                                ? Colors.black.withOpacity(0.7)
+                                : Colors.white.withOpacity(1.0),
+                          ),
+                    ),
+                    Text(
+                      "${widget.text}",
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            fontSize: widget.fontsize ?? 16,
+                            fontWeight: FontWeight.w700,
+                            color: widget.isBgColorWhite
+                                ? Colors.black.withOpacity(0.7)
+                                : Colors.white.withOpacity(1.0),
+                          ),
+                    ),
+                  ],
                 ),
               ),
             ),

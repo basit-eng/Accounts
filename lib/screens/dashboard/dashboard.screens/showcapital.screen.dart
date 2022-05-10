@@ -15,7 +15,7 @@ class ShowCapitalScreen extends StatefulWidget {
 
 class _ShowCapitalScreenState extends State<ShowCapitalScreen>
     with TickerProviderStateMixin {
-  final _duration = Duration(milliseconds: 1500);
+  final _duration = Duration(milliseconds: 500);
 
   late AnimationController _controller;
   @override

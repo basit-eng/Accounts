@@ -134,13 +134,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   );
                 },
-                child: Text(
-                  'Forget Passwrod?',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black54,
-                  ),
-                ))
+                child: Text('Forgot Passwrod?',
+                    style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w300,
+                        color: Color(0xFF636365))))
           ],
         )),
       ),
@@ -159,8 +157,9 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               'Keep me Signed',
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w300,
+                    color: Color(0xFF636365),
                   ),
             )
           ],

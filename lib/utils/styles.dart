@@ -63,7 +63,7 @@ class Styles {
       visualDensity: VisualDensity.adaptivePlatformDensity,
       primaryColor: Color(0xFF2A2D2E),
 
-      fontFamily: 'Monstserrat',
+      fontFamily: 'Montserrat',
       appBarTheme: AppBarTheme(
         iconTheme: IconThemeData(
           color: Colors.white.withOpacity(0.8),
@@ -71,7 +71,7 @@ class Styles {
 
         // parseColor(model.appLandingData.topBarTextColor)),
         titleTextStyle: TextStyle(
-          fontFamily: 'Monstserrat',
+          fontFamily: 'Montserrat',
           fontSize: 20,
           color: Colors.white.withOpacity(0.8),
 
@@ -80,32 +80,32 @@ class Styles {
       ),
       textTheme: ThemeData.dark().textTheme.copyWith(
             headline6: TextStyle(
-              fontFamily: 'Monstserrat',
+              fontFamily: 'Montserrat',
               fontSize: 22,
             ),
             subtitle1: TextStyle(
-                fontFamily: 'Monstserrat',
+                fontFamily: 'Montserrat',
                 color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.bold),
             subtitle2: TextStyle(
-                fontFamily: 'Monstserrat',
+                fontFamily: 'Montserrat',
                 fontSize: 16,
                 fontWeight: FontWeight.w600),
             bodyText1: TextStyle(
-                fontFamily: 'Monstserrat',
+                fontFamily: 'Montserrat',
                 fontSize: 14,
                 fontWeight: FontWeight.w500),
             bodyText2: TextStyle(
-                fontFamily: 'Monstserrat',
+                fontFamily: 'Montserrat',
                 fontSize: 12,
                 fontWeight: FontWeight.w400),
             button: TextStyle(
-              fontFamily: 'Monstserrat',
+              fontFamily: 'Montserrat',
               fontSize: 15,
             ),
             labelMedium: TextStyle(
-                fontFamily: 'Monstserrat',
+                fontFamily: 'Montserrat',
                 fontSize: 14,
                 fontWeight: FontWeight.w500),
           ),
@@ -163,29 +163,29 @@ class Styles {
       ),
       textTheme: ThemeData.light().textTheme.copyWith(
             headline6: TextStyle(
-              fontFamily: 'Monstserrat',
+              fontFamily: 'Montserrat',
               color: Colors.grey[600],
               fontSize: 22,
             ),
             subtitle1: TextStyle(
-                fontFamily: 'Monstserrat',
+                fontFamily: 'Montserrat',
                 color: Colors.grey[600],
                 fontSize: 18,
                 fontWeight: FontWeight.bold),
             subtitle2: TextStyle(
-                fontFamily: 'Monstserrat',
+                fontFamily: 'Montserrat',
                 fontSize: 16,
                 fontWeight: FontWeight.w600),
             bodyText1: TextStyle(
-                fontFamily: 'Monstserrat',
+                fontFamily: 'Montserrat',
                 fontSize: 14,
                 fontWeight: FontWeight.w500),
             bodyText2: TextStyle(
-                fontFamily: 'Monstserrat',
+                fontFamily: 'Montserrat',
                 fontSize: 12,
                 fontWeight: FontWeight.w400),
             button: TextStyle(
-              fontFamily: 'Monstserrat',
+              fontFamily: 'Montserrat',
               fontSize: 15,
             ),
             labelMedium: TextStyle(
