@@ -11,7 +11,7 @@ class RollOverScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         // bottomNavigationBar: widgets.bottombar(context: context),
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).cardColor,
         body: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

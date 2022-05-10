@@ -40,6 +40,7 @@ class _BimonthlyRatioScreenState extends State<BimonthlyRatioScreen>
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: AnimatedBottomBar(),
+        backgroundColor: Theme.of(context).cardColor,
         body: AnimatedBuilder(
           animation: _controller.view,
           builder: (context, child) {

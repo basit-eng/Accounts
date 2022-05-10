@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
 import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
 
 class RecievedAmount extends StatefulWidget {
@@ -59,53 +58,47 @@ class _RecievedAmountState extends State<RecievedAmount> {
               tab_length: 3,
               tabs: ["6M", "Y", "ALL"],
               child: [
-                Expanded(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 20,
-                    itemBuilder: ((context, index) {
-                      return CustomSingleTile(
-                        title: "Total recieved",
-                        subtitle: "254,000,000",
-                        leading: CircleAvatar(
-                            radius: 45,
-                            backgroundColor: Colors.purple,
-                            child: Image.asset("assets/images/coin.png")),
-                      );
-                    }),
-                  ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 20,
+                  itemBuilder: ((context, index) {
+                    return CustomSingleTile(
+                      title: "Total recieved",
+                      subtitle: "254,000,000",
+                      leading: CircleAvatar(
+                          radius: 45,
+                          backgroundColor: Colors.purple,
+                          child: Image.asset("assets/images/coin.png")),
+                    );
+                  }),
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 20,
-                    itemBuilder: ((context, index) {
-                      return CustomSingleTile(
-                        title: "Total recieved",
-                        subtitle: "254,000,000",
-                        leading: CircleAvatar(
-                            radius: 45,
-                            backgroundColor: Colors.purple,
-                            child: Image.asset("assets/images/coin.png")),
-                      );
-                    }),
-                  ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 20,
+                  itemBuilder: ((context, index) {
+                    return CustomSingleTile(
+                      title: "Total recieved",
+                      subtitle: "254,000,000",
+                      leading: CircleAvatar(
+                          radius: 45,
+                          backgroundColor: Colors.purple,
+                          child: Image.asset("assets/images/coin.png")),
+                    );
+                  }),
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 20,
-                    itemBuilder: ((context, index) {
-                      return CustomSingleTile(
-                        title: "Total recieved",
-                        subtitle: "254,000,000",
-                        leading: CircleAvatar(
-                            radius: 45,
-                            backgroundColor: Colors.purple,
-                            child: Image.asset("assets/images/coin.png")),
-                      );
-                    }),
-                  ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 20,
+                  itemBuilder: ((context, index) {
+                    return CustomSingleTile(
+                      title: "Total recieved",
+                      subtitle: "254,000,000",
+                      leading: CircleAvatar(
+                          radius: 45,
+                          backgroundColor: Colors.purple,
+                          child: Image.asset("assets/images/coin.png")),
+                    );
+                  }),
                 ),
               ],
             ),

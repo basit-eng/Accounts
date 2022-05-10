@@ -53,69 +53,57 @@ class _ReferenceInScreenState extends State<ReferenceInScreen> {
                 tab_length: 4,
                 tabs: ["D", "W", "M", "Y"],
                 child: [
-                  Expanded(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: 20,
-                      itemBuilder: ((context, index) {
-                        return CustomReferenceInCard(
-                          name: "Khurram Shahzad",
-                          token_no: "10203",
-                          icon: Icons.circle,
-                          color:
-                              index % 2 == 0 ? Colors.red : Colors.transparent,
-                          amount: "Rs : 1,20,93,640",
-                        );
-                      }),
-                    ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 20,
+                    itemBuilder: ((context, index) {
+                      return CustomReferenceInCard(
+                        name: "Khurram Shahzad",
+                        token_no: "10203",
+                        icon: Icons.circle,
+                        color: index % 2 == 0 ? Colors.red : Colors.transparent,
+                        amount: "Rs : 1,20,93,640",
+                      );
+                    }),
                   ),
-                  Expanded(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: 20,
-                      itemBuilder: ((context, index) {
-                        return CustomReferenceInCard(
-                          name: "Khurram Shahzad",
-                          token_no: "10203",
-                          icon: Icons.circle,
-                          color:
-                              index % 2 == 0 ? Colors.red : Colors.transparent,
-                          amount: "Rs : 1,20,93,640",
-                        );
-                      }),
-                    ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 20,
+                    itemBuilder: ((context, index) {
+                      return CustomReferenceInCard(
+                        name: "Khurram Shahzad",
+                        token_no: "10203",
+                        icon: Icons.circle,
+                        color: index % 2 == 0 ? Colors.red : Colors.transparent,
+                        amount: "Rs : 1,20,93,640",
+                      );
+                    }),
                   ),
-                  Expanded(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: 20,
-                      itemBuilder: ((context, index) {
-                        return CustomReferenceInCard(
-                          name: "Khurram Shahzad",
-                          token_no: "10203",
-                          icon: Icons.circle,
-                          color:
-                              index % 2 == 0 ? Colors.red : Colors.transparent,
-                          amount: "Rs : 1,20,93,640",
-                        );
-                      }),
-                    ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 20,
+                    itemBuilder: ((context, index) {
+                      return CustomReferenceInCard(
+                        name: "Khurram Shahzad",
+                        token_no: "10203",
+                        icon: Icons.circle,
+                        color: index % 2 == 0 ? Colors.red : Colors.transparent,
+                        amount: "Rs : 1,20,93,640",
+                      );
+                    }),
                   ),
-                  Expanded(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: 20,
-                      itemBuilder: ((context, index) {
-                        return CustomReferenceInCard(
-                          name: "Khurram Shahzad",
-                          token_no: "10203",
-                          icon: Icons.circle,
-                          color:
-                              index % 2 == 0 ? Colors.red : Colors.transparent,
-                          amount: "Rs : 1,20,93,640",
-                        );
-                      }),
-                    ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 20,
+                    itemBuilder: ((context, index) {
+                      return CustomReferenceInCard(
+                        name: "Khurram Shahzad",
+                        token_no: "10203",
+                        icon: Icons.circle,
+                        color: index % 2 == 0 ? Colors.red : Colors.transparent,
+                        amount: "Rs : 1,20,93,640",
+                      );
+                    }),
                   ),
                 ],
               ),

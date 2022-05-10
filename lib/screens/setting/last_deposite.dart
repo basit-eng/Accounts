@@ -50,98 +50,88 @@ class _LastDepositeScreenState extends State<LastDepositeScreen> {
               tab_length: 4,
               tabs: ["D", "W", "M", "Y"],
               child: [
-                Expanded(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 5,
-                    itemBuilder: ((context, index) {
-                      return CapitalPaymentHistoryCard(
-                        icon: CircleAvatar(
-                            radius: 40,
-                            backgroundColor: Color(0xFF92298D),
-                            child: Icon(Icons.add)),
-                        paid_amount: "1,20,38,954",
-                        pay_date: "Apr 04-2022",
-                        closing_amount: "12,650,034",
-                        closing: "Closing balance",
-                      );
-                    }),
-                  ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 5,
+                  itemBuilder: ((context, index) {
+                    return CapitalPaymentHistoryCard(
+                      icon: CircleAvatar(
+                          radius: 40,
+                          backgroundColor: Color(0xFF92298D),
+                          child: Icon(Icons.add)),
+                      paid_amount: "1,20,38,954",
+                      pay_date: "Apr 04-2022",
+                      closing_amount: "12,650,034",
+                      closing: "Closing balance",
+                    );
+                  }),
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 4,
-                    itemBuilder: ((context, index) {
-                      return CapitalPaymentHistoryCard(
-                        icon: CircleAvatar(
-                            radius: 40,
-                            backgroundColor: Color(0xFF92298D),
-                            child: Icon(Icons.add)),
-                        paid_amount: "1,20,38,954",
-                        pay_date: "Apr 04-2022",
-                        closing_amount: "12,650,034",
-                        closing: "Closing balance",
-                      );
-                    }),
-                  ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 4,
+                  itemBuilder: ((context, index) {
+                    return CapitalPaymentHistoryCard(
+                      icon: CircleAvatar(
+                          radius: 40,
+                          backgroundColor: Color(0xFF92298D),
+                          child: Icon(Icons.add)),
+                      paid_amount: "1,20,38,954",
+                      pay_date: "Apr 04-2022",
+                      closing_amount: "12,650,034",
+                      closing: "Closing balance",
+                    );
+                  }),
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 2,
-                    itemBuilder: ((context, index) {
-                      return CapitalPaymentHistoryCard(
-                        icon: CircleAvatar(
-                            radius: 40,
-                            backgroundColor: Color(0xFF92298D),
-                            child: Icon(Icons.add)),
-                        paid_amount: "1,20,38,954",
-                        pay_date: "Apr 04-2022",
-                        closing_amount: "12,650,034",
-                        closing: "Closing balance",
-                      );
-                    }),
-                  ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 2,
+                  itemBuilder: ((context, index) {
+                    return CapitalPaymentHistoryCard(
+                      icon: CircleAvatar(
+                          radius: 40,
+                          backgroundColor: Color(0xFF92298D),
+                          child: Icon(Icons.add)),
+                      paid_amount: "1,20,38,954",
+                      pay_date: "Apr 04-2022",
+                      closing_amount: "12,650,034",
+                      closing: "Closing balance",
+                    );
+                  }),
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 6,
-                    itemBuilder: ((context, index) {
-                      return CapitalPaymentHistoryCard(
-                        icon: CircleAvatar(
-                            radius: 40,
-                            backgroundColor: Color(0xFF92298D),
-                            child: Icon(Icons.add)),
-                        paid_amount: "1,20,38,954",
-                        pay_date: "Apr 04-2022",
-                        closing_amount: "12,650,034",
-                        closing: "Closing balance",
-                      );
-                    }),
-                  ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 6,
+                  itemBuilder: ((context, index) {
+                    return CapitalPaymentHistoryCard(
+                      icon: CircleAvatar(
+                          radius: 40,
+                          backgroundColor: Color(0xFF92298D),
+                          child: Icon(Icons.add)),
+                      paid_amount: "1,20,38,954",
+                      pay_date: "Apr 04-2022",
+                      closing_amount: "12,650,034",
+                      closing: "Closing balance",
+                    );
+                  }),
                 ),
               ],
             ),
           ),
-          Expanded(
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: 20,
-              itemBuilder: ((context, index) {
-                return CapitalPaymentHistoryCard(
-                  icon: CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Color(0xFF92298D),
-                      child: Icon(Icons.add)),
-                  paid_amount: "1,20,38,954",
-                  pay_date: "Apr 04-2022",
-                  closing_amount: "12,650,034",
-                  closing: "Closing balance",
-                );
-              }),
-            ),
+          ListView.builder(
+            shrinkWrap: true,
+            itemCount: 20,
+            itemBuilder: ((context, index) {
+              return CapitalPaymentHistoryCard(
+                icon: CircleAvatar(
+                    radius: 40,
+                    backgroundColor: Color(0xFF92298D),
+                    child: Icon(Icons.add)),
+                paid_amount: "1,20,38,954",
+                pay_date: "Apr 04-2022",
+                closing_amount: "12,650,034",
+                closing: "Closing balance",
+              );
+            }),
           ),
         ],
       ),

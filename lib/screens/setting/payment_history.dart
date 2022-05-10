@@ -40,61 +40,53 @@ class _PaymentHistoryState extends State<PaymentHistory> {
               tab_length: 4,
               tabs: ["D", "W", "M", "Y"],
               child: [
-                Expanded(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 20,
-                    itemBuilder: ((context, index) {
-                      return PaymentHistoryCard(
-                          amount: "165,203,000",
-                          type: "CP",
-                          date: "24-07-2021",
-                          color: Color(0xFFF6921E),
-                          imagePath: "assets/images/coin.png");
-                    }),
-                  ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 20,
+                  itemBuilder: ((context, index) {
+                    return PaymentHistoryCard(
+                        amount: "165,203,000",
+                        type: "CP",
+                        date: "24-07-2021",
+                        color: Color(0xFFF6921E),
+                        imagePath: "assets/images/coin.png");
+                  }),
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 20,
-                    itemBuilder: ((context, index) {
-                      return PaymentHistoryCard(
-                          amount: "165,203,000",
-                          type: "CP",
-                          date: "24-07-2021",
-                          color: Color(0xFFF6921E),
-                          imagePath: "assets/images/coin.png");
-                    }),
-                  ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 20,
+                  itemBuilder: ((context, index) {
+                    return PaymentHistoryCard(
+                        amount: "165,203,000",
+                        type: "CP",
+                        date: "24-07-2021",
+                        color: Color(0xFFF6921E),
+                        imagePath: "assets/images/coin.png");
+                  }),
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 20,
-                    itemBuilder: ((context, index) {
-                      return PaymentHistoryCard(
-                          amount: "165,203,000",
-                          type: "CP",
-                          date: "24-07-2021",
-                          color: Color(0xFFF6921E),
-                          imagePath: "assets/images/coin.png");
-                    }),
-                  ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 20,
+                  itemBuilder: ((context, index) {
+                    return PaymentHistoryCard(
+                        amount: "165,203,000",
+                        type: "CP",
+                        date: "24-07-2021",
+                        color: Color(0xFFF6921E),
+                        imagePath: "assets/images/coin.png");
+                  }),
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 20,
-                    itemBuilder: ((context, index) {
-                      return PaymentHistoryCard(
-                          amount: "165,203,000",
-                          type: "CP",
-                          date: "24-07-2021",
-                          color: Color(0xFFF6921E),
-                          imagePath: "assets/images/coin.png");
-                    }),
-                  ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 20,
+                  itemBuilder: ((context, index) {
+                    return PaymentHistoryCard(
+                        amount: "165,203,000",
+                        type: "CP",
+                        date: "24-07-2021",
+                        color: Color(0xFFF6921E),
+                        imagePath: "assets/images/coin.png");
+                  }),
                 ),
               ],
             )

@@ -72,7 +72,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).cardColor,
         bottomNavigationBar: AnimatedBottomBar(),
         body: Container(
           alignment: Alignment.center,

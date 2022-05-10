@@ -1,6 +1,5 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
-import 'package:theaccounts/screens/loginprocess/loginscreens/setting.dart';
 import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
 
 class UpdateBankDetails extends StatefulWidget {

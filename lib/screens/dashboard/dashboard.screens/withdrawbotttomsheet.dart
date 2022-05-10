@@ -26,7 +26,7 @@ class _WithDrawHoverLayerScreenState extends State<WithDrawHoverLayerScreen> {
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).cardColor,
         body: Container(
           height: size.height,
           width: size.width,

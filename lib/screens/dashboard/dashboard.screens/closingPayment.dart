@@ -14,6 +14,7 @@ class ClosingPaymentScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text("Closing Payment"),
         ),
+        backgroundColor: Theme.of(context).cardColor,
         // bottomNavigationBar: dashboard.bottombar(context: context),
         body: Container(
           alignment: Alignment.bottomCenter,

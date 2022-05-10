@@ -41,7 +41,7 @@ class _WithDrawPaymentAlertState extends State<WithDrawPaymentAlert>
     double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).cardColor,
         body: AnimatedBuilder(
           animation: _controller.view,
           builder: (context, child) {
@@ -103,6 +103,7 @@ class _ClosingPaymentAlertState extends State<ClosingPaymentAlert>
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      backgroundColor: Theme.of(context).cardColor,
       body: AnimatedBuilder(
         animation: _controller.view,
         builder: (context, child) {

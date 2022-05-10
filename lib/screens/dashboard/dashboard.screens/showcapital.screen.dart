@@ -39,7 +39,7 @@ class _ShowCapitalScreenState extends State<ShowCapitalScreen>
     double height = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).cardColor,
         body: AnimatedBuilder(
           animation: _controller.view,
           builder: (context, child) {
