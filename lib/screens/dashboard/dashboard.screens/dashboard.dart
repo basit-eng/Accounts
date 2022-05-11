@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
+import 'package:theaccounts/screens/loginprocess/loginscreens/forget_pass.dart';
 import 'package:theaccounts/screens/setting/bimonthly_ratio.dart';
 import 'package:theaccounts/screens/dashboard/dashboard.screens/closingPayment.dart';
 import 'package:theaccounts/screens/setting/profile_screen.dart';
@@ -35,21 +36,21 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     "Last amount added",
     "View Persnal Profile ",
     "Image Gallery",
-    "Password"
+    "Forget Password"
   ];
 
   List<String> grid_menu_icons = [
-    "assets/images/capital.png",
-    "assets/images/paymentclose.png",
-    "assets/images/recieved.png",
-    "assets/images/paymentclose.png",
-    "assets/images/monthlyratio.png",
-    "assets/images/referencein.png",
-    "assets/images/updateprofile.png",
-    "assets/images/bankuupdate.png",
-    "assets/images/lstDeposit.png",
-    "assets/images/personalprofile.png",
-    "assets/images/imagegalery.png",
+    "assets/images/capital_history.png",
+    "assets/images/closing_payment_history.png",
+    "assets/images/recived_amount.png",
+    "assets/images/closing_payment.png",
+    "assets/images/bimonthly_ratio.png",
+    "assets/images/reference_in.png",
+    "assets/images/update_profile.png",
+    "assets/images/update_bank_details.png",
+    "assets/images/last_amount_added.png",
+    "assets/images/view_personal_profile.png",
+    "assets/images/image_gallery.png",
     "assets/images/password.png",
   ];
   List<Widget> views = [
@@ -64,7 +65,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     LastDepositeScreen(),
     ProfileScreen(),
     ImageGalleryScreen(),
-    CapitalHistory(),
+    ForgetPsswordScreen()
   ];
   @override
   Widget build(BuildContext context) {

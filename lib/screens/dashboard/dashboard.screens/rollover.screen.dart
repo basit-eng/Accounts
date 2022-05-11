@@ -178,9 +178,14 @@ class _RollOverBottomSheetState extends State<RollOverBottomSheet>
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Icon(
-                                          Icons.payments,
-                                          color: Colors.white,
+                                        Center(
+                                          child: SizedBox(
+                                            height: 30,
+                                            width: 30,
+                                            child: Image.asset(
+                                              "assets/images/amount.png",
+                                            ),
+                                          ),
                                         ),
                                         SizedBox(
                                           width: 08,

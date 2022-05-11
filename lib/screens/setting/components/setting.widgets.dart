@@ -215,11 +215,11 @@ class ProfileListTile extends StatelessWidget {
   const ProfileListTile({
     Key? key,
     required this.labelText,
-    this.details,
+    this.textField,
     this.trailinig,
   }) : super(key: key);
-  final String labelText;
-  final String? details;
+  final Widget? labelText;
+  final Widget? textField;
   final Widget? trailinig;
   @override
   Widget build(BuildContext context) {
@@ -230,17 +230,75 @@ class ProfileListTile extends StatelessWidget {
             color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(16)),
         child: ListTile(
-          title: Text(labelText,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText2!
-                  .copyWith(color: Color(0xFFF15B28))),
-          subtitle: Padding(
-            padding: const EdgeInsets.only(top: 6),
-            child: Text(details ?? "",
-                style: Theme.of(context).textTheme.subtitle1),
-          ),
+          minVerticalPadding: 10.0,
+          title: labelText ??
+              Text("Label",
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText2!
+                      .copyWith(color: Color(0xFFF15B28))),
+          subtitle: textField ??
+              Text("Input Field", style: Theme.of(context).textTheme.subtitle1),
+          trailing: trailinig,
         ),
+      ),
+    );
+  }
+}
+
+class CustomSimpleImputField extends StatefulWidget {
+  CustomSimpleImputField(
+      {required textcontroller,
+      this.icon,
+      this.hint,
+      this.label,
+      this.suffixicon,
+      this.keyboardtype,
+      required this.isfieldCircle,
+      Key? key})
+      : super(key: key);
+
+  final TextEditingController textcontroller = TextEditingController();
+  final IconData? icon;
+  final String? hint, label;
+  final Widget? suffixicon;
+  final TextInputType? keyboardtype;
+  final bool isfieldCircle;
+
+  @override
+  State<CustomSimpleImputField> createState() => _CustomSimpleImputFieldState();
+}
+
+class _CustomSimpleImputFieldState extends State<CustomSimpleImputField> {
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return TextField(
+      keyboardType: widget.keyboardtype ?? TextInputType.text,
+      textAlign: widget.isfieldCircle ? TextAlign.end : TextAlign.start,
+      style: TextStyle(
+          fontSize: widget.isfieldCircle ? 14 : 16,
+          fontWeight: widget.isfieldCircle ? FontWeight.w300 : FontWeight.w400),
+      controller: widget.textcontroller,
+      decoration: InputDecoration(
+        suffixIcon: widget.suffixicon ?? null,
+        hintText: widget.hint,
+        hintStyle: widget.isfieldCircle
+            ? Theme.of(context).textTheme.subtitle1
+            : Theme.of(context).textTheme.bodyText1!.copyWith(
+                color: Color(0xFF858585), fontWeight: FontWeight.bold),
+        // label: Text(
+        //   widget.label ?? "",
+        //   style: widget.isfieldCircle
+        //       ? Theme.of(context).textTheme.subtitle1
+        //       : Theme.of(context).textTheme.bodyText1!.copyWith(
+        //           color: Color(0xFFF15B28), fontWeight: FontWeight.w400),
+        // ),
+        // labelStyle: widget.isfieldCircle
+        //     ? Theme.of(context).textTheme.subtitle1
+        //     : Theme.of(context).textTheme.bodyText1!.copyWith(
+        //         color: Color(0xFFF15B28), fontWeight: FontWeight.w400),
+        border: InputBorder.none,
       ),
     );
   }
@@ -518,7 +576,7 @@ class CustomTopBar extends StatelessWidget {
             child: Text(
               topbartitle,
               style: Theme.of(context).textTheme.headline6!.copyWith(
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w800,
                   ),
             ),
           ),
@@ -646,7 +704,14 @@ class PaymentHistoryCard extends StatelessWidget {
                   CircleAvatar(
                     backgroundColor: color,
                     radius: 24,
-                    foregroundImage: AssetImage(imagePath),
+                    child: Container(
+                      height: 35,
+                      width: 35,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(imagePath),
+                      ),
+                    ),
                   ),
                   SizedBox(
                     width: 14,
@@ -837,17 +902,21 @@ class SmallRadiusButton extends StatelessWidget {
     required this.text,
     this.textcolor,
     this.color,
+    this.width,
+    this.height,
     Key? key,
   }) : super(key: key);
 
   final String text;
   final Color? textcolor;
   final List<Color>? color;
+  final double? height, width;
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 00),
-      height: 30,
+      height: height ?? 30,
+      width: width ?? 60,
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(100),

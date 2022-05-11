@@ -1,7 +1,10 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
 import 'package:theaccounts/screens/loginprocess/components/widgets.dart';
 import 'package:theaccounts/screens/dashboard/dashboard.screens/showcapital.screen.dart';
 import 'package:theaccounts/screens/loginprocess/components/inputfield.widget.dart';
+import 'package:theaccounts/screens/loginprocess/loginscreens/myhomepage.dart';
+import 'package:theaccounts/screens/loginprocess/loginscreens/pin_screen.dart';
 
 class ForgetPsswordScreen extends StatefulWidget {
   const ForgetPsswordScreen({Key? key}) : super(key: key);
@@ -24,79 +27,68 @@ class _ForgetPsswordScreenState extends State<ForgetPsswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      body: Column(
-        children: [
-          SizedBox(height: 50),
-          Container(
-            alignment: Alignment.topLeft,
-            child: BackIconBotton(),
-          ),
-          SizedBox(height: 30),
-          Center(
-            child: Container(
-              child: Image.asset(
-                'assets/images/unlock.png',
-                color: Color.fromARGB(255, 67, 153, 223),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 50),
+            Container(
+              alignment: Alignment.topLeft,
+              child: BackIconBotton(),
+            ),
+            SizedBox(height: 30),
+            AnimatedCircularBar(
+              child: SizedBox(
+                height: 72,
+                width: 68,
+                child: Image.asset(
+                  'assets/images/password.png',
+                ),
               ),
-              margin: EdgeInsets.only(top: 40),
-              height: 150,
-              width: 150,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                boxShadow: [
-                  BoxShadow(
-                    color: Color.fromARGB(255, 40, 145, 231),
-                    spreadRadius: 10,
-                    blurRadius: 15,
-                    blurStyle: BlurStyle.outer,
-                    offset: Offset(
-                      1,
-                      1,
+              radius: 170,
+              color: Colors.grey.withOpacity(0.3),
+            ),
+            SizedBox(
+              height: 60,
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 30),
+              child: CustomInputField(
+                  hint: "100137",
+                  isfieldCircle: false,
+                  keyboardtype: TextInputType.number,
+                  textcontroller: _otptextcontroller.text,
+                  icon: Icons.person_outline_outlined),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 50),
+              child: Text(
+                'Enter your user Id and will send you \ninstructions on how to reset it.',
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
                     ),
-                  ),
-                ],
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.visible,
               ),
             ),
-          ),
-          SizedBox(
-            height: 60,
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 30),
-            child: CustomInputField(
-                hint: "Enter your Otp",
-                textcontroller: _otptextcontroller.text,
-                icon: Icons.person_outline_outlined),
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 50),
-            child: Text(
-              'Enter your user Id and will send you \ninstructions on how to reset it.',
-              style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                  ),
-              textAlign: TextAlign.center,
-              maxLines: 2,
-              overflow: TextOverflow.visible,
+            SizedBox(
+              height: 50,
             ),
-          ),
-          SizedBox(
-            height: 50,
-          ),
-          GestureDetector(
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => ShowCapitalScreen(),
-                  ),
-                );
-              },
-              child: CustomButton(title: 'Sign In')),
-        ],
+            GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => PinScreen(),
+                    ),
+                  );
+                },
+                child: CustomButton(title: 'Sign In')),
+          ],
+        ),
       ),
     );
   }

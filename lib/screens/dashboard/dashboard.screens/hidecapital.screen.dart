@@ -70,7 +70,7 @@ class _HideCapitalScreenState extends State<HideCapitalScreen>
                           _animright.value * width, 0.0, 0.0),
                       child: CircleAvatar(
                         radius: 24,
-                        backgroundColor: Colors.transparent,
+                        backgroundColor: Color(0xFF707070),
                         backgroundImage: AssetImage("assets/images/user.png"),
                       ),
                     )),
@@ -156,7 +156,15 @@ class _HideCapitalScreenState extends State<HideCapitalScreen>
                                     },
                                     child: AnimatedCircularButton(
                                         text: "Withdraw capital",
-                                        Icon: Icon(Icons.download_sharp),
+                                        Icon: Center(
+                                          child: SizedBox(
+                                            height: 30,
+                                            width: 30,
+                                            child: Image.asset(
+                                              "assets/images/withdraw_capital.png",
+                                            ),
+                                          ),
+                                        ),
                                         color: [
                                           Color(0xFF65FDF0),
                                           Color(0xFF1D6FA3)
@@ -183,7 +191,15 @@ class _HideCapitalScreenState extends State<HideCapitalScreen>
                                     },
                                     child: AnimatedCircularButton(
                                         text: "Closing Payment",
-                                        Icon: Icon(Icons.payments_outlined),
+                                        Icon: Center(
+                                          child: SizedBox(
+                                            height: 30,
+                                            width: 30,
+                                            child: Image.asset(
+                                              "assets/images/closing_payments.png",
+                                            ),
+                                          ),
+                                        ),
                                         color: [
                                           Color(0xFFF6D242),
                                           Color(0xFFFF52E5)
@@ -209,7 +225,15 @@ class _HideCapitalScreenState extends State<HideCapitalScreen>
                                     },
                                     child: AnimatedCircularButton(
                                         text: "All RollOver",
-                                        Icon: Icon(Icons.recycling_outlined),
+                                        Icon: Center(
+                                          child: SizedBox(
+                                            height: 30,
+                                            width: 30,
+                                            child: Image.asset(
+                                              "assets/images/allroll_over.png",
+                                            ),
+                                          ),
+                                        ),
                                         color: [
                                           Color(0xFF72EDF2),
                                           Color(0xFF5151E5)

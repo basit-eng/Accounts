@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:theaccounts/screens/loginprocess/loginscreens/myhomepage.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
@@ -141,41 +142,35 @@ class _AnimatedSlideScreenState extends State<AnimatedSlideScreen>
       context: context,
       backgroundColor: Colors.transparent,
       builder: (context) {
+        Size size = MediaQuery.of(context).size;
         return Padding(
           padding: const EdgeInsets.all(12.0),
-          child: Container(
-            // height: 400,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  height: 15,
-                ),
-                Expanded(
-                  flex: 3,
-                  child: AuthenticationTab(),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Expanded(
-                  flex: 01,
-                  child: Container(
-                    child: Image.asset(
-                      "assets/images/fin_print.png",
-                      height: 10,
-                      width: 10,
-                    ),
-                    width: 70,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.black54,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 05,
+              ),
+              Container(height: size.height * 0.3, child: AuthenticationTab()),
+              SizedBox(height: 08),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.all(14.0),
+                  child: Image.asset(
+                    "assets/images/fin_print.png",
+                    height: 10,
+                    width: 10,
                   ),
                 ),
-              ],
-            ),
+                width: 60,
+                height: 80,
+                decoration: BoxDecoration(
+                  color: Colors.black54,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+            ],
           ),
         );
       },
@@ -222,8 +217,10 @@ class _AuthenticationTabState extends State<AuthenticationTab>
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Container(
-      height: MediaQuery.of(context).size.height * 0.24,
+      height: size.height * 0.15,
       width: double.maxFinite,
       decoration: BoxDecoration(
         color: Colors.black54,
@@ -231,112 +228,103 @@ class _AuthenticationTabState extends State<AuthenticationTab>
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            height: 35,
-            width: double.maxFinite,
-            margin: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 50),
+            height: 30,
+            width: MediaQuery.of(context).size.width * 0.8,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(36),
             ),
             child: TabBar(
                 controller: _tabController,
-                indicatorColor: Colors.purple,
-                indicatorPadding: EdgeInsets.all(8),
+                indicatorPadding: EdgeInsets.all(0),
                 indicatorWeight: 0.1,
-                padding: EdgeInsets.symmetric(horizontal: 0.0),
                 tabs: [
                   for (int i = 0; i < _tabs.length; i++)
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 0, horizontal: 08),
+                      width: size.width * 0.4,
                       alignment: Alignment.center,
                       child: Text(
                         _tabs[i],
                         style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w600,
                               color: _selectedIndex == i
                                   ? Colors.white.withOpacity(1)
                                   : Colors.black.withOpacity(0.6),
                             ),
                       ),
                       decoration: BoxDecoration(
-                        color:
-                            _selectedIndex == i ? Colors.purple : Colors.white,
+                        gradient: _selectedIndex == i
+                            ? LinearGradient(colors: [
+                                Color(0xFF8DF098),
+                                Color(0xFF2CA6FF),
+                              ])
+                            : LinearGradient(colors: [
+                                Colors.white,
+                                Colors.white,
+                              ]),
                         borderRadius: BorderRadius.circular(36),
                       ),
                     ),
                 ]),
           ),
           Container(
-            height: MediaQuery.of(context).size.height * 0.2,
+            height: MediaQuery.of(context).size.height * 0.18,
             width: double.maxFinite,
             child: TabBarView(
               controller: _tabController,
               children: [
-                Container(
-                  color: Colors.transparent,
-                  child: Column(
-                    // mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      SizedBox(height: 05),
-                      Text(
-                        "Fingure Authentication",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
+                Column(
+                  // mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SizedBox(height: 05),
+                    Text(
+                      "Fingure Authentication",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
                       ),
-                      SizedBox(height: 20),
-                      Text(
-                        "Please login to get access",
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white),
-                      ),
-                      SizedBox(height: 20),
-                      Text(
-                        "Scan your Finger Print",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white),
-                      ),
-                      SizedBox(height: 20),
-                      Container(
+                    ),
+                    SizedBox(height: 05),
+                    Text(
+                      "Please login to get access",
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white),
+                    ),
+                    SizedBox(height: 05),
+                    Text(
+                      "Scan your Finger Print",
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white),
+                    ),
+                    SizedBox(height: 12),
+                    GestureDetector(
+                      onTap: () {
+                        print(" go tohome page");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MyHomePage(),
+                          ),
+                        );
+                      },
+                      child: SmallRadiusButton(
+                        text: "Cancel",
+                        width: 80,
                         height: 24,
-                        width: 115,
-                        child: ElevatedButton(
-                          child: Text(
-                            "CANCLE",
-                            style: TextStyle(color: Colors.purple),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                curve: Curves.easeIn,
-                                type: PageTransitionType.size,
-                                alignment: Alignment.bottomCenter,
-                                child: MyHomePage(),
-                              ),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40),
-                            ),
-                          ),
-                        ),
+                        textcolor: Colors.purple,
+                        color: [Colors.white, Colors.white],
                       ),
-                    ],
-                  ),
+                    )
+                  ],
                 ),
                 Container(),
               ],

@@ -193,9 +193,14 @@ class _WithDrawBottomSheetState extends State<WithDrawBottomSheet>
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Icon(
-                                Icons.attach_money_rounded,
-                                color: Colors.white,
+                              Center(
+                                child: SizedBox(
+                                  height: 24,
+                                  width: 24,
+                                  child: Image.asset(
+                                    "assets/images/amount.png",
+                                  ),
+                                ),
                               ),
                               SizedBox(
                                 width: 04,

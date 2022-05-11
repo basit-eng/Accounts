@@ -72,10 +72,21 @@ class _BottomBarState extends State<AnimatedBottomBar>
                         ),
                       );
                     },
-                    child: AnimatedCircularButton(color: [
-                      Theme.of(context).cardColor,
-                      Theme.of(context).cardColor
-                    ], Icon: Icon(Icons.logout), text: "Log Out"),
+                    child: AnimatedCircularButton(
+                        color: [
+                          Theme.of(context).cardColor,
+                          Theme.of(context).cardColor
+                        ],
+                        Icon: Center(
+                          child: SizedBox(
+                            height: 35,
+                            width: 35,
+                            child: Image.asset(
+                              "assets/images/bt_logout.png",
+                            ),
+                          ),
+                        ),
+                        text: "Log Out"),
                   ),
                 ),
               ),
@@ -114,10 +125,21 @@ class _BottomBarState extends State<AnimatedBottomBar>
                           ),
                         );
                       },
-                      child: AnimatedCircularButton(color: [
-                        Theme.of(context).cardColor,
-                        Theme.of(context).cardColor
-                      ], Icon: Icon(Icons.settings), text: "Setting"),
+                      child: AnimatedCircularButton(
+                          color: [
+                            Theme.of(context).cardColor,
+                            Theme.of(context).cardColor
+                          ],
+                          Icon: Center(
+                            child: SizedBox(
+                              height: 35,
+                              width: 35,
+                              child: Image.asset(
+                                "assets/images/setting.png",
+                              ),
+                            ),
+                          ),
+                          text: "Setting"),
                     ),
                   ),
                 ),
@@ -323,9 +345,8 @@ class _AnimatedTopBarTileState extends State<AnimatedTopBarTile>
             transform: Matrix4.translationValues(
                 _intervaltween.value * width, 0.0, 0.0),
             child: Padding(
-              padding: const EdgeInsets.only(right: 12.0),
-              child: Icon(Icons.notifications),
-            ),
+                padding: const EdgeInsets.only(right: 12.0),
+                child: Icon(Icons.notifications_none_outlined)),
           ),
         );
       },
@@ -394,22 +415,25 @@ class _DashboardButtonState extends State<DashboardButton>
                   ClayContainer(
                     surfaceColor: Theme.of(context).cardColor.withOpacity(1),
                     spread: 4.0,
-
                     height: 55,
                     width: 55,
                     borderRadius: 90,
-                    // depth: 80,
-                    // surfaceColor: Theme.of(context).backgroundColor,
                   ),
-                  Icon(Icons.dashboard)
+                  Center(
+                    child: SizedBox(
+                      height: 54,
+                      width: 54,
+                      child: Image.asset(
+                        "assets/images/dashboard.png",
+                      ),
+                    ),
+                  ),
                 ],
               ),
               SizedBox(
                 height: 10,
               ),
-              Text(
-                "DashBoard",
-              )
+              Text("DashBoard", style: Theme.of(context).textTheme.bodyText2)
             ],
           ),
         );
@@ -424,6 +448,7 @@ class AnimatedLongButton extends StatefulWidget {
       this.fontsize,
       this.Prefixtext,
       this.color,
+      this.width,
       Key? key,
       required this.isBgColorWhite})
       : super(key: key);
@@ -433,6 +458,7 @@ class AnimatedLongButton extends StatefulWidget {
   final bool isBgColorWhite;
   final double? fontsize;
   final String? Prefixtext;
+  final double? width;
 
   @override
   State<AnimatedLongButton> createState() => _AnimatedLongButtonState();
@@ -475,7 +501,7 @@ class _AnimatedLongButtonState extends State<AnimatedLongButton>
         builder: (context, child) {
           return Container(
             height: 50,
-            width: 270,
+            width: widget.width ?? 270,
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(horizontal: 12),
             decoration: BoxDecoration(
@@ -592,7 +618,16 @@ class _AnimatedAlertDialogState extends State<AnimatedAlertDialog> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   AnimatedCircularButton(
-                      Icon: Icon(Icons.warning_amber_outlined)),
+                    Icon: Center(
+                      child: SizedBox(
+                        height: 30,
+                        width: 30,
+                        child: Image.asset(
+                          "assets/images/alret.png",
+                        ),
+                      ),
+                    ),
+                  ),
                   SizedBox(
                     width: 260,
                     height: 60,

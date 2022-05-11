@@ -36,7 +36,7 @@ class _LastDepositeScreenState extends State<LastDepositeScreen> {
       body: ListView(
         physics: NeverScrollableScrollPhysics(),
         children: [
-          CustomTopBar(topbartitle: 'Last Deposite'),
+          CustomTopBar(topbartitle: 'Last Deposit'),
           CustomBriefCard(
             title_v1: "Amount",
             subtitle_v1: "16,240,000",

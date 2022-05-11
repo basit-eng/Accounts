@@ -53,17 +53,6 @@ class _ShowCapitalScreenState extends State<ShowCapitalScreen>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    // Container(
-                    //   child: Transform(
-                    //     transform: Matrix4.translationValues(
-                    //         0.0, _animateleft.value * width, 0.0),
-                    //     child: AnimatedOpacity(
-                    //       opacity: _animateright,_animateopactiy.value,
-                    //       duration: _duration,
-                    //       child: AnimatedTopBarTile(),
-                    //     ),
-                    //   ),
-                    // ),
                     AnimatedTopBarTile(),
                     AnimatedTitle(),
                     Spacer(),

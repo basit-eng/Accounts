@@ -1,4 +1,5 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
 import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
 
 class MainSettings extends StatefulWidget {
@@ -9,11 +10,42 @@ class MainSettings extends StatefulWidget {
 }
 
 class _MainSettingsState extends State<MainSettings> {
+  late TextEditingController _userIdtextcontroller;
+  late TextEditingController _userNametextcontroller;
+  late TextEditingController _fatherNamecontroller;
+  late TextEditingController _cnintextcontroller;
+  late TextEditingController _emailtextcontroller;
+  late TextEditingController _mobileNotextcontroller;
+  late TextEditingController _addresstextcontroller;
+  late TextEditingController _nextOfKintextcontroller;
+  late TextEditingController _nextOfKinCnictextcontroller;
+  late TextEditingController _nextOfKinMobileNotextcontroller;
+  late TextEditingController _relationWithNextOfKintextcontroller;
+
+  @override
+  void initState() {
+    _userIdtextcontroller = TextEditingController();
+    _userNametextcontroller = TextEditingController();
+
+    _fatherNamecontroller = TextEditingController();
+    _cnintextcontroller = TextEditingController();
+    _emailtextcontroller = TextEditingController();
+    _mobileNotextcontroller = TextEditingController();
+    _addresstextcontroller = TextEditingController();
+    _nextOfKintextcontroller = TextEditingController();
+    _nextOfKinCnictextcontroller = TextEditingController();
+    _nextOfKinMobileNotextcontroller = TextEditingController();
+    _relationWithNextOfKintextcontroller = TextEditingController();
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
+        bottomNavigationBar: AnimatedBottomBar(),
         body: SingleChildScrollView(
           child: Container(
             margin: EdgeInsets.fromLTRB(10, 30, 10, 0),
@@ -52,19 +84,38 @@ class _MainSettingsState extends State<MainSettings> {
                       shrinkWrap: true,
                       children: [
                         ProfileListTile(
-                          labelText: 'Touch ID',
+                          labelText: Text(
+                            "User ID",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText1!
+                                .copyWith(
+                                    color: Color(0xFFF15B28),
+                                    fontWeight: FontWeight.w400),
+                          ),
+                          textField: CustomSimpleImputField(
+                            textcontroller: _userIdtextcontroller.text,
+                            isfieldCircle: false,
+                            hint: "User Id",
+                            keyboardtype: TextInputType.number,
+                          ),
                         ),
                         ProfileListTile(
-                          labelText: 'Dashboard',
-                        ),
-                        ProfileListTile(
-                          labelText: 'Glow',
-                        ),
-                        ProfileListTile(
-                          labelText: 'Apearance',
-                        ),
-                        ProfileListTile(
-                          labelText: 'Motion',
+                          labelText: Text(
+                            "User Name",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText1!
+                                .copyWith(
+                                    color: Color(0xFFF15B28),
+                                    fontWeight: FontWeight.w400),
+                          ),
+                          textField: CustomSimpleImputField(
+                            textcontroller: _userIdtextcontroller.text,
+                            isfieldCircle: false,
+                            hint: "User Name",
+                            keyboardtype: TextInputType.number,
+                          ),
                         ),
                       ],
                     )

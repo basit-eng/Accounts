@@ -154,9 +154,14 @@ class _ClosingPaymentBottomSheetState extends State<ClosingPaymentBottomSheet>
                                   Transform(
                                     transform: Matrix4.translationValues(
                                         _animateleft.value * width, 0.0, 0.0),
-                                    child: Icon(
-                                      Icons.all_inclusive_outlined,
-                                      color: Colors.white,
+                                    child: Center(
+                                      child: SizedBox(
+                                        height: 24,
+                                        width: 24,
+                                        child: Image.asset(
+                                          "assets/images/transfer.png",
+                                        ),
+                                      ),
                                     ),
                                   ),
                                   SizedBox(
@@ -205,9 +210,14 @@ class _ClosingPaymentBottomSheetState extends State<ClosingPaymentBottomSheet>
                                     child: AnimatedOpacity(
                                       duration: _duration,
                                       opacity: _animateopacity.value,
-                                      child: Icon(
-                                        Icons.settings_backup_restore_rounded,
-                                        color: Colors.white,
+                                      child: Center(
+                                        child: SizedBox(
+                                          height: 30,
+                                          width: 30,
+                                          child: Image.asset(
+                                            "assets/images/rollover.png",
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),

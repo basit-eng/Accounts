@@ -38,13 +38,18 @@ class _MyHomePageState extends State<MyHomePage> {
         child: SingleChildScrollView(
             child: Column(
           children: <Widget>[
+            Text("Hello User", style: Theme.of(context).textTheme.headline6),
             SizedBox(
-              height: 30,
+              height: 50,
             ),
             AnimatedCircularBar(
-              child: Image.asset(
-                "assets/images/ot.png",
-                color: Colors.blue,
+              child: SizedBox(
+                height: 84,
+                width: 84,
+                child: Image.asset(
+                  "assets/images/ot.png",
+                  // color: Color(0xff90278E),
+                ),
               ),
               color: Colors.blue.withOpacity(0.6),
               color1: Colors.purple.withOpacity(0.6),
@@ -54,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
               negativeOffsety: -6.5,
               offsetx: 6.5,
               offsety: 6.8,
-              radius: 180,
+              radius: 160,
             ),
             SizedBox(
               height: 50,
@@ -62,17 +67,20 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 30),
               child: CustomInputField(
+                isfieldCircle: false,
                 textcontroller: _passwordtextcontroller.text,
                 hint: 'Enter your ID',
                 icon: Icons.person_outline,
+                keyboardtype: TextInputType.number,
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 30,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 30),
               child: CustomInputField(
+                isfieldCircle: false,
                 textcontroller: _usernametextcontroller.text,
                 hint: "Enter your Password",
                 icon: Icons.lock_outline,
@@ -86,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(
                     child: isVisible
                         ? Icon(Icons.remove_red_eye_outlined)
-                        : Icon(Icons.remove_red_eye),
+                        : Icon(Icons.remove_red_eye, color: Color(0xff90278E)),
                   ),
                 ),
               ),
@@ -96,6 +104,13 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             SignedIntext(
               checkbox: Checkbox(
+                  activeColor: Color(0xff90278E),
+                  side: BorderSide(
+                    color: Color(0xff90278E), //your desire colour here
+                    width: 1.5,
+                  ),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
                   value: ticked,
                   onChanged: (Checked) {
                     setState(() {
@@ -134,11 +149,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   );
                 },
-                child: Text('Forgot Passwrod?',
-                    style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w300,
-                        color: Color(0xFF636365))))
+                child: Text(
+                  'Forget Passwrod?',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black54,
+                  ),
+                ))
           ],
         )),
       ),
@@ -157,9 +174,8 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               'Keep me Signed',
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                    color: Color(0xFF636365),
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
                   ),
             )
           ],

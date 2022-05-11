@@ -21,15 +21,19 @@ class _VerificationScreenState extends State<VerificationScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        // backgroundColor: Color(0xfff1f1f2),
+        backgroundColor: Theme.of(context).backgroundColor,
         body: Center(
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
                 AnimatedCircularBar(
-                  child: Image.asset(
-                    'assets/images/notifi.png',
-                    color: Colors.blue[200],
+                  child: SizedBox(
+                    height: 80,
+                    width: 72,
+                    child: Image.asset(
+                      'assets/images/notifi.png',
+                      // color: Colors.blue[200],
+                    ),
                   ),
                   radius: 170,
                   color: Colors.grey.withOpacity(0.3),
@@ -38,9 +42,12 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   height: 70,
                 ),
                 AnimatedCircularBar(
-                  child: Image.asset(
-                    'assets/images/message.png',
-                    color: Colors.blue[200],
+                  child: SizedBox(
+                    height: 72,
+                    width: 68,
+                    child: Image.asset(
+                      'assets/images/message.png',
+                    ),
                   ),
                   radius: 170,
                   color: Colors.grey.withOpacity(0.3),
