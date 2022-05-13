@@ -70,7 +70,6 @@ class _ShowCapitalScreenState extends State<ShowCapitalScreen>
                     Center(
                       child: GestureDetector(
                         onTap: () {
-                          print(" go to Hide Capital Screen");
                           Navigator.push(
                             context,
                             MaterialPageRoute(

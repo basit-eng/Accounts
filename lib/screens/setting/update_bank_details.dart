@@ -31,71 +31,68 @@ class _UpdateBankDetailsState extends State<UpdateBankDetails> {
       child: Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         bottomNavigationBar: AnimatedBottomBar(),
-        body: Column(
+        body: ListView(
+          shrinkWrap: true,
+          physics: ClampingScrollPhysics(),
           children: [
-            Expanded(
-                flex: 01,
-                child: CustomTopBar(topbartitle: "Update Bank Detail")),
-            Expanded(
-              flex: 09,
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: ListView(
-                  physics: const ClampingScrollPhysics(),
-                  shrinkWrap: true,
-                  children: [
-                    ProfileListTile(
-                      labelText:
-                          customlableText(context: context, lable: "Bank Name"),
-                      textField: CustomSimpleImputField(
-                        textcontroller: _bankNametextcontroller.text,
-                        isfieldCircle: false,
-                        hint: "Askari Bank",
-                        keyboardtype: TextInputType.emailAddress,
-                      ),
+            CustomTopBar(topbartitle: "Update Bank Detail"),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: ListView(
+                physics: const ClampingScrollPhysics(),
+                shrinkWrap: true,
+                children: [
+                  ProfileListTile(
+                    labelText:
+                        customlableText(context: context, lable: "Bank Name"),
+                    textField: CustomSimpleImputField(
+                      textcontroller: _bankNametextcontroller.text,
+                      isfieldCircle: false,
+                      hint: "Askari Bank",
+                      keyboardtype: TextInputType.text,
                     ),
-                    ProfileListTile(
-                      labelText: customlableText(
-                          context: context, lable: "Account Title"),
-                      textField: CustomSimpleImputField(
-                        textcontroller: _accounttitlecontroller.text,
-                        isfieldCircle: false,
-                        hint: "Khurram Shahzad",
-                        keyboardtype: TextInputType.phone,
-                      ),
+                  ),
+                  ProfileListTile(
+                    labelText: customlableText(
+                        context: context, lable: "Account Title"),
+                    textField: CustomSimpleImputField(
+                      textcontroller: _accounttitlecontroller.text,
+                      isfieldCircle: false,
+                      hint: "Khurram Shahzad",
+                      keyboardtype: TextInputType.text,
                     ),
-                    ProfileListTile(
-                      labelText: customlableText(
-                          context: context, lable: "Account No"),
-                      textField: CustomSimpleImputField(
-                        textcontroller: _accountNocontroller.text,
-                        isfieldCircle: false,
-                        hint: "031659784641152",
-                        keyboardtype: TextInputType.multiline,
-                      ),
+                  ),
+                  ProfileListTile(
+                    labelText:
+                        customlableText(context: context, lable: "Account No"),
+                    textField: CustomSimpleImputField(
+                      textcontroller: _accountNocontroller.text,
+                      isfieldCircle: false,
+                      hint: "031659784641152",
+                      keyboardtype: TextInputType.number,
                     ),
-                    ProfileListTile(
-                      labelText:
-                          customlableText(context: context, lable: "IBAN No"),
-                      textField: CustomSimpleImputField(
-                        textcontroller: _IBANnocontroller.text,
-                        isfieldCircle: false,
-                        hint: "ASKIq 031659784641152",
-                        keyboardtype: TextInputType.text,
-                      ),
+                  ),
+                  ProfileListTile(
+                    labelText:
+                        customlableText(context: context, lable: "IBAN No"),
+                    textField: CustomSimpleImputField(
+                      textcontroller: _IBANnocontroller.text,
+                      isfieldCircle: false,
+                      hint: "ASKIq 031659784641152",
+                      keyboardtype: TextInputType.text,
                     ),
-                    ProfileListTile(
-                      labelText: customlableText(
-                          context: context, lable: "Branch Code"),
-                      textField: CustomSimpleImputField(
-                        textcontroller: _branchcodetextcontroller.text,
-                        isfieldCircle: false,
-                        hint: "06459",
-                        keyboardtype: TextInputType.number,
-                      ),
+                  ),
+                  ProfileListTile(
+                    labelText:
+                        customlableText(context: context, lable: "Branch Code"),
+                    textField: CustomSimpleImputField(
+                      textcontroller: _branchcodetextcontroller.text,
+                      isfieldCircle: false,
+                      hint: "06459",
+                      keyboardtype: TextInputType.number,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             )
           ],

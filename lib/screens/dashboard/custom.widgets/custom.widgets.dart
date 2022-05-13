@@ -346,7 +346,7 @@ class _AnimatedTopBarTileState extends State<AnimatedTopBarTile>
                 _intervaltween.value * width, 0.0, 0.0),
             child: Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: Icon(Icons.notifications),
+              child: Icon(Icons.notifications_none_outlined),
             ),
           ),
         );
@@ -450,21 +450,23 @@ class _DashboardButtonState extends State<DashboardButton>
 
 class AnimatedLongButton extends StatefulWidget {
   AnimatedLongButton(
-      {required this.text,
+      {this.text,
       this.fontsize,
       this.Prefixtext,
       this.color,
       this.width,
       this.textColor,
+      this.child,
       Key? key,
       required this.isBgColorWhite})
       : super(key: key);
-  final String text;
+  final String? text;
   final List<Color>? color;
   final bool isBgColorWhite;
   final double? fontsize, width;
   final String? Prefixtext;
   final Color? textColor;
+  final Widget? child;
   @override
   State<AnimatedLongButton> createState() => _AnimatedLongButtonState();
 }
@@ -543,17 +545,19 @@ class _AnimatedLongButtonState extends State<AnimatedLongButton>
                                 : Colors.white.withOpacity(1.0),
                           ),
                     ),
-                    Text(
-                      "${widget.text}",
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            fontSize: widget.fontsize ?? 16,
-                            fontWeight: FontWeight.w300,
-                            color: widget.isBgColorWhite
-                                ? widget.textColor ??
-                                    Colors.black.withOpacity(0.7)
-                                : Colors.white.withOpacity(1.0),
-                          ),
-                    ),
+                    widget.child ??
+                        Text(
+                          widget.text ?? "",
+                          style:
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    fontSize: widget.fontsize ?? 16,
+                                    fontWeight: FontWeight.w300,
+                                    color: widget.isBgColorWhite
+                                        ? widget.textColor ??
+                                            Colors.black.withOpacity(0.7)
+                                        : Colors.white.withOpacity(1.0),
+                                  ),
+                        ),
                   ],
                 ),
               ),
@@ -611,7 +615,7 @@ class _AnimatedAlertDialogState extends State<AnimatedAlertDialog> {
               style: Theme.of(context).textTheme.headline6!.copyWith(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFFFFFFFF),
+                    color: Color(0xFF00000).withOpacity(0.4),
                   ),
             ),
             SizedBox(
@@ -622,7 +626,16 @@ class _AnimatedAlertDialogState extends State<AnimatedAlertDialog> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   AnimatedCircularButton(
-                      Icon: Icon(Icons.warning_amber_outlined)),
+                    Icon: Center(
+                      child: SizedBox(
+                        height: 22,
+                        width: 22,
+                        child: Image.asset(
+                          "assets/images/alret.png",
+                        ),
+                      ),
+                    ),
+                  ),
                   SizedBox(
                     width: 260,
                     height: 60,
@@ -780,10 +793,10 @@ class _AnimatedTitleState extends State<AnimatedTitle>
                   opacity: _animateopacity.value,
                   child: Text(
                     "Good Morning",
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(color: Colors.black.withOpacity(0.6)),
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        fontSize: 11,
+                        color: Color(0xFF707070),
+                        fontWeight: FontWeight.w300),
                   ),
                 ),
               ),
@@ -795,10 +808,10 @@ class _AnimatedTitleState extends State<AnimatedTitle>
                   opacity: _animateopacity.value,
                   child: Text(
                     "Khurram Shahbaz",
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(color: Colors.black.withOpacity(0.8)),
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        fontSize: 16,
+                        color: Color(0xFF404041),
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
+import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
 
 import 'alerts.dart';
 
@@ -11,9 +12,6 @@ class ClosingPaymentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("Closing Payment"),
-        ),
         // bottomNavigationBar: dashboard.bottombar(context: context),
         body: Container(
           alignment: Alignment.bottomCenter,
@@ -39,8 +37,15 @@ class _ClosingPaymentBottomSheetState extends State<ClosingPaymentBottomSheet>
   late AnimationController _animationcontroller;
   late Animation _animateopacity;
   late Animation<double> _animateleft, _animateright;
+
+  late TextEditingController _transfertextcontroller;
+  late TextEditingController _rollovertextcontroller;
+
   @override
   void initState() {
+    _transfertextcontroller = TextEditingController();
+    _rollovertextcontroller = TextEditingController();
+
     _animationcontroller =
         AnimationController(vsync: this, duration: _duration);
 
@@ -86,9 +91,9 @@ class _ClosingPaymentBottomSheetState extends State<ClosingPaymentBottomSheet>
                   SizedBox(
                     height: 10,
                   ),
-                  Divider(),
+                  divider,
                   SizedBox(
-                    height: 05,
+                    height: 12,
                   ),
                   Transform(
                     transform: Matrix4.translationValues(
@@ -102,6 +107,7 @@ class _ClosingPaymentBottomSheetState extends State<ClosingPaymentBottomSheet>
                           ),
                     ),
                   ),
+                  SizedBox(height: 15),
                   Expanded(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -183,11 +189,12 @@ class _ClosingPaymentBottomSheetState extends State<ClosingPaymentBottomSheet>
                             SizedBox(
                               height: 04,
                             ),
-                            AnimatedLongButton(
-                              Prefixtext: 'Rs. ',
-                              text: "35,000,000",
+                            AmountInputField(
+                              Prefixtext: "Rs",
                               isBgColorWhite: true,
-                            )
+                              textcontroller: _transfertextcontroller,
+                              hint: '22,000,000',
+                            ),
                           ],
                         ),
                         Column(
@@ -240,21 +247,12 @@ class _ClosingPaymentBottomSheetState extends State<ClosingPaymentBottomSheet>
                             SizedBox(
                               height: 04,
                             ),
-                            GestureDetector(
-                              onTap: () {
-                                print("Pressesed.. Moved to with draw capital");
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ClosingPaymentAlert(),
-                                  ),
-                                );
-                              },
-                              child: AnimatedLongButton(
-                                text: "20,000,000",
-                                isBgColorWhite: true,
-                              ),
-                            )
+                            AmountInputField(
+                              Prefixtext: "Rs",
+                              isBgColorWhite: true,
+                              textcontroller: _rollovertextcontroller,
+                              hint: '35,000,000',
+                            ),
                           ],
                         ),
                         GestureDetector(
@@ -307,12 +305,18 @@ class _ClosingPaymenttransectiondetailwidgetState
   DateTime currentDate = DateTime.now();
 
   Future<void> _selectDate(BuildContext context) async {
+    var date = DateTime.parse("2019-04-16 12:18:06.018950");
+    var formattedDate = "${date.day}-${date.month}-${date.year}";
     final DateTime? pickedDate = await showDatePicker(
-      context: context,
-      initialDate: currentDate,
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2080),
-    );
+        context: context,
+        initialDate: currentDate,
+        firstDate: DateTime(2000),
+        // currentDate: currentDate,
+        lastDate: DateTime(2080));
+
+    setState(() {
+      currentDate = pickedDate ?? currentDate;
+    });
   }
 
   @override
@@ -336,9 +340,8 @@ class _ClosingPaymenttransectiondetailwidgetState
                   borderRadius: BorderRadius.vertical(top: Radius.circular(14)),
                 ),
                 child: ListTile(
-                  leading: Icon(Icons.done, color: Colors.white),
-                  // Theme.of(context).iconTheme.color,
-                  // ),
+                  leading: Image.asset("assets/images/tick.png",
+                      height: 32, width: 32),
                   title: SizedBox(
                     width: 60,
                     child: Text(
@@ -352,9 +355,8 @@ class _ClosingPaymenttransectiondetailwidgetState
                           fontWeight: FontWeight.w300),
                     ),
                   ),
-                  trailing: Icon(Icons.close, color: Colors.white
-                      // ?? Theme.of(context).iconTheme.color,
-                      ),
+                  trailing: Image.asset("assets/images/cross.png",
+                      height: 25, width: 25),
                 ),
               ),
               Padding(

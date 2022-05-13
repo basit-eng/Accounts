@@ -19,6 +19,13 @@ class Styles {
     }
   }
 
+  static void showSnackBar(BuildContext context, String message) =>
+      Scaffold.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(
+          SnackBar(content: Text(message)),
+        );
+
   static Map<int, Color> getColorSwatch(Color color) {
     return {
       50: Color.fromRGBO(color.red, color.green, color.blue, .1),

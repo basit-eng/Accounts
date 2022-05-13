@@ -19,7 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   late TextEditingController _usernametextcontroller;
   late TextEditingController _passwordtextcontroller;
-  bool isVisible = false;
+  bool visible = false;
 
   @override
   void initState() {
@@ -91,20 +91,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 textcontroller: _usernametextcontroller.text,
                 hint: "Enter your Password",
                 icon: Icons.lock_outline,
-                suffixicon: GestureDetector(
-                  onTap: () {
+                isvisible: true,
+                suffixicon: IconButton(
+                  onPressed: () {
                     setState(() {
-                      isVisible = !isVisible;
-                      print("Visibility : $isVisible");
+                      visible = !visible;
+                      print("Visibility : $visible");
                     });
                   },
-                  child: Container(
-                    child: isVisible
-                        ? Icon(
-                            Icons.remove_red_eye_outlined,
-                          )
-                        : Icon(Icons.remove_red_eye),
-                  ),
+                  icon: visible
+                      ? Icon(
+                          Icons.remove_red_eye_outlined,
+                          color: Colors.purple,
+                        )
+                      : Icon(
+                          Icons.remove_red_eye,
+                          color: Colors.purple,
+                        ),
                 ),
               ),
             ),
@@ -113,6 +116,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             SignedIntext(
               checkbox: Checkbox(
+                  fillColor: MaterialStateProperty.all(Colors.purple),
+                  shape: CircleBorder(),
+                  // checkColor: Colors.purple,
                   value: ticked,
                   onChanged: (Checked) {
                     setState(() {

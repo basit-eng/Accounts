@@ -2,6 +2,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:theaccounts/screens/loginprocess/components/widgets.dart';
 import 'package:theaccounts/screens/dashboard/dashboard.screens/showcapital.screen.dart';
 import 'package:theaccounts/screens/loginprocess/components/inputfield.widget.dart';
+import 'package:theaccounts/screens/loginprocess/loginscreens/pin_screen.dart';
 
 class ForgetPsswordScreen extends StatefulWidget {
   const ForgetPsswordScreen({Key? key}) : super(key: key);
@@ -92,7 +93,7 @@ class _ForgetPsswordScreenState extends State<ForgetPsswordScreen> {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => ShowCapitalScreen(),
+                    builder: (context) => PinScreen(),
                   ),
                 );
               },

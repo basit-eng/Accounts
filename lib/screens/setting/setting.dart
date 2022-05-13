@@ -20,6 +20,7 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         // appBar: AppBar(
@@ -28,8 +29,13 @@ class _SettingScreenState extends State<SettingScreen> {
         //   ],
         // ),
         backgroundColor: Theme.of(context).backgroundColor,
-        body: Column(
+        body: ListView(
+          shrinkWrap: true,
+          physics: ClampingScrollPhysics(),
           children: [
+            SizedBox(
+              height: 10,
+            ),
             TopWidgets(),
             SizedBox(
               height: 20,
@@ -162,6 +168,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     );
                   },
                   child: Cards(
+                    width: size.width * 0.2,
                     title: 'Update Profile',
                     iconPath: "assets/images/upload_profile.png",
                   ),
@@ -261,12 +268,12 @@ class _SettingScreenState extends State<SettingScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Image.asset(
-                            'assets/images/msg.png',
+                            'assets/images/messages.png',
                             height: 30,
                             width: 30,
                           ),
                           Text(
-                            'Message',
+                            'Messaging',
                             style:
                                 Theme.of(context).textTheme.bodyText1!.copyWith(
                                       fontSize: 16,
@@ -358,10 +365,11 @@ class _SettingScreenState extends State<SettingScreen> {
 }
 
 class Cards extends StatelessWidget {
-  Cards({Key? key, required this.title, required this.iconPath})
+  Cards({Key? key, required this.title, this.width, required this.iconPath})
       : super(key: key);
   final String title;
   final String iconPath;
+  final double? width;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -392,16 +400,19 @@ class Cards extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 06.0),
-              child: Text(
-                title,
-                maxLines: 2,
-                overflow: TextOverflow.visible,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                      fontSize: 14,
-                      height: 1.3,
-                      fontWeight: FontWeight.w600,
-                    ),
+              child: SizedBox(
+                width: width ?? size.width * 0.3,
+                child: Text(
+                  title,
+                  maxLines: 2,
+                  overflow: TextOverflow.visible,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        fontSize: 15,
+                        height: 1.3,
+                        fontWeight: FontWeight.w300,
+                      ),
+                ),
               ),
             ),
           ),

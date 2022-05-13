@@ -20,48 +20,62 @@ class _RecievedAmountState extends State<RecievedAmount> {
       body: ListView(
         physics: NeverScrollableScrollPhysics(),
         children: [
-          SizedBox(height: 30),
+          // SizedBox(height: 15),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: CustomTopBar(topbartitle: 'Recieved Amount'),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Expanded(
-                  flex: 5,
-                  child: SizedBox(
-                    width: 10,
-                  )),
-              Expanded(
-                flex: 1,
-                child: Text('Since'),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Expanded(
-                    flex: 1,
-                    child: SmallRadiusButton(
-                      text: "05-10-2021",
-                      color: [
-                        Colors.grey.withOpacity(1),
-                        Colors.grey.withOpacity(1)
-                      ],
-                    )),
-              )
-            ],
+          Container(
+            height: size.height / 17,
+            width: size.height,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Since',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1!
+                          .copyWith(fontSize: 12),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: Expanded(
+                        flex: 1,
+                        child: SmallRadiusButton(
+                          text: "05-10-2021",
+                          color: [
+                            Colors.grey.withOpacity(1),
+                            Colors.grey.withOpacity(1)
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
           SizedBox(
             height: 30,
           ),
-          SingleChildScrollView(
-            child: CustomTabBar(
-              tab_length: 3,
-              tabs: ["6M", "Y", "ALL"],
-              child: [
-                Expanded(
-                  child: ListView.builder(
+          ListView(
+            shrinkWrap: true,
+            physics: ClampingScrollPhysics(),
+            children: [
+              CustomTabBar(
+                tab_length: 3,
+                tabs: ["6M", "Y", "ALL"],
+                child: [
+                  ListView.builder(
                     shrinkWrap: true,
+                    physics: ClampingScrollPhysics(),
                     itemCount: 20,
                     itemBuilder: ((context, index) {
                       return CustomSingleTile(
@@ -74,10 +88,9 @@ class _RecievedAmountState extends State<RecievedAmount> {
                       );
                     }),
                   ),
-                ),
-                Expanded(
-                  child: ListView.builder(
+                  ListView.builder(
                     shrinkWrap: true,
+                    physics: ClampingScrollPhysics(),
                     itemCount: 20,
                     itemBuilder: ((context, index) {
                       return CustomSingleTile(
@@ -90,10 +103,9 @@ class _RecievedAmountState extends State<RecievedAmount> {
                       );
                     }),
                   ),
-                ),
-                Expanded(
-                  child: ListView.builder(
+                  ListView.builder(
                     shrinkWrap: true,
+                    physics: ClampingScrollPhysics(),
                     itemCount: 20,
                     itemBuilder: ((context, index) {
                       return CustomSingleTile(
@@ -106,9 +118,9 @@ class _RecievedAmountState extends State<RecievedAmount> {
                       );
                     }),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
+            ],
           )
         ],
       ),

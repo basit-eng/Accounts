@@ -246,6 +246,141 @@ class ProfileListTile extends StatelessWidget {
   }
 }
 
+class AmountInputField extends StatefulWidget {
+  AmountInputField(
+      {this.Prefixtext,
+      this.color,
+      this.width,
+      this.textColor,
+      this.hint,
+      required this.textcontroller,
+      Key? key,
+      required this.isBgColorWhite})
+      : super(key: key);
+  final List<Color>? color;
+  final bool isBgColorWhite;
+  final double? width;
+  final String? Prefixtext;
+  final Color? textColor;
+  final String? hint;
+  final TextEditingController textcontroller;
+  @override
+  State<AmountInputField> createState() => _AmountInputFieldState();
+}
+
+class _AmountInputFieldState extends State<AmountInputField>
+    with TickerProviderStateMixin {
+  final _duration = Duration(milliseconds: 1000);
+  late AnimationController _animationcontroller;
+  late Animation<double> _animateopacity;
+  late Animation<double> _animateleft;
+  //  _animateright;
+  @override
+  void initState() {
+    _animationcontroller =
+        AnimationController(vsync: this, duration: _duration);
+    _animateopacity = Tween<double>(begin: 0.0, end: 1.0).animate(
+        CurvedAnimation(
+            parent: _animationcontroller, curve: Curves.fastOutSlowIn));
+    _animateleft = Tween<double>(begin: -1.0, end: 0.0).animate(CurvedAnimation(
+        parent: _animationcontroller, curve: Curves.fastOutSlowIn));
+    _animationcontroller.forward();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animationcontroller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    return AnimatedBuilder(
+        animation: _animationcontroller.view,
+        builder: (context, child) {
+          return Container(
+            height: 50,
+            width: widget.width ?? 270,
+            alignment: Alignment.center,
+            margin: EdgeInsets.symmetric(horizontal: 12),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.3),
+                  blurStyle: BlurStyle.outer,
+                  blurRadius: 10,
+                  spreadRadius: 0.7,
+                  offset: Offset(3, 4),
+                ),
+              ],
+              gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: widget.color ?? [Colors.white, Colors.white],
+              ),
+            ),
+            child: Transform(
+              transform: Matrix4.translationValues(
+                  0.0, _animateleft.value * width, 0.0),
+              child: AnimatedOpacity(
+                duration: _duration,
+                opacity: _animateopacity.value,
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // Text(
+                      //   widget.Prefixtext ?? "",
+                      //   textAlign: TextAlign.center,
+                      //   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      //         fontSize: 12,
+                      //         fontWeight: FontWeight.w300,
+                      //         color: widget.isBgColorWhite
+                      //             ? widget.textColor ??
+                      //                 Colors.black.withOpacity(0.7)
+                      //             : Colors.white.withOpacity(1.0),
+                      //       ),
+                      // ),
+                      Container(
+                        width: widget.width ?? 250,
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          textAlign: TextAlign.center,
+                          style:
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300,
+                                    color: widget.isBgColorWhite
+                                        ? widget.textColor ??
+                                            Colors.black.withOpacity(0.7)
+                                        : Colors.white.withOpacity(1.0),
+                                  ),
+                          controller: widget.textcontroller,
+                          decoration: InputDecoration(
+                            hintText: 'Rs.  ${widget.hint}',
+                            hintStyle: Theme.of(context)
+                                .textTheme
+                                .bodyText1!
+                                .copyWith(
+                                    color: Color(0xFF858585),
+                                    fontWeight: FontWeight.bold),
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+        });
+  }
+}
+
 class CustomSimpleImputField extends StatefulWidget {
   CustomSimpleImputField(
       {required textcontroller,
@@ -287,17 +422,6 @@ class _CustomSimpleImputFieldState extends State<CustomSimpleImputField> {
             ? Theme.of(context).textTheme.subtitle1
             : Theme.of(context).textTheme.bodyText1!.copyWith(
                 color: Color(0xFF858585), fontWeight: FontWeight.bold),
-        // label: Text(
-        //   widget.label ?? "",
-        //   style: widget.isfieldCircle
-        //       ? Theme.of(context).textTheme.subtitle1
-        //       : Theme.of(context).textTheme.bodyText1!.copyWith(
-        //           color: Color(0xFFF15B28), fontWeight: FontWeight.w400),
-        // ),
-        // labelStyle: widget.isfieldCircle
-        //     ? Theme.of(context).textTheme.subtitle1
-        //     : Theme.of(context).textTheme.bodyText1!.copyWith(
-        //         color: Color(0xFFF15B28), fontWeight: FontWeight.w400),
         border: InputBorder.none,
       ),
     );
@@ -377,11 +501,18 @@ class _CustomTabBarState extends State<CustomTabBar>
                     tabs: [
                       for (int i = 0; i < widget.tabs.length; i++)
                         Container(
+                          height: size.height * 0.06,
                           alignment: Alignment.center,
-                          child: Text(widget.tabs[i],
-                              style: Theme.of(context).textTheme.bodyText2),
+                          child: Text(
+                            widget.tabs[i],
+                            style:
+                                Theme.of(context).textTheme.bodyText2!.copyWith(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                          ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 20, horizontal: 20),
+                              vertical: 10, horizontal: 10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
                             color: _selectedIndex == i
@@ -401,7 +532,7 @@ class _CustomTabBarState extends State<CustomTabBar>
                     const EdgeInsets.symmetric(horizontal: 08.0, vertical: 10),
                 child: Container(
                   alignment: Alignment.center,
-                  height: size.height * 0.068,
+                  height: size.height * 0.06,
                   // width: 30,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
@@ -637,13 +768,18 @@ class CustomBriefCard extends StatelessWidget {
                   icon_v1,
                   color: Colors.white,
                 )),
-            title: Text(title_v1 ?? "",
-                style: Theme.of(context).textTheme.bodyText2),
-            subtitle: Text(subtitle_v1 ?? "",
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle1!
-                    .copyWith(fontWeight: FontWeight.w400)),
+            title: Text(
+              title_v1 ?? "",
+              style:
+                  Theme.of(context).textTheme.bodyText2!.copyWith(fontSize: 13),
+            ),
+            subtitle: Text(
+              subtitle_v1 ?? "",
+              style: Theme.of(context)
+                  .textTheme
+                  .subtitle1!
+                  .copyWith(fontSize: 16, fontWeight: FontWeight.w400),
+            ),
             trailing: trailing_v1,
           ),
           ListTile(
@@ -655,9 +791,15 @@ class CustomBriefCard extends StatelessWidget {
                   color: Colors.white,
                 )),
             subtitle: Text(subtitle_v2 ?? "",
-                style: Theme.of(context).textTheme.bodyText1),
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle1!
+                    .copyWith(fontSize: 16, fontWeight: FontWeight.w400)),
             title: Text(title_v2 ?? "",
-                style: Theme.of(context).textTheme.bodyText2),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText2!
+                    .copyWith(fontSize: 13)),
             trailing: trailing_v2,
           )
         ]),
@@ -716,16 +858,26 @@ class PaymentHistoryCard extends StatelessWidget {
                   SizedBox(
                     width: 14,
                   ),
-                  Text(amount ?? "",
-                      style: Theme.of(context).textTheme.subtitle1),
+                  Text(
+                    amount ?? "",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1!
+                        .copyWith(fontSize: 14, fontWeight: FontWeight.w400),
+                  ),
                 ],
               ),
             ),
             Text(type ?? "", style: Theme.of(context).textTheme.bodyText2),
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: Text(date ?? "",
-                  style: Theme.of(context).textTheme.bodyText2),
+              child: Text(
+                date ?? "",
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w400,
+                    ),
+              ),
             ),
           ],
         ),
@@ -786,23 +938,44 @@ class CapitalPaymentHistoryCard extends StatelessWidget {
                 width: 18,
               ),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(paid_amount ?? "",
-                      style: Theme.of(context).textTheme.subtitle1),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1!
+                          .copyWith(fontSize: 14, fontWeight: FontWeight.w400)),
                   Text(pay_date ?? "",
-                      style: Theme.of(context).textTheme.bodyText2),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText2!
+                          .copyWith(fontSize: 12)),
                 ],
               ),
               Spacer(),
-              Text(type ?? "", style: Theme.of(context).textTheme.bodyText2),
+              Text(
+                type ?? "",
+                style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
+              ),
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(closing_amount ?? "",
-                      style: Theme.of(context).textTheme.subtitle1),
+                  Text(
+                    closing_amount ?? "",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1!
+                        .copyWith(fontSize: 13, fontWeight: FontWeight.w400),
+                  ),
                   Text(closing ?? "",
-                      style: Theme.of(context).textTheme.bodyText2),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText2!
+                          .copyWith(fontSize: 12)),
                 ],
               ),
             ],
@@ -916,7 +1089,7 @@ class SmallRadiusButton extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 00),
       height: height ?? 30,
-      width: width ?? 60,
+      width: width ?? 110,
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(100),

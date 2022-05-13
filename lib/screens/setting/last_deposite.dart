@@ -39,91 +39,90 @@ class _LastDepositeScreenState extends State<LastDepositeScreen> {
           CustomTopBar(topbartitle: 'Last Deposite'),
           CustomBriefCard(
             title_v1: "Amount",
-            subtitle_v1: "16,240,000",
+            subtitle_v1: "Rs. 16,240,000",
             icon_v1: Icons.amp_stories_rounded,
             color_v1: Color(0XFFF6921E),
             title_v2: "Date : 10-05-2021",
           ),
           CustomSearchBar(searchtextcontroller: _searchtextcontroller),
-          SingleChildScrollView(
-            child: CustomTabBar(
-              tab_length: 4,
-              tabs: ["D", "W", "M", "Y"],
-              child: [
-                Expanded(
-                  child: ListView.builder(
+          ListView(
+            shrinkWrap: true,
+            physics: ClampingScrollPhysics(),
+            children: [
+              CustomTabBar(
+                tab_length: 4,
+                tabs: ["D", "W", "M", "Y"],
+                child: [
+                  ListView.builder(
                     shrinkWrap: true,
-                    itemCount: 5,
+                    physics: ClampingScrollPhysics(),
                     itemBuilder: ((context, index) {
                       return CapitalPaymentHistoryCard(
                         icon: CircleAvatar(
                             radius: 40,
                             backgroundColor: Color(0xFF92298D),
                             child: Icon(Icons.add)),
-                        paid_amount: "1,20,38,954",
+                        paid_amount: "Rs. 1,20,38,954",
                         pay_date: "Apr 04-2022",
-                        closing_amount: "12,650,034",
+                        closing_amount: "Rs. 12,650,034",
                         closing: "Closing balance",
                       );
                     }),
                   ),
-                ),
-                Expanded(
-                  child: ListView.builder(
+                  ListView.builder(
                     shrinkWrap: true,
-                    itemCount: 4,
+                    physics: ClampingScrollPhysics(),
+                    itemCount: 14,
                     itemBuilder: ((context, index) {
                       return CapitalPaymentHistoryCard(
                         icon: CircleAvatar(
                             radius: 40,
                             backgroundColor: Color(0xFF92298D),
                             child: Icon(Icons.add)),
-                        paid_amount: "1,20,38,954",
+                        paid_amount: "Rs. 1,20,38,954",
                         pay_date: "Apr 04-2022",
-                        closing_amount: "12,650,034",
+                        closing_amount: "Rs. 12,650,034",
                         closing: "Closing balance",
                       );
                     }),
                   ),
-                ),
-                Expanded(
-                  child: ListView.builder(
+                  ListView.builder(
                     shrinkWrap: true,
-                    itemCount: 2,
+                    physics: ClampingScrollPhysics(),
+                    itemCount: 8,
                     itemBuilder: ((context, index) {
                       return CapitalPaymentHistoryCard(
                         icon: CircleAvatar(
                             radius: 40,
                             backgroundColor: Color(0xFF92298D),
                             child: Icon(Icons.add)),
-                        paid_amount: "1,20,38,954",
+                        paid_amount: "Rs. 1,20,38,954",
                         pay_date: "Apr 04-2022",
-                        closing_amount: "12,650,034",
+                        closing_amount: "Rs. 12,650,034",
                         closing: "Closing balance",
                       );
                     }),
                   ),
-                ),
-                Expanded(
-                  child: ListView.builder(
+                  ListView.builder(
                     shrinkWrap: true,
-                    itemCount: 6,
+                    physics: ClampingScrollPhysics(),
+                    itemCount: 12,
                     itemBuilder: ((context, index) {
                       return CapitalPaymentHistoryCard(
                         icon: CircleAvatar(
                             radius: 40,
                             backgroundColor: Color(0xFF92298D),
                             child: Icon(Icons.add)),
-                        paid_amount: "1,20,38,954",
+                        paid_amount: "Rs. 1,20,38,954",
                         pay_date: "Apr 04-2022",
-                        closing_amount: "12,650,034",
+                        closing_amount: "Rs. 12,650,034",
                         closing: "Closing balance",
                       );
                     }),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
           Expanded(
             child: ListView.builder(
@@ -135,9 +134,9 @@ class _LastDepositeScreenState extends State<LastDepositeScreen> {
                       radius: 40,
                       backgroundColor: Color(0xFF92298D),
                       child: Icon(Icons.add)),
-                  paid_amount: "1,20,38,954",
+                  paid_amount: "Rs. 1,20,38,954",
                   pay_date: "Apr 04-2022",
-                  closing_amount: "12,650,034",
+                  closing_amount: "Rs. 12,650,034",
                   closing: "Closing balance",
                 );
               }),

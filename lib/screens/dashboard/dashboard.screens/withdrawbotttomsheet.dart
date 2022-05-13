@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
+import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
 
 import 'alerts.dart';
 
@@ -43,7 +44,7 @@ class _WithDrawHoverLayerScreenState extends State<WithDrawHoverLayerScreen> {
                       .copyWith(fontSize: 21.3),
                 ),
               ),
-              WithDrawBottomSheet()
+              SingleChildScrollView(child: WithDrawBottomSheet())
             ],
           ),
         ),
@@ -64,10 +65,12 @@ class _WithDrawBottomSheetState extends State<WithDrawBottomSheet>
   final _duration = Duration(milliseconds: 1500);
   late AnimationController _animationController;
   late Animation _animatebottom, _opacity, _intervaltween;
+
+  late TextEditingController _withdrawamounttextcontroller;
   @override
   void initState() {
     super.initState();
-
+    _withdrawamounttextcontroller = TextEditingController();
     _animationController =
         AnimationController(vsync: this, duration: _duration);
     _animatebottom = Tween<double>(begin: 2.0, end: 0.0).animate(
@@ -107,124 +110,134 @@ class _WithDrawBottomSheetState extends State<WithDrawBottomSheet>
         return Transform(
           transform:
               Matrix4.translationValues(0.0, _animatebottom.value * width, 0.0),
-          child: child,
-        );
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          height: height * 0.55,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [Color(0xFF0ABCED), Color(0xFFB7EE9C)],
-            ),
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 10,
-              ),
-              Divider(
-                height: 4,
-                color: Colors.white,
-                endIndent: 160,
-                indent: 160,
-                thickness: 4,
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              AnimatedOpacity(
-                duration: _duration,
-                opacity: _opacity.value,
-                child: Text(
-                  "Withdraw",
-                  style: Theme.of(context).textTheme.headline6!.copyWith(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white.withOpacity(1),
-                      ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              height: height * 0.55,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xFF0ABCED), Color(0xFFB7EE9C)],
                 ),
+                borderRadius: BorderRadius.circular(16),
               ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Transform(
-                      transform: Matrix4.translationValues(
-                          0.0, _intervaltween.value * width, 0.0),
-                      child: AnimatedOpacity(
-                        duration: _duration,
-                        opacity: _opacity.value,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Rs. ",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText1!
-                                  .copyWith(
-                                    fontSize: 19,
-                                    fontWeight: FontWeight.w300,
-                                    color: Colors.white.withOpacity(1),
-                                  ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Divider(
+                    height: 4,
+                    color: Colors.white,
+                    endIndent: 160,
+                    indent: 160,
+                    thickness: 4,
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  AnimatedOpacity(
+                    duration: _duration,
+                    opacity: _opacity.value,
+                    child: Text(
+                      "Withdraw",
+                      style: Theme.of(context).textTheme.headline6!.copyWith(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white.withOpacity(1),
+                          ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Transform(
+                          transform: Matrix4.translationValues(
+                              0.0, _intervaltween.value * width, 0.0),
+                          child: AnimatedOpacity(
+                            duration: _duration,
+                            opacity: _opacity.value,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Rs. ",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText1!
+                                      .copyWith(
+                                        fontSize: 19,
+                                        fontWeight: FontWeight.w300,
+                                        color: Colors.white.withOpacity(1),
+                                      ),
+                                ),
+                                Text(
+                                  "25,500,000",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline6!
+                                      .copyWith(
+                                        fontSize: 32.39,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.white.withOpacity(0.8),
+                                      ),
+                                ),
+                              ],
                             ),
-                            Text(
-                              "25,500,000",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline6!
-                                  .copyWith(
-                                    fontSize: 32.39,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white.withOpacity(0.8),
+                          ),
+                        ),
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 26.0, bottom: 06),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Center(
+                                    child: SizedBox(
+                                      height: 22,
+                                      width: 22,
+                                      child: Image.asset(
+                                        "assets/images/amount.png",
+                                      ),
+                                    ),
                                   ),
+                                  SizedBox(
+                                    width: 04,
+                                  ),
+                                  Text(
+                                    "Amount",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall!
+                                        .copyWith(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w300,
+                                          color: Colors.white.withOpacity(1),
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            AmountInputField(
+                              Prefixtext: "Rs",
+                              isBgColorWhite: true,
+                              textcontroller: _withdrawamounttextcontroller,
+                              hint: '22,000,000',
+                            ),
+                            SizedBox(
+                              height: 04,
                             ),
                           ],
                         ),
-                      ),
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 12.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.attach_money_rounded,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 04,
-                              ),
-                              Text(
-                                "Amount",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall!
-                                    .copyWith(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w300,
-                                      color: Colors.white.withOpacity(1),
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 04,
-                        ),
                         GestureDetector(
                           onTap: () {
-                            print("Pressesed.. Moved to with draw capital");
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -233,26 +246,21 @@ class _WithDrawBottomSheetState extends State<WithDrawBottomSheet>
                             );
                           },
                           child: AnimatedLongButton(
-                            Prefixtext: 'Rs. ',
-                            text: "20,000,000",
+                            textColor: Color(0xFF58595B),
+                            text: "Send Request",
                             isBgColorWhite: true,
                           ),
-                        )
+                        ),
+                        AnimatedBottomBar()
                       ],
                     ),
-                    AnimatedLongButton(
-                      textColor: Color(0xFF58595B),
-                      text: "Send Request",
-                      isBgColorWhite: true,
-                    ),
-                    AnimatedBottomBar()
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
