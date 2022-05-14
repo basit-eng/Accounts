@@ -314,32 +314,42 @@ class _AnimatedTopBarTileState extends State<AnimatedTopBarTile>
                 radius: 24,
                 child: Image.asset("assets/images/logo_bg_removed.png")),
           ),
-          title: Row(
-            children: [
-              Transform(
-                transform: Matrix4.translationValues(
-                    _animateleft.value * width, 0.0, 0.0),
-                child: Text(
-                  "THE",
-                  style: Theme.of(context).textTheme.headline6!.copyWith(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
-              ),
-              Transform(
-                transform: Matrix4.translationValues(
-                    _animateleft.value * width, 0.0, 0.0),
-                child: Text(
-                  "\t ACCOUNTS",
-                  style: Theme.of(context).textTheme.headline6!.copyWith(
-                        fontSize: 16.0,
-                        color: Colors.purple,
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
-              )
-            ],
+          title: Container(
+            alignment: Alignment.centerLeft,
+            height: 11,
+            margin: EdgeInsets.only(top: 8, left: 5),
+            child: Image.asset(
+              "assets/images/text4x.png",
+            ),
+
+            // Row(
+            //   children: [
+
+            //     Transform(
+            //       transform: Matrix4.translationValues(
+            //           _animateleft.value * width, 0.0, 0.0),
+            //       child: Text(
+            //         "THE",
+            //         style: Theme.of(context).textTheme.headline6!.copyWith(
+            //               fontSize: 16.0,
+            //               fontWeight: FontWeight.bold,
+            //             ),
+            //       ),
+            //     ),
+            //     Transform(
+            //       transform: Matrix4.translationValues(
+            //           _animateleft.value * width, 0.0, 0.0),
+            //       child: Text(
+            //         "\t ACCOUNTS",
+            //         style: Theme.of(context).textTheme.headline6!.copyWith(
+            //               fontSize: 16.0,
+            //               color: Colors.purple,
+            //               fontWeight: FontWeight.bold,
+            //             ),
+            //       ),
+            //     )
+            //   ],
+            // ),
           ),
           trailing: Transform(
             transform: Matrix4.translationValues(

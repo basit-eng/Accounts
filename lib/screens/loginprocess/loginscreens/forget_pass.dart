@@ -36,37 +36,42 @@ class _ForgetPsswordScreenState extends State<ForgetPsswordScreen> {
             SizedBox(height: 30),
             Center(
               child: Container(
-                child: Image.asset(
-                  'assets/images/unlock.png',
-                  color: Color.fromARGB(255, 67, 153, 223),
-                ),
-                margin: EdgeInsets.only(top: 40),
-                height: 150,
-                width: 150,
+                margin: EdgeInsets.only(top: 35),
+                height: 190,
+                width: 190,
                 decoration: BoxDecoration(
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(100),
                   boxShadow: [
                     BoxShadow(
-                      color: Color.fromARGB(255, 40, 145, 231),
-                      spreadRadius: 10,
-                      blurRadius: 15,
-                      blurStyle: BlurStyle.outer,
+                      color: Color.fromARGB(255, 213, 213, 213),
+                      spreadRadius: 8,
+                      blurRadius: 10,
                       offset: Offset(
-                        1,
-                        1,
+                        8,
+                        10,
                       ),
                     ),
                   ],
                 ),
+                child: Center(
+                  child: SizedBox(
+                    height: 75,
+                    width: 60,
+                    child: Image.asset(
+                      'assets/images/pas.png',
+                    ),
+                  ),
+                ),
               ),
             ),
             SizedBox(
-              height: 60,
+              height: 65,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 30),
               child: CustomInputField(
-                  hint: "Enter your Otp",
+                  hint: "100453",
                   textcontroller: _otptextcontroller.text,
                   icon: Icons.person_outline_outlined),
             ),
@@ -78,7 +83,7 @@ class _ForgetPsswordScreenState extends State<ForgetPsswordScreen> {
               child: Text(
                 'Enter your user Id and will send you \ninstructions on how to reset it.',
                 style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                      fontSize: 10,
+                      fontSize: 12,
                       fontWeight: FontWeight.w300,
                     ),
                 textAlign: TextAlign.center,
@@ -87,7 +92,7 @@ class _ForgetPsswordScreenState extends State<ForgetPsswordScreen> {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 90,
             ),
             GestureDetector(
               onTap: () {

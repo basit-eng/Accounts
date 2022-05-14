@@ -56,11 +56,17 @@ class _ImageGalleryScreenState extends State<ImageGalleryScreen> {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        height: 10,
+                      ),
                       Text("Categories",
                           style: Theme.of(context)
                               .textTheme
                               .bodyText1!
                               .copyWith(fontWeight: FontWeight.bold)),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Container(
                         height: size.height * 0.18,
                         width: double.maxFinite,
@@ -72,7 +78,10 @@ class _ImageGalleryScreenState extends State<ImageGalleryScreen> {
                             return CustomHorizontalListView(
                               title: "New Built Office",
                               child: Image(
-                                image: AssetImage("assets/images/gallery.png"),
+                                fit: BoxFit.fitWidth,
+                                image: AssetImage(
+                                  "assets/images/pic.jpg",
+                                ),
                               ),
                             );
                           },

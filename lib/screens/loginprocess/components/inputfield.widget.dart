@@ -35,11 +35,12 @@ class CustomInputField extends StatelessWidget {
       ),
       margin: EdgeInsets.all(8),
       child: Padding(
-        padding: const EdgeInsets.only(left: 20.0),
+        padding: const EdgeInsets.only(left: 10.0),
         child: TextField(
+          textAlign: TextAlign.justify,
           style: TextStyle(fontSize: 14),
           controller: textcontroller,
-          obscureText: isvisible??false,
+          obscureText: isvisible ?? false,
           decoration: InputDecoration(
             suffixIcon: suffixicon ?? null,
             hintText: hint,
@@ -48,10 +49,13 @@ class CustomInputField extends StatelessWidget {
                   fontWeight: FontWeight.w300,
                   color: Color(0xFF404041),
                 ),
-            icon: Icon(
-              icon,
-              size: 30,
-              color: Color(0xFF90278E),
+            icon: Padding(
+              padding: const EdgeInsets.only(left: 70),
+              child: Icon(
+                icon,
+                size: 30,
+                color: Color(0xFF90278E),
+              ),
             ),
             border: InputBorder.none,
           ),

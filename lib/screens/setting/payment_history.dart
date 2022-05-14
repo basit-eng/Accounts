@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:show_up_animation/show_up_animation.dart';
 import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
 import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
 
@@ -40,53 +41,81 @@ class _PaymentHistoryState extends State<PaymentHistory> {
               tab_length: 4,
               tabs: ["D", "W", "M", "Y"],
               child: [
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 20,
-                  itemBuilder: ((context, index) {
-                    return PaymentHistoryCard(
-                        amount: "Rs. 165,203,000",
-                        type: "CP",
-                        date: "24-07-2021",
-                        color: Color(0xFFF6921E),
-                        imagePath: "assets/images/coin.png");
-                  }),
+                ShowUpAnimation(
+                  delayStart: Duration(milliseconds: 0),
+                  animationDuration: Duration(milliseconds: 500),
+                  curve: Curves.fastOutSlowIn,
+                  direction: Direction.horizontal,
+                  offset: 0.7,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 20,
+                    itemBuilder: ((context, index) {
+                      return PaymentHistoryCard(
+                          amount: "Rs. 165,203,000",
+                          type: "CP",
+                          date: "24-07-2021",
+                          color: Color(0xFFF6921E),
+                          imagePath: "assets/images/wallet.png");
+                    }),
+                  ),
                 ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 20,
-                  itemBuilder: ((context, index) {
-                    return PaymentHistoryCard(
-                        amount: "165,203,000",
-                        type: "CP",
-                        date: "24-07-2021",
-                        color: Color(0xFFF6921E),
-                        imagePath: "assets/images/coin.png");
-                  }),
+                ShowUpAnimation(
+                  delayStart: Duration(milliseconds: 0),
+                  animationDuration: Duration(milliseconds: 500),
+                  curve: Curves.fastOutSlowIn,
+                  direction: Direction.horizontal,
+                  offset: 0.7,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 20,
+                    itemBuilder: ((context, index) {
+                      return PaymentHistoryCard(
+                          amount: "165,203,000",
+                          type: "CP",
+                          date: "24-07-2021",
+                          color: Color(0xFFF6921E),
+                          imagePath: "assets/images/coinsl.png");
+                    }),
+                  ),
                 ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 20,
-                  itemBuilder: ((context, index) {
-                    return PaymentHistoryCard(
-                        amount: "165,203,000",
-                        type: "CP",
-                        date: "24-07-2021",
-                        color: Color(0xFFF6921E),
-                        imagePath: "assets/images/coin.png");
-                  }),
+                ShowUpAnimation(
+                  delayStart: Duration(milliseconds: 0),
+                  animationDuration: Duration(milliseconds: 500),
+                  curve: Curves.fastOutSlowIn,
+                  direction: Direction.horizontal,
+                  offset: 0.7,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 20,
+                    itemBuilder: ((context, index) {
+                      return PaymentHistoryCard(
+                          amount: "165,203,000",
+                          type: "CP",
+                          date: "24-07-2021",
+                          color: Color(0xFFF6921E),
+                          imagePath: "assets/images/coinsl.png");
+                    }),
+                  ),
                 ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 20,
-                  itemBuilder: ((context, index) {
-                    return PaymentHistoryCard(
-                        amount: "165,203,000",
-                        type: "CP",
-                        date: "24-07-2021",
-                        color: Color(0xFFF6921E),
-                        imagePath: "assets/images/coin.png");
-                  }),
+                ShowUpAnimation(
+                  delayStart: Duration(milliseconds: 0),
+                  animationDuration: Duration(milliseconds: 500),
+                  curve: Curves.fastOutSlowIn,
+                  direction: Direction.horizontal,
+                  offset: 0.7,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 20,
+                    itemBuilder: ((context, index) {
+                      return PaymentHistoryCard(
+                          amount: "165,203,000",
+                          type: "CP",
+                          date: "24-07-2021",
+                          color: Color(0xFFF6921E),
+                          imagePath: "assets/images/coinsl.png");
+                    }),
+                  ),
                 ),
               ],
             )
