@@ -15,7 +15,7 @@ class ShowCapitalScreen extends StatefulWidget {
 
 class _ShowCapitalScreenState extends State<ShowCapitalScreen>
     with TickerProviderStateMixin {
-  final _duration = Duration(milliseconds: 500);
+  final _duration = Duration(milliseconds: 1500);
 
   late AnimationController _controller;
   @override
@@ -39,7 +39,7 @@ class _ShowCapitalScreenState extends State<ShowCapitalScreen>
     double height = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).cardColor,
+        backgroundColor: Theme.of(context).backgroundColor,
         body: AnimatedBuilder(
           animation: _controller.view,
           builder: (context, child) {
@@ -70,7 +70,6 @@ class _ShowCapitalScreenState extends State<ShowCapitalScreen>
                     Center(
                       child: GestureDetector(
                         onTap: () {
-                          print(" go to Hide Capital Screen");
                           Navigator.push(
                             context,
                             MaterialPageRoute(

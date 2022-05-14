@@ -6,6 +6,7 @@ class CustomInputField extends StatelessWidget {
       this.icon,
       this.hint,
       this.suffixicon,
+      this.isvisible,
       Key? key})
       : super(key: key);
 
@@ -13,6 +14,7 @@ class CustomInputField extends StatelessWidget {
   final IconData? icon;
   final String? hint;
   final Widget? suffixicon;
+  final bool? isvisible;
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +39,19 @@ class CustomInputField extends StatelessWidget {
         child: TextField(
           style: TextStyle(fontSize: 14),
           controller: textcontroller,
+          obscureText: isvisible??false,
           decoration: InputDecoration(
             suffixIcon: suffixicon ?? null,
             hintText: hint,
-            hintStyle: Theme.of(context).textTheme.bodyText2,
+            hintStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w300,
+                  color: Color(0xFF404041),
+                ),
             icon: Icon(
               icon,
               size: 30,
-              color: Colors.blueAccent,
+              color: Color(0xFF90278E),
             ),
             border: InputBorder.none,
           ),

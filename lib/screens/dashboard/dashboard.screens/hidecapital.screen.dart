@@ -51,7 +51,7 @@ class _HideCapitalScreenState extends State<HideCapitalScreen>
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: AnimatedBottomBar(),
-        backgroundColor: Theme.of(context).cardColor,
+        backgroundColor: Theme.of(context).backgroundColor,
         body: AnimatedBuilder(
           animation: _animController.view,
           builder: (context, child) {
@@ -68,10 +68,15 @@ class _HideCapitalScreenState extends State<HideCapitalScreen>
                         trailing: Transform(
                       transform: Matrix4.translationValues(
                           _animright.value * width, 0.0, 0.0),
-                      child: CircleAvatar(
-                        radius: 24,
-                        backgroundColor: Colors.transparent,
-                        backgroundImage: AssetImage("assets/images/user.png"),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Color(0xFFAAA7A7),
+                            borderRadius: BorderRadius.circular(50)),
+                        child: CircleAvatar(
+                          radius: 24,
+                          backgroundColor: Colors.transparent,
+                          backgroundImage: AssetImage("assets/images/user.png"),
+                        ),
                       ),
                     )),
                     Expanded(
@@ -94,7 +99,10 @@ class _HideCapitalScreenState extends State<HideCapitalScreen>
                                   child: Text("Hide Capital",
                                       style: Theme.of(context)
                                           .textTheme
-                                          .bodyText1),
+                                          .bodyText1!
+                                          .copyWith(
+                                              fontSize: 14,
+                                              color: Color(0xFF404041))),
                                   color: Colors.blue.withOpacity(0.6),
                                   color1: Colors.purple.withOpacity(0.6),
                                   spreadradius: 04,
@@ -103,7 +111,7 @@ class _HideCapitalScreenState extends State<HideCapitalScreen>
                                   negativeOffsety: -6.5,
                                   offsetx: 6.5,
                                   offsety: 6.8,
-                                  radius: 200),
+                                  radius: 180),
                             ),
                           ),
                           Transform(
@@ -116,7 +124,7 @@ class _HideCapitalScreenState extends State<HideCapitalScreen>
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Rs:\t",
+                                    "Rs.\t",
                                     style:
                                         Theme.of(context).textTheme.bodyText1,
                                   ),
@@ -124,9 +132,10 @@ class _HideCapitalScreenState extends State<HideCapitalScreen>
                                     "25,500,000",
                                     style: Theme.of(context)
                                         .textTheme
-                                        .bodyText1!
+                                        .headline6!
                                         .copyWith(
-                                          fontSize: 16,
+                                          color: Color(0xFF58595B),
+                                          fontSize: 25,
                                           fontWeight: FontWeight.bold,
                                         ),
                                   ),
@@ -156,7 +165,15 @@ class _HideCapitalScreenState extends State<HideCapitalScreen>
                                     },
                                     child: AnimatedCircularButton(
                                         text: "Withdraw capital",
-                                        Icon: Icon(Icons.download_sharp),
+                                        Icon: Center(
+                                          child: SizedBox(
+                                            height: 22,
+                                            width: 22,
+                                            child: Image.asset(
+                                              "assets/images/withdraw.png",
+                                            ),
+                                          ),
+                                        ),
                                         color: [
                                           Color(0xFF65FDF0),
                                           Color(0xFF1D6FA3)
@@ -183,7 +200,15 @@ class _HideCapitalScreenState extends State<HideCapitalScreen>
                                     },
                                     child: AnimatedCircularButton(
                                         text: "Closing Payment",
-                                        Icon: Icon(Icons.payments_outlined),
+                                        Icon: Center(
+                                          child: SizedBox(
+                                            height: 22,
+                                            width: 22,
+                                            child: Image.asset(
+                                              "assets/images/closing_payments.png",
+                                            ),
+                                          ),
+                                        ),
                                         color: [
                                           Color(0xFFF6D242),
                                           Color(0xFFFF52E5)
@@ -209,7 +234,15 @@ class _HideCapitalScreenState extends State<HideCapitalScreen>
                                     },
                                     child: AnimatedCircularButton(
                                         text: "All RollOver",
-                                        Icon: Icon(Icons.recycling_outlined),
+                                        Icon: Center(
+                                          child: SizedBox(
+                                            height: 22,
+                                            width: 22,
+                                            child: Image.asset(
+                                              "assets/images/rollover.png",
+                                            ),
+                                          ),
+                                        ),
                                         color: [
                                           Color(0xFF72EDF2),
                                           Color(0xFF5151E5)

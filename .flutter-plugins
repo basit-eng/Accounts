@@ -1,4 +1,8 @@
 # This is a generated file; do not edit or check into version control.
+firebase_auth=E:\\Downloads\\flutter_windows_2.10.0-stable\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_auth-3.3.17\\
+firebase_auth_web=E:\\Downloads\\flutter_windows_2.10.0-stable\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_auth_web-3.3.14\\
+firebase_core=E:\\Downloads\\flutter_windows_2.10.0-stable\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core-1.16.0\\
+firebase_core_web=E:\\Downloads\\flutter_windows_2.10.0-stable\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core_web-1.6.3\\
 path_provider=E:\\Downloads\\flutter_windows_2.10.0-stable\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-2.0.9\\
 path_provider_android=E:\\Downloads\\flutter_windows_2.10.0-stable\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_android-2.0.12\\
 path_provider_ios=E:\\Downloads\\flutter_windows_2.10.0-stable\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_ios-2.0.8\\

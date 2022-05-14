@@ -72,10 +72,21 @@ class _BottomBarState extends State<AnimatedBottomBar>
                         ),
                       );
                     },
-                    child: AnimatedCircularButton(color: [
-                      Theme.of(context).cardColor,
-                      Theme.of(context).cardColor
-                    ], Icon: Icon(Icons.logout), text: "Log Out"),
+                    child: AnimatedCircularButton(
+                        color: [
+                          Theme.of(context).cardColor,
+                          Theme.of(context).cardColor
+                        ],
+                        Icon: Center(
+                          child: SizedBox(
+                            height: 35,
+                            width: 35,
+                            child: Image.asset(
+                              "assets/images/logout.png",
+                            ),
+                          ),
+                        ),
+                        text: "Log Out"),
                   ),
                 ),
               ),
@@ -114,10 +125,21 @@ class _BottomBarState extends State<AnimatedBottomBar>
                           ),
                         );
                       },
-                      child: AnimatedCircularButton(color: [
-                        Theme.of(context).cardColor,
-                        Theme.of(context).cardColor
-                      ], Icon: Icon(Icons.settings), text: "Setting"),
+                      child: AnimatedCircularButton(
+                          color: [
+                            Theme.of(context).cardColor,
+                            Theme.of(context).cardColor
+                          ],
+                          Icon: Center(
+                            child: SizedBox(
+                              height: 35,
+                              width: 35,
+                              child: Image.asset(
+                                "assets/images/setting.png",
+                              ),
+                            ),
+                          ),
+                          text: "Setting"),
                     ),
                   ),
                 ),
@@ -324,7 +346,7 @@ class _AnimatedTopBarTileState extends State<AnimatedTopBarTile>
                 _intervaltween.value * width, 0.0, 0.0),
             child: Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: Icon(Icons.notifications),
+              child: Icon(Icons.notifications_none_outlined),
             ),
           ),
         );
@@ -401,7 +423,15 @@ class _DashboardButtonState extends State<DashboardButton>
                     // depth: 80,
                     // surfaceColor: Theme.of(context).backgroundColor,
                   ),
-                  Icon(Icons.dashboard)
+                  Center(
+                    child: SizedBox(
+                      height: 54,
+                      width: 54,
+                      child: Image.asset(
+                        "assets/images/dashboard.png",
+                      ),
+                    ),
+                  ),
                 ],
               ),
               SizedBox(
@@ -420,20 +450,23 @@ class _DashboardButtonState extends State<DashboardButton>
 
 class AnimatedLongButton extends StatefulWidget {
   AnimatedLongButton(
-      {required this.text,
+      {this.text,
       this.fontsize,
       this.Prefixtext,
       this.color,
+      this.width,
+      this.textColor,
+      this.child,
       Key? key,
       required this.isBgColorWhite})
       : super(key: key);
-
-  final String text;
+  final String? text;
   final List<Color>? color;
   final bool isBgColorWhite;
-  final double? fontsize;
+  final double? fontsize, width;
   final String? Prefixtext;
-
+  final Color? textColor;
+  final Widget? child;
   @override
   State<AnimatedLongButton> createState() => _AnimatedLongButtonState();
 }
@@ -441,7 +474,6 @@ class AnimatedLongButton extends StatefulWidget {
 class _AnimatedLongButtonState extends State<AnimatedLongButton>
     with TickerProviderStateMixin {
   final _duration = Duration(milliseconds: 1000);
-
   late AnimationController _animationcontroller;
   late Animation<double> _animateopacity;
   late Animation<double> _animateleft;
@@ -450,13 +482,11 @@ class _AnimatedLongButtonState extends State<AnimatedLongButton>
   void initState() {
     _animationcontroller =
         AnimationController(vsync: this, duration: _duration);
-
     _animateopacity = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
             parent: _animationcontroller, curve: Curves.fastOutSlowIn));
     _animateleft = Tween<double>(begin: -1.0, end: 0.0).animate(CurvedAnimation(
         parent: _animationcontroller, curve: Curves.fastOutSlowIn));
-
     _animationcontroller.forward();
     super.initState();
   }
@@ -475,7 +505,7 @@ class _AnimatedLongButtonState extends State<AnimatedLongButton>
         builder: (context, child) {
           return Container(
             height: 50,
-            width: 270,
+            width: widget.width ?? 270,
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(horizontal: 12),
             decoration: BoxDecoration(
@@ -510,20 +540,24 @@ class _AnimatedLongButtonState extends State<AnimatedLongButton>
                             fontSize: 12,
                             fontWeight: FontWeight.w300,
                             color: widget.isBgColorWhite
-                                ? Colors.black.withOpacity(0.7)
+                                ? widget.textColor ??
+                                    Colors.black.withOpacity(0.7)
                                 : Colors.white.withOpacity(1.0),
                           ),
                     ),
-                    Text(
-                      "${widget.text}",
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            fontSize: widget.fontsize ?? 16,
-                            fontWeight: FontWeight.w700,
-                            color: widget.isBgColorWhite
-                                ? Colors.black.withOpacity(0.7)
-                                : Colors.white.withOpacity(1.0),
-                          ),
-                    ),
+                    widget.child ??
+                        Text(
+                          widget.text ?? "",
+                          style:
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    fontSize: widget.fontsize ?? 16,
+                                    fontWeight: FontWeight.w300,
+                                    color: widget.isBgColorWhite
+                                        ? widget.textColor ??
+                                            Colors.black.withOpacity(0.7)
+                                        : Colors.white.withOpacity(1.0),
+                                  ),
+                        ),
                   ],
                 ),
               ),
@@ -579,9 +613,9 @@ class _AnimatedAlertDialogState extends State<AnimatedAlertDialog> {
             Text(
               'Alert',
               style: Theme.of(context).textTheme.headline6!.copyWith(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white.withOpacity(1.0),
+                    color: Color(0xFF00000).withOpacity(0.4),
                   ),
             ),
             SizedBox(
@@ -592,7 +626,16 @@ class _AnimatedAlertDialogState extends State<AnimatedAlertDialog> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   AnimatedCircularButton(
-                      Icon: Icon(Icons.warning_amber_outlined)),
+                    Icon: Center(
+                      child: SizedBox(
+                        height: 22,
+                        width: 22,
+                        child: Image.asset(
+                          "assets/images/alret.png",
+                        ),
+                      ),
+                    ),
+                  ),
                   SizedBox(
                     width: 260,
                     height: 60,
@@ -603,7 +646,7 @@ class _AnimatedAlertDialogState extends State<AnimatedAlertDialog> {
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.visible,
                       style: Theme.of(context).textTheme.headline6!.copyWith(
-                            fontSize: 14,
+                            fontSize: 12,
                             fontWeight: FontWeight.w400,
                             color: Colors.black.withOpacity(0.5),
                           ),
@@ -750,10 +793,10 @@ class _AnimatedTitleState extends State<AnimatedTitle>
                   opacity: _animateopacity.value,
                   child: Text(
                     "Good Morning",
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(color: Colors.black.withOpacity(0.6)),
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        fontSize: 11,
+                        color: Color(0xFF707070),
+                        fontWeight: FontWeight.w300),
                   ),
                 ),
               ),
@@ -765,10 +808,10 @@ class _AnimatedTitleState extends State<AnimatedTitle>
                   opacity: _animateopacity.value,
                   child: Text(
                     "Khurram Shahbaz",
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(color: Colors.black.withOpacity(0.8)),
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        fontSize: 16,
+                        color: Color(0xFF404041),
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),

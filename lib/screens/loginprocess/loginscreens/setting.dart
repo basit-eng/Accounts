@@ -388,7 +388,7 @@ class BackIconBotton extends StatelessWidget {
     return InkWell(
       child: IconButton(
         icon:
-            Icon(Icons.arrow_back_rounded, size: 25, color: Colors.blueAccent),
+            Icon(Icons.arrow_back_rounded, size: 25, color: Color(0xFF90278E)),
         onPressed: () {
           Navigator.pop(
             context,
@@ -427,16 +427,18 @@ class LogoutBotton extends StatelessWidget {
             begin: Alignment.centerRight,
             end: Alignment.centerLeft,
             colors: [
-              Color.fromARGB(255, 50, 167, 230),
-              Color.fromARGB(255, 194, 44, 231),
+              Color(0xFF8DF098),
+              Color(0xFF2CA6FF),
             ],
           ),
         ),
         child: Center(
           child: Text(
             'Logout',
-            style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.w500, fontSize: 16),
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1!
+                .copyWith(color: Colors.white),
           ),
         ),
       ),

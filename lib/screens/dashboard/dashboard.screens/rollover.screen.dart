@@ -1,29 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
 
 import '../custom.widgets/custom.widgets.dart';
 
-class RollOverScreen extends StatelessWidget {
+class RollOverScreen extends StatefulWidget {
   const RollOverScreen({Key? key}) : super(key: key);
   static const routeName = '/rollover-screen';
+
+  @override
+  State<RollOverScreen> createState() => _RollOverScreenState();
+}
+
+class _RollOverScreenState extends State<RollOverScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         // bottomNavigationBar: widgets.bottombar(context: context),
-        backgroundColor: Theme.of(context).cardColor,
+        backgroundColor: Theme.of(context).backgroundColor,
         body: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(top: 20),
                 child: Text(
                   "Hello User",
                   style: Theme.of(context).textTheme.headline6,
                 ),
               ),
-              RollOverBottomSheet()
+              SingleChildScrollView(child: RollOverBottomSheet())
             ],
           ),
         ),
@@ -47,8 +63,12 @@ class _RollOverBottomSheetState extends State<RollOverBottomSheet>
   late AnimationController _animationcontroller;
   late Animation<double> _animateopacity;
   late Animation<double> _animateleft;
+
+  late TextEditingController _rolloveramounttextcontroller;
   @override
   void initState() {
+    _rolloveramounttextcontroller = TextEditingController();
+
     _animationcontroller =
         AnimationController(vsync: this, duration: _duration);
 
@@ -117,8 +137,8 @@ class _RollOverBottomSheetState extends State<RollOverBottomSheet>
                           "All RollOver",
                           style:
                               Theme.of(context).textTheme.headline6!.copyWith(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
                                     color: Colors.white.withOpacity(0.8),
                                   ),
                         ),
@@ -138,7 +158,7 @@ class _RollOverBottomSheetState extends State<RollOverBottomSheet>
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Rs:",
+                                    "Rs. ",
                                     style: Theme.of(context)
                                         .textTheme
                                         .headline6!
@@ -154,7 +174,7 @@ class _RollOverBottomSheetState extends State<RollOverBottomSheet>
                                         .textTheme
                                         .headline6!
                                         .copyWith(
-                                          fontSize: 18,
+                                          fontSize: 20,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.white.withOpacity(0.8),
                                         ),
@@ -175,29 +195,32 @@ class _RollOverBottomSheetState extends State<RollOverBottomSheet>
                                   child: AnimatedOpacity(
                                     duration: _duration,
                                     opacity: _animateopacity.value,
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(
-                                          Icons.payments,
-                                          color: Colors.white,
-                                        ),
-                                        SizedBox(
-                                          width: 08,
-                                        ),
-                                        Text(
-                                          "Amount",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodySmall!
-                                              .copyWith(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.white
-                                                    .withOpacity(0.8),
-                                              ),
-                                        ),
-                                      ],
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 25),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Icon(
+                                            Icons.payments,
+                                            color: Colors.white,
+                                          ),
+                                          SizedBox(
+                                            width: 08,
+                                          ),
+                                          Text(
+                                            "Amount",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodySmall!
+                                                .copyWith(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Colors.white
+                                                      .withOpacity(0.8),
+                                                ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -205,9 +228,11 @@ class _RollOverBottomSheetState extends State<RollOverBottomSheet>
                               SizedBox(
                                 height: 04,
                               ),
-                              AnimatedLongButton(
-                                text: "20,000,000",
+                              AmountInputField(
+                                Prefixtext: "Rs",
                                 isBgColorWhite: true,
+                                textcontroller: _rolloveramounttextcontroller,
+                                hint: '22,000,000',
                               ),
                             ],
                           ),
@@ -268,133 +293,210 @@ class _RollOvertransectiondetailwidgetState
       child: Scaffold(
         body: Container(
           child: Column(
-            // mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                margin: EdgeInsets.all(08),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [Color(0xFFB7EE9C), Color(0xFF0ABCED)],
-                  ),
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(14)),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Text(
+                  "Transection Details",
+                  style: Theme.of(context).textTheme.headline6,
                 ),
-                child: ListTile(
-                  leading: Icon(Icons.done, color: Colors.white),
-                  // Theme.of(context).iconTheme.color,
-                  // ),
-                  title: SizedBox(
-                    width: 60,
-                    child: Text(
-                      "Rollover Request has been Processed",
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.visible,
-                      maxLines: 2,
-                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500),
+              ),
+              Column(
+                // mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    margin: EdgeInsets.all(08),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Color(0xFF3BC2F6),
+                          Color(0xFFCD93FF),
+                        ],
+                      ),
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(14)),
+                    ),
+                    child: ListTile(
+                        leading: Image.asset(
+                          'assets/images/tick.png',
+                          height: 38,
+                          width: 38,
+                        ),
+                        // Theme.of(context).iconTheme.color,
+                        // ),
+                        title: SizedBox(
+                          width: 60,
+                          child: Text(
+                            "Rollover Request has been Processed",
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.visible,
+                            maxLines: 2,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .copyWith(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300),
+                          ),
+                        ),
+                        trailing: Image.asset(
+                          'assets/images/cross.png',
+                          height: 25,
+                          width: 25,
+                        )),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 28.0, vertical: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "User Id",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1!
+                              .copyWith(
+                                  fontSize: 13.41, fontWeight: FontWeight.w300),
+                        ),
+                        Text(
+                          "2345",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1!
+                              .copyWith(
+                                  fontSize: 13.41, fontWeight: FontWeight.w300),
+                        )
+                      ],
                     ),
                   ),
-                  trailing: Icon(Icons.close, color: Colors.white
-                      // ?? Theme.of(context).iconTheme.color,
-                      ),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 28.0, vertical: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text("User Id"), Text("2345")],
-                ),
-              ),
-              divider(),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 28.0, vertical: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Date"),
-                    SizedBox(
-                      height: 30,
-                      child: TextButton(
-                        child: Text(currentDate.toString()),
-                        onPressed: () => _selectDate(context),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              divider(),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 28.0, vertical: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Closing Payment"),
-                    Text(
-                      "6,500,000",
-                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                          color: Colors.black.withOpacity(0.6),
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500),
-                    )
-                  ],
-                ),
-              ),
-              divider(),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 28.0, vertical: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("RollOver Amount"),
-                  ],
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Rs :",
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black.withOpacity(0.6),
+                  divider(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 28.0, vertical: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Date",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1!
+                              .copyWith(
+                                  fontSize: 13.41, fontWeight: FontWeight.w300),
                         ),
+                        SizedBox(
+                          height: 30,
+                          child: TextButton(
+                            child: Text(
+                              currentDate.toString(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1!
+                                  .copyWith(
+                                    fontSize: 13.41,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                            ),
+                            onPressed: () => _selectDate(context),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                  Text(
-                    "160,000,000",
-                    style: Theme.of(context).textTheme.headline5!.copyWith(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.black.withOpacity(0.6),
+                  divider(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 28.0, vertical: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Closing Payment",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1!
+                              .copyWith(
+                                  fontSize: 13.41, fontWeight: FontWeight.w300),
                         ),
+                        Text(
+                          "6,500,000",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2!
+                              .copyWith(
+                                  color: Colors.black.withOpacity(0.6),
+                                  fontSize: 21,
+                                  fontWeight: FontWeight.w500),
+                        )
+                      ],
+                    ),
+                  ),
+                  divider(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 28.0, vertical: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "RollOver Amount",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1!
+                              .copyWith(
+                                  fontSize: 13.41, fontWeight: FontWeight.w300),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        )
+                      ],
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Rs :",
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black.withOpacity(0.6),
+                            ),
+                      ),
+                      Text(
+                        "160,000,000",
+                        style: Theme.of(context).textTheme.headline5!.copyWith(
+                              fontSize: 25,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black.withOpacity(0.6),
+                            ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      print("Pressesed.. Moved to back");
+                      Navigator.pop(context);
+                    },
+                    child: AnimatedLongButton(
+                      text: "CLOSED",
+                      color: [Color(0xFF33C5F6), Color(0xFFCD93FF)],
+                      isBgColorWhite: false,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30,
                   ),
                 ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              GestureDetector(
-                onTap: () {
-                  print("Pressesed.. Moved to back");
-                  Navigator.pop(context);
-                },
-                child: AnimatedLongButton(
-                  text: "CLOSED",
-                  color: [Color(0xFF77CEEC), Color(0xFF066DC4)],
-                  isBgColorWhite: false,
-                ),
-              ),
-              SizedBox(
-                height: 30,
               ),
             ],
           ),

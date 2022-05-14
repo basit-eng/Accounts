@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
+import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
 
 import 'alerts.dart';
 
@@ -11,10 +12,6 @@ class ClosingPaymentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("Closing Payment"),
-        ),
-        backgroundColor: Theme.of(context).cardColor,
         // bottomNavigationBar: dashboard.bottombar(context: context),
         body: Container(
           alignment: Alignment.bottomCenter,
@@ -40,8 +37,15 @@ class _ClosingPaymentBottomSheetState extends State<ClosingPaymentBottomSheet>
   late AnimationController _animationcontroller;
   late Animation _animateopacity;
   late Animation<double> _animateleft, _animateright;
+
+  late TextEditingController _transfertextcontroller;
+  late TextEditingController _rollovertextcontroller;
+
   @override
   void initState() {
+    _transfertextcontroller = TextEditingController();
+    _rollovertextcontroller = TextEditingController();
+
     _animationcontroller =
         AnimationController(vsync: this, duration: _duration);
 
@@ -87,9 +91,9 @@ class _ClosingPaymentBottomSheetState extends State<ClosingPaymentBottomSheet>
                   SizedBox(
                     height: 10,
                   ),
-                  Divider(),
+                  divider,
                   SizedBox(
-                    height: 05,
+                    height: 12,
                   ),
                   Transform(
                     transform: Matrix4.translationValues(
@@ -97,12 +101,13 @@ class _ClosingPaymentBottomSheetState extends State<ClosingPaymentBottomSheet>
                     child: Text(
                       "Closing Payment",
                       style: Theme.of(context).textTheme.headline6!.copyWith(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
                             color: Colors.white.withOpacity(0.8),
                           ),
                     ),
                   ),
+                  SizedBox(height: 15),
                   Expanded(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -117,7 +122,7 @@ class _ClosingPaymentBottomSheetState extends State<ClosingPaymentBottomSheet>
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Rs:",
+                                  "Rs. ",
                                   style: Theme.of(context)
                                       .textTheme
                                       .headline6!
@@ -133,7 +138,7 @@ class _ClosingPaymentBottomSheetState extends State<ClosingPaymentBottomSheet>
                                       .textTheme
                                       .headline6!
                                       .copyWith(
-                                        fontSize: 18,
+                                        fontSize: 20,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white.withOpacity(0.8),
                                       ),
@@ -184,10 +189,12 @@ class _ClosingPaymentBottomSheetState extends State<ClosingPaymentBottomSheet>
                             SizedBox(
                               height: 04,
                             ),
-                            AnimatedLongButton(
-                              text: "35,000,000",
+                            AmountInputField(
+                              Prefixtext: "Rs",
                               isBgColorWhite: true,
-                            )
+                              textcontroller: _transfertextcontroller,
+                              hint: '22,000,000',
+                            ),
                           ],
                         ),
                         Column(
@@ -240,21 +247,12 @@ class _ClosingPaymentBottomSheetState extends State<ClosingPaymentBottomSheet>
                             SizedBox(
                               height: 04,
                             ),
-                            GestureDetector(
-                              onTap: () {
-                                print("Pressesed.. Moved to with draw capital");
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ClosingPaymentAlert(),
-                                  ),
-                                );
-                              },
-                              child: AnimatedLongButton(
-                                text: "20,000,000",
-                                isBgColorWhite: true,
-                              ),
-                            )
+                            AmountInputField(
+                              Prefixtext: "Rs",
+                              isBgColorWhite: true,
+                              textcontroller: _rollovertextcontroller,
+                              hint: '35,000,000',
+                            ),
                           ],
                         ),
                         GestureDetector(
@@ -307,12 +305,18 @@ class _ClosingPaymenttransectiondetailwidgetState
   DateTime currentDate = DateTime.now();
 
   Future<void> _selectDate(BuildContext context) async {
+    var date = DateTime.parse("2019-04-16 12:18:06.018950");
+    var formattedDate = "${date.day}-${date.month}-${date.year}";
     final DateTime? pickedDate = await showDatePicker(
-      context: context,
-      initialDate: currentDate,
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2080),
-    );
+        context: context,
+        initialDate: currentDate,
+        firstDate: DateTime(2000),
+        // currentDate: currentDate,
+        lastDate: DateTime(2080));
+
+    setState(() {
+      currentDate = pickedDate ?? currentDate;
+    });
   }
 
   @override
@@ -336,9 +340,8 @@ class _ClosingPaymenttransectiondetailwidgetState
                   borderRadius: BorderRadius.vertical(top: Radius.circular(14)),
                 ),
                 child: ListTile(
-                  leading: Icon(Icons.done, color: Colors.white),
-                  // Theme.of(context).iconTheme.color,
-                  // ),
+                  leading: Image.asset("assets/images/tick.png",
+                      height: 32, width: 32),
                   title: SizedBox(
                     width: 60,
                     child: Text(
@@ -349,37 +352,55 @@ class _ClosingPaymenttransectiondetailwidgetState
                       style: Theme.of(context).textTheme.bodyText2!.copyWith(
                           color: Colors.white,
                           fontSize: 16,
-                          fontWeight: FontWeight.w500),
+                          fontWeight: FontWeight.w300),
                     ),
                   ),
-                  trailing: Icon(Icons.close, color: Colors.white
-                      // ?? Theme.of(context).iconTheme.color,
-                      ),
+                  trailing: Image.asset("assets/images/cross.png",
+                      height: 25, width: 25),
                 ),
               ),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 28.0, vertical: 12),
+                    const EdgeInsets.symmetric(horizontal: 28.0, vertical: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("User Id"),
-                    Text("2345"),
+                    Text(
+                      "User Id",
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                          fontSize: 13.41, fontWeight: FontWeight.w300),
+                    ),
+                    Text(
+                      "2345",
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                          fontSize: 13.41, fontWeight: FontWeight.w300),
+                    ),
                   ],
                 ),
               ),
               divider(),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 28.0, vertical: 12),
+                    const EdgeInsets.symmetric(horizontal: 28.0, vertical: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Date"),
+                    Text(
+                      "Date",
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                          fontSize: 13.41, fontWeight: FontWeight.w300),
+                    ),
                     SizedBox(
                       height: 30,
                       child: TextButton(
-                        child: Text(currentDate.toString()),
+                        child: Text(
+                          currentDate.toString(),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1!
+                              .copyWith(
+                                  fontSize: 13.41, fontWeight: FontWeight.w300),
+                        ),
                         onPressed: () => _selectDate(context),
                       ),
                     )
@@ -389,11 +410,15 @@ class _ClosingPaymenttransectiondetailwidgetState
               divider(),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 28.0, vertical: 12),
+                    const EdgeInsets.symmetric(horizontal: 28.0, vertical: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("RollOver"),
+                    Text(
+                      "RollOver",
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                          fontSize: 13.41, fontWeight: FontWeight.w300),
+                    ),
                     Text(
                       "6,500,000",
                       style: Theme.of(context).textTheme.bodyText2!.copyWith(
@@ -407,7 +432,7 @@ class _ClosingPaymenttransectiondetailwidgetState
               divider(),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 28.0, vertical: 12),
+                    const EdgeInsets.symmetric(horizontal: 28.0, vertical: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -415,7 +440,7 @@ class _ClosingPaymenttransectiondetailwidgetState
                       "Transfer amount",
                       style: Theme.of(context).textTheme.bodyText2!.copyWith(
                             color: Color(0xFF92298D),
-                            fontSize: 12,
+                            fontSize: 13,
                           ),
                     ),
                   ],
@@ -425,7 +450,7 @@ class _ClosingPaymenttransectiondetailwidgetState
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Rs :",
+                    "Rs. ",
                     style: Theme.of(context).textTheme.bodyText2!.copyWith(
                           color: Color(0xFF92298D),
                           fontSize: 16,
@@ -435,7 +460,7 @@ class _ClosingPaymenttransectiondetailwidgetState
                     "200,000,000",
                     style: Theme.of(context).textTheme.bodyText2!.copyWith(
                         color: Color(0xFF92298D),
-                        fontSize: 18,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold),
                   )
                 ],
@@ -450,7 +475,7 @@ class _ClosingPaymenttransectiondetailwidgetState
                 child: AnimatedLongButton(
                   text: "CLOSED",
                   color: [
-                    Color(0xFF92298D),
+                    Color(0xFFFF975A),
                     Color(0xFF92298D),
                   ],
                   isBgColorWhite: false,

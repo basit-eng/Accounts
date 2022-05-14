@@ -1,5 +1,5 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
 
 class MainSettings extends StatefulWidget {
   const MainSettings({Key? key}) : super(key: key);
@@ -28,7 +28,7 @@ class _MainSettingsState extends State<MainSettings> {
                       Text(
                         'Settings',
                         style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                              fontSize: 20,
+                              fontSize: 21,
                               fontWeight: FontWeight.bold,
                             ),
                       ),
@@ -38,6 +38,7 @@ class _MainSettingsState extends State<MainSettings> {
                         },
                         child: Icon(
                           Icons.arrow_back_rounded,
+                          color: Color(0xFF90278E),
                           size: 25,
                         ),
                       )
@@ -51,27 +52,65 @@ class _MainSettingsState extends State<MainSettings> {
                       physics: const AlwaysScrollableScrollPhysics(),
                       shrinkWrap: true,
                       children: [
-                        ProfileListTile(
+                        SettingList(
                           labelText: 'Touch ID',
                         ),
-                        ProfileListTile(
+                        SettingList(
                           labelText: 'Dashboard',
                         ),
-                        ProfileListTile(
+                        SettingList(
                           labelText: 'Glow',
                         ),
-                        ProfileListTile(
+                        SettingList(
                           labelText: 'Apearance',
                         ),
-                        ProfileListTile(
+                        SettingList(
                           labelText: 'Motion',
                         ),
                       ],
-                    )
+                    ),
                   ],
-                )
+                ),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SettingList extends StatelessWidget {
+  const SettingList({
+    Key? key,
+    required this.labelText,
+    this.details,
+    this.trailinig,
+  }) : super(key: key);
+  final String labelText;
+  final String? details;
+  final Widget? trailinig;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 20),
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: ListTile(
+          title: Text(
+            labelText,
+            style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                color: Color(0xFF606060),
+                fontSize: 14,
+                fontWeight: FontWeight.w600),
+          ),
+          trailing: Icon(
+            Icons.arrow_forward_ios_sharp,
+            size: 17,
           ),
         ),
       ),

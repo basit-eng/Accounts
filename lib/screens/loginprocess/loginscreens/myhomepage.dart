@@ -19,7 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   late TextEditingController _usernametextcontroller;
   late TextEditingController _passwordtextcontroller;
-  bool isVisible = false;
+  bool visible = false;
 
   @override
   void initState() {
@@ -39,12 +39,27 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
           children: <Widget>[
             SizedBox(
-              height: 30,
+              height: 20,
+            ),
+            Text(
+              "Hello User",
+              style: Theme.of(context).textTheme.headline6!.copyWith(
+                    fontSize: 21.3,
+                    color: Color(0xFF606161),
+                  ),
+            ),
+            SizedBox(
+              height: 50,
             ),
             AnimatedCircularBar(
-              child: Image.asset(
-                "assets/images/ot.png",
-                color: Colors.blue,
+              child: Center(
+                child: SizedBox(
+                  height: 80,
+                  width: 80,
+                  child: Image.asset(
+                    "assets/images/ot.png",
+                  ),
+                ),
               ),
               color: Colors.blue.withOpacity(0.6),
               color1: Colors.purple.withOpacity(0.6),
@@ -63,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
               margin: EdgeInsets.symmetric(horizontal: 30),
               child: CustomInputField(
                 textcontroller: _passwordtextcontroller.text,
-                hint: 'Enter your ID',
+                hint: 'User ID',
                 icon: Icons.person_outline,
               ),
             ),
@@ -76,18 +91,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 textcontroller: _usernametextcontroller.text,
                 hint: "Enter your Password",
                 icon: Icons.lock_outline,
-                suffixicon: GestureDetector(
-                  onTap: () {
+                isvisible: true,
+                suffixicon: IconButton(
+                  onPressed: () {
                     setState(() {
-                      isVisible = !isVisible;
-                      print("Visibility : $isVisible");
+                      visible = !visible;
+                      print("Visibility : $visible");
                     });
                   },
-                  child: Container(
-                    child: isVisible
-                        ? Icon(Icons.remove_red_eye_outlined)
-                        : Icon(Icons.remove_red_eye),
-                  ),
+                  icon: visible
+                      ? Icon(
+                          Icons.remove_red_eye_outlined,
+                          color: Colors.purple,
+                        )
+                      : Icon(
+                          Icons.remove_red_eye,
+                          color: Colors.purple,
+                        ),
                 ),
               ),
             ),
@@ -96,6 +116,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             SignedIntext(
               checkbox: Checkbox(
+                  fillColor: MaterialStateProperty.all(Colors.purple),
+                  shape: CircleBorder(),
+                  // checkColor: Colors.purple,
                   value: ticked,
                   onChanged: (Checked) {
                     setState(() {
@@ -126,19 +149,22 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 30,
             ),
             TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ForgetPsswordScreen(),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ForgetPsswordScreen(),
+                  ),
+                );
+              },
+              child: Text(
+                'Forget Passwrod?',
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      fontWeight: FontWeight.w300,
+                      color: Color(0xFF404041),
                     ),
-                  );
-                },
-                child: Text('Forgot Passwrod?',
-                    style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w300,
-                        color: Color(0xFF636365))))
+              ),
+            ),
           ],
         )),
       ),
@@ -157,9 +183,8 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               'Keep me Signed',
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                    color: Color(0xFF636365),
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
                   ),
             )
           ],

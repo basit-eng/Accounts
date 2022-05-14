@@ -5,6 +5,7 @@ import 'package:theaccounts/screens/dashboard/dashboard.screens/dashboard.dart';
 import 'package:theaccounts/screens/loginprocess/loginscreens/main_setting.dart';
 import 'package:theaccounts/screens/loginprocess/loginscreens/myhomepage.dart';
 import 'package:theaccounts/screens/setting/profile_screen.dart';
+import 'package:theaccounts/screens/setting/update_bank_details.dart';
 import 'package:theaccounts/screens/setting/update_profile.dart';
 import 'package:theaccounts/utils/shared_pref.dart';
 
@@ -19,6 +20,7 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         // appBar: AppBar(
@@ -27,8 +29,13 @@ class _SettingScreenState extends State<SettingScreen> {
         //   ],
         // ),
         backgroundColor: Theme.of(context).backgroundColor,
-        body: Column(
+        body: ListView(
+          shrinkWrap: true,
+          physics: ClampingScrollPhysics(),
           children: [
+            SizedBox(
+              height: 10,
+            ),
             TopWidgets(),
             SizedBox(
               height: 20,
@@ -47,83 +54,102 @@ class _SettingScreenState extends State<SettingScreen> {
                 ],
                 borderRadius: BorderRadius.circular(25),
                 gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
                   colors: [
-                    Color.fromARGB(255, 231, 121, 36),
-                    Color.fromARGB(255, 205, 28, 102),
+                    Color(0xffF1EA7C),
+                    Color(0xffFF708C),
                   ],
                 ),
               ),
-              child: Column(
-                children: [
-                  Image.asset('assets/images/user.png',
-                      color: Theme.of(context).backgroundColor),
-                  ListTile(
-                    title: Center(
-                      child: Text(
-                        'Miz  Roj',
-                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                            ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 30),
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Colors.white,
+                            width: 2,
+                          )),
+                      child: CircleAvatar(
+                        radius: 40,
+                        backgroundColor: Colors.transparent,
+                        child: Image.asset('assets/images/user.png',
+                            color: Theme.of(context).backgroundColor),
                       ),
                     ),
-                    subtitle: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                    ListTile(
+                      title: Center(
                         child: Text(
-                          '100639',
+                          'Khurram Shahbaz',
                           style:
                               Theme.of(context).textTheme.bodyText1!.copyWith(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
+                                    fontSize: 24,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400,
                                   ),
                         ),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ProfileScreen(),
-                              ),
-                            );
-                          },
-                          child: SmallRadiusButton(
-                            text: "View Profile",
-                            color: [Color(0xFFFAFAFA), Color(0xFFFAFAFA)],
+                      subtitle: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            '100639',
+                            style:
+                                Theme.of(context).textTheme.bodyText1!.copyWith(
+                                      fontSize: 18,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w300,
+                                    ),
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MainSettings(),
-                              ),
-                            );
-                          },
-                          child: SmallRadiusButton(
-                            text: 'Setting',
-                            color: [Color(0xFFFAFAFA), Color(0xFFFAFAFA)],
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ProfileScreen(),
+                                ),
+                              );
+                            },
+                            child: SmallRadiusButton(
+                              text: "View Profile",
+                              color: [Color(0xFFFAFAFA), Color(0xFFFAFAFA)],
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MainSettings(),
+                                ),
+                              );
+                            },
+                            child: SmallRadiusButton(
+                              text: 'Setting',
+                              color: [Color(0xFFFAFAFA), Color(0xFFFAFAFA)],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             SizedBox(
@@ -137,13 +163,14 @@ class _SettingScreenState extends State<SettingScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ProfileScreen(),
+                        builder: (context) => UpdateProfile(),
                       ),
                     );
                   },
                   child: Cards(
+                    width: size.width * 0.2,
                     title: 'Update Profile',
-                    iconPath: "assets/images/user.png",
+                    iconPath: "assets/images/upload_profile.png",
                   ),
                 ),
                 GestureDetector(
@@ -152,13 +179,13 @@ class _SettingScreenState extends State<SettingScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => UpdateProfile(),
+                        builder: (context) => UpdateBankDetails(),
                       ),
                     );
                   },
                   child: Cards(
                     title: 'Update Bank Details',
-                    iconPath: "assets/images/user.png",
+                    iconPath: "assets/images/update_bank_detail.png",
                   ),
                 ),
               ],
@@ -199,8 +226,8 @@ class _SettingScreenState extends State<SettingScreen> {
                           EdgeInsets.symmetric(horizontal: 20, vertical: 08),
                       margin: EdgeInsets.symmetric(horizontal: 40),
                       decoration: BoxDecoration(
-                          color: Colors.grey.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(08)),
+                          color: Color(0xffE6E7E8),
+                          borderRadius: BorderRadius.circular(10)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -235,8 +262,8 @@ class _SettingScreenState extends State<SettingScreen> {
                           EdgeInsets.symmetric(horizontal: 20, vertical: 08),
                       margin: EdgeInsets.symmetric(horizontal: 40),
                       decoration: BoxDecoration(
-                          color: Colors.grey.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(08)),
+                          color: Color(0xffE6E7E8),
+                          borderRadius: BorderRadius.circular(10)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -318,9 +345,10 @@ class _SettingScreenState extends State<SettingScreen> {
             },
             child: SmallRadiusButton(
               text: "Log Out",
+              textcolor: Colors.white,
               color: [
-                Color.fromARGB(255, 50, 167, 230),
-                Color.fromARGB(255, 194, 44, 231),
+                Color(0xff2CA6FF),
+                Color(0xff85EAA0),
               ],
             ),
           ),
@@ -337,10 +365,11 @@ class _SettingScreenState extends State<SettingScreen> {
 }
 
 class Cards extends StatelessWidget {
-  Cards({Key? key, required this.title, required this.iconPath})
+  Cards({Key? key, required this.title, this.width, required this.iconPath})
       : super(key: key);
   final String title;
   final String iconPath;
+  final double? width;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -371,16 +400,19 @@ class Cards extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 06.0),
-              child: Text(
-                title,
-                maxLines: 2,
-                overflow: TextOverflow.visible,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                      fontSize: 14,
-                      height: 1.3,
-                      fontWeight: FontWeight.w600,
-                    ),
+              child: SizedBox(
+                width: width ?? size.width * 0.3,
+                child: Text(
+                  title,
+                  maxLines: 2,
+                  overflow: TextOverflow.visible,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        fontSize: 15,
+                        height: 1.3,
+                        fontWeight: FontWeight.w300,
+                      ),
+                ),
               ),
             ),
           ),
@@ -394,10 +426,12 @@ class SmallRadiusButton extends StatelessWidget {
   const SmallRadiusButton({
     required this.text,
     this.color,
+    this.textcolor,
     Key? key,
   }) : super(key: key);
 
   final String text;
+  final Color? textcolor;
   final List<Color>? color;
   @override
   Widget build(BuildContext context) {
@@ -421,9 +455,9 @@ class SmallRadiusButton extends StatelessWidget {
         child: Text(
           text,
           style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-              ),
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: textcolor ?? Color(0xFF606060)),
         ),
       ),
     );

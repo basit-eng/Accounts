@@ -25,11 +25,11 @@ class _PaymentHistoryState extends State<PaymentHistory> {
             CustomTopBar(topbartitle: 'Payment History'),
             CustomBriefCard(
               title_v1: "Total Roll Over",
-              subtitle_v1: "16,240,000",
+              subtitle_v1: "Rs. 16,240,000",
               icon_v1: Icons.arrow_upward,
               color_v1: Color(0XFFF6921E),
               title_v2: "Total History",
-              subtitle_v2: "26,240,000",
+              subtitle_v2: "Rs. 26,240,000",
               icon_v2: Icons.arrow_downward,
               color_v2: Color(0xFF92298D),
             ),
@@ -45,7 +45,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                   itemCount: 20,
                   itemBuilder: ((context, index) {
                     return PaymentHistoryCard(
-                        amount: "165,203,000",
+                        amount: "Rs. 165,203,000",
                         type: "CP",
                         date: "24-07-2021",
                         color: Color(0xFFF6921E),

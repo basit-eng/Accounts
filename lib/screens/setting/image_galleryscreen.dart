@@ -72,8 +72,7 @@ class _ImageGalleryScreenState extends State<ImageGalleryScreen> {
                             return CustomHorizontalListView(
                               title: "New Built Office",
                               child: Image(
-                                image:
-                                    AssetImage("assets/images/imagegalery.png"),
+                                image: AssetImage("assets/images/gallery.png"),
                               ),
                             );
                           },
@@ -84,7 +83,7 @@ class _ImageGalleryScreenState extends State<ImageGalleryScreen> {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(14.0),
+                padding: const EdgeInsets.symmetric(vertical: 14.0),
                 child: Container(
                     alignment: Alignment.center,
                     decoration: BoxDecoration(

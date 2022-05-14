@@ -40,7 +40,6 @@ class _BimonthlyRatioScreenState extends State<BimonthlyRatioScreen>
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: AnimatedBottomBar(),
-        backgroundColor: Theme.of(context).cardColor,
         body: AnimatedBuilder(
           animation: _controller.view,
           builder: (context, child) {
@@ -65,15 +64,18 @@ class _BimonthlyRatioScreenState extends State<BimonthlyRatioScreen>
                     //     ),
                     //   ),
                     // ),
-                    CustomTopBar(topbartitle: "Bi Monthly Ratio"),
+                    CustomTopBar(topbartitle: "Bimonthly Ratio"),
                     Spacer(
                       flex: 3,
                     ),
                     Center(
                       child: AnimatedCircularBar(
                         child: Text(
-                          "11,000",
-                          style: Theme.of(context).textTheme.bodyText1,
+                          "RS. 11,000",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1!
+                              .copyWith(fontSize: 19),
                         ),
                         color: Colors.blue.withOpacity(0.6),
                         color1: Colors.blue.withOpacity(0.6),
@@ -93,7 +95,7 @@ class _BimonthlyRatioScreenState extends State<BimonthlyRatioScreen>
                       child: Text(
                         "18-01-2022",
                         style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                              fontSize: 10,
+                              fontSize: 14,
                             ),
                       ),
                     ),

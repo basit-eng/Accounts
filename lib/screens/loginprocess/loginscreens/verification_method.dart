@@ -27,9 +27,14 @@ class _VerificationScreenState extends State<VerificationScreen> {
             child: Column(
               children: <Widget>[
                 AnimatedCircularBar(
-                  child: Image.asset(
-                    'assets/images/notifi.png',
-                    color: Colors.blue[200],
+                  child: Center(
+                    child: SizedBox(
+                      height: 80,
+                      width: 80,
+                      child: Image.asset(
+                        "assets/images/notifi.png",
+                      ),
+                    ),
                   ),
                   radius: 170,
                   color: Colors.grey.withOpacity(0.3),
@@ -38,9 +43,14 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   height: 70,
                 ),
                 AnimatedCircularBar(
-                  child: Image.asset(
-                    'assets/images/message.png',
-                    color: Colors.blue[200],
+                  child: Center(
+                    child: SizedBox(
+                      height: 80,
+                      width: 80,
+                      child: Image.asset(
+                        "assets/images/message.png",
+                      ),
+                    ),
                   ),
                   radius: 170,
                   color: Colors.grey.withOpacity(0.3),

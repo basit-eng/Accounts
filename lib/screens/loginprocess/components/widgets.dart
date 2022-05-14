@@ -29,10 +29,15 @@ class _CustomButtonState extends State<CustomButton> {
               child: Center(
                   child: Text(
                 widget.title,
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black54),
+                style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                      fontSize: 19.72,
+                      fontWeight: FontWeight.w300,
+                      color: Color(0xFF404041),
+                    ),
+                // style: TextStyle(
+                //     fontSize: 16,
+                //     fontWeight: FontWeight.bold,
+                //     color: Colors.black54),
               )),
               style: NeumorphicStyle(
                 border: NeumorphicBorder(
