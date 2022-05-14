@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:show_up_animation/show_up_animation.dart';
 import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
 import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
 
@@ -52,57 +53,85 @@ class _ReferenceInScreenState extends State<ReferenceInScreen> {
               tab_length: 4,
               tabs: ["D", "W", "M", "Y"],
               child: [
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: ClampingScrollPhysics(),
-                  itemCount: 20,
-                  itemBuilder: ((context, index) {
-                    return CustomReferenceInCard(
-                      name: "Khurram Shahzad",
-                      token_no: "10203",
-                      icon: Icons.circle,
-                      color: index % 2 == 0 ? Colors.red : Colors.transparent,
-                      amount: "Rs : 1,20,93,640",
-                    );
-                  }),
+                ShowUpAnimation(
+                  delayStart: Duration(milliseconds: 0),
+                  animationDuration: Duration(milliseconds: 500),
+                  curve: Curves.fastOutSlowIn,
+                  direction: Direction.horizontal,
+                  offset: 0.7,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: ClampingScrollPhysics(),
+                    itemCount: 20,
+                    itemBuilder: ((context, index) {
+                      return CustomReferenceInCard(
+                        name: "Khurram Shahzad",
+                        token_no: "10203",
+                        icon: Icons.circle,
+                        color: index % 2 == 0 ? Colors.red : Colors.transparent,
+                        amount: "Rs : 1,20,93,640",
+                      );
+                    }),
+                  ),
                 ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 20,
-                  itemBuilder: ((context, index) {
-                    return CustomReferenceInCard(
-                      name: "Khurram Shahzad",
-                      token_no: "10203",
-                      icon: Icons.circle,
-                      color: index % 2 == 0 ? Colors.red : Colors.transparent,
-                      amount: "Rs : 1,20,93,640",
-                    );
-                  }),
+                ShowUpAnimation(
+                  delayStart: Duration(milliseconds: 0),
+                  animationDuration: Duration(milliseconds: 500),
+                  curve: Curves.fastOutSlowIn,
+                  direction: Direction.horizontal,
+                  offset: 0.7,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 20,
+                    itemBuilder: ((context, index) {
+                      return CustomReferenceInCard(
+                        name: "Khurram Shahzad",
+                        token_no: "10203",
+                        icon: Icons.circle,
+                        color: index % 2 == 0 ? Colors.red : Colors.transparent,
+                        amount: "Rs : 1,20,93,640",
+                      );
+                    }),
+                  ),
                 ),
-                ListView.builder(
-                  itemCount: 20,
-                  itemBuilder: ((context, index) {
-                    return CustomReferenceInCard(
-                      name: "Khurram Shahzad",
-                      token_no: "10203",
-                      icon: Icons.circle,
-                      color: index % 2 == 0 ? Colors.red : Colors.transparent,
-                      amount: "Rs : 1,20,93,640",
-                    );
-                  }),
+                ShowUpAnimation(
+                  delayStart: Duration(milliseconds: 0),
+                  animationDuration: Duration(milliseconds: 500),
+                  curve: Curves.fastOutSlowIn,
+                  direction: Direction.horizontal,
+                  offset: 0.7,
+                  child: ListView.builder(
+                    itemCount: 20,
+                    itemBuilder: ((context, index) {
+                      return CustomReferenceInCard(
+                        name: "Khurram Shahzad",
+                        token_no: "10203",
+                        icon: Icons.circle,
+                        color: index % 2 == 0 ? Colors.red : Colors.transparent,
+                        amount: "Rs : 1,20,93,640",
+                      );
+                    }),
+                  ),
                 ),
-                ListView.builder(
-                  physics: ClampingScrollPhysics(),
-                  itemCount: 20,
-                  itemBuilder: ((context, index) {
-                    return CustomReferenceInCard(
-                      name: "Khurram Shahzad",
-                      token_no: "10203",
-                      icon: Icons.circle,
-                      color: index % 2 == 0 ? Colors.red : Colors.transparent,
-                      amount: "Rs : 1,20,93,640",
-                    );
-                  }),
+                ShowUpAnimation(
+                  delayStart: Duration(milliseconds: 0),
+                  animationDuration: Duration(milliseconds: 500),
+                  curve: Curves.fastOutSlowIn,
+                  direction: Direction.horizontal,
+                  offset: 0.7,
+                  child: ListView.builder(
+                    physics: ClampingScrollPhysics(),
+                    itemCount: 20,
+                    itemBuilder: ((context, index) {
+                      return CustomReferenceInCard(
+                        name: "Khurram Shahzad",
+                        token_no: "10203",
+                        icon: Icons.circle,
+                        color: index % 2 == 0 ? Colors.red : Colors.transparent,
+                        amount: "Rs : 1,20,93,640",
+                      );
+                    }),
+                  ),
                 ),
               ],
             ),

@@ -51,7 +51,7 @@ class _HideCapitalScreenState extends State<HideCapitalScreen>
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: AnimatedBottomBar(),
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).cardColor,
         body: AnimatedBuilder(
           animation: _animController.view,
           builder: (context, child) {

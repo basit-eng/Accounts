@@ -53,17 +53,6 @@ class _BimonthlyRatioScreenState extends State<BimonthlyRatioScreen>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    // Container(
-                    //   child: Transform(
-                    //     transform: Matrix4.translationValues(
-                    //         0.0, _animateleft.value * width, 0.0),
-                    //     child: AnimatedOpacity(
-                    //       opacity: _animateright,_animateopactiy.value,
-                    //       duration: _duration,
-                    //       child: AnimatedTopBarTile(),
-                    //     ),
-                    //   ),
-                    // ),
                     CustomTopBar(topbartitle: "Bimonthly Ratio"),
                     Spacer(
                       flex: 3,
