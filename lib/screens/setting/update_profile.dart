@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:show_up_animation/show_up_animation.dart';
 import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
 import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
 
@@ -45,141 +46,151 @@ class _UpdateProfileState extends State<UpdateProfile> {
         backgroundColor: Theme.of(context).backgroundColor,
         body: Padding(
           padding: const EdgeInsets.all(12.0),
-          child: ListView(
-            physics: ClampingScrollPhysics(),
-            children: [
-              Container(
-                child: CustomTopBar(topbartitle: "Update Profile"),
-              ),
-              ProfileListTile(
-                labelText: customlableText(context: context, lable: "User ID"),
-                textField: CustomSimpleImputField(
-                  textcontroller: _userIdtextcontroller.text,
-                  isfieldCircle: false,
-                  hint: "10092",
-                  keyboardtype: TextInputType.number,
+          child: ShowUpAnimation(
+            delayStart: Duration(milliseconds: 0),
+            animationDuration: Duration(milliseconds: 500),
+            curve: Curves.fastOutSlowIn,
+            direction: Direction.horizontal,
+            offset: 0.7,
+            child: ListView(
+              physics: ClampingScrollPhysics(),
+              children: [
+                Container(
+                  child: CustomTopBar(topbartitle: "Update Profile"),
                 ),
-              ),
-              ProfileListTile(
-                labelText:
-                    customlableText(context: context, lable: "User Name"),
-                textField: CustomSimpleImputField(
-                  textcontroller: _userIdtextcontroller.text,
-                  isfieldCircle: false,
-                  hint: "Khurram Shahzad",
-                  keyboardtype: TextInputType.text,
-                ),
-              ),
-              ProfileListTile(
-                labelText:
-                    customlableText(context: context, lable: "Father Name"),
-                textField: CustomSimpleImputField(
-                  textcontroller: _userIdtextcontroller.text,
-                  isfieldCircle: false,
-                  hint: "Muhammad Ismail",
-                  keyboardtype: TextInputType.text,
-                ),
-              ),
-              ProfileListTile(
-                labelText: customlableText(context: context, lable: "CNIC"),
-                textField: CustomSimpleImputField(
-                  textcontroller: _userIdtextcontroller.text,
-                  isfieldCircle: false,
-                  hint: "6101-172538-8",
-                  keyboardtype: TextInputType.number,
-                ),
-              ),
-              ProfileListTile(
-                labelText: customlableText(context: context, lable: "Email ID"),
-                textField: CustomSimpleImputField(
-                  textcontroller: _userIdtextcontroller.text,
-                  isfieldCircle: false,
-                  hint: "minad_hand@yahoo.com",
-                  keyboardtype: TextInputType.emailAddress,
-                ),
-              ),
-              ProfileListTile(
-                labelText: customlableText(context: context, lable: "Mobile"),
-                textField: CustomSimpleImputField(
-                  textcontroller: _userIdtextcontroller.text,
-                  isfieldCircle: false,
-                  hint: "03215166978",
-                  keyboardtype: TextInputType.phone,
-                ),
-              ),
-              ProfileListTile(
-                labelText: customlableText(context: context, lable: "Address"),
-                textField: CustomSimpleImputField(
-                  textcontroller: _userIdtextcontroller.text,
-                  isfieldCircle: false,
-                  hint: "H# 237, st. 5, F-15/2",
-                  keyboardtype: TextInputType.multiline,
-                ),
-              ),
-              ProfileListTile(
-                labelText:
-                    customlableText(context: context, lable: "Next of Kin"),
-                textField: CustomSimpleImputField(
-                  textcontroller: _userIdtextcontroller.text,
-                  isfieldCircle: false,
-                  hint: "Mrs.Khurram",
-                  keyboardtype: TextInputType.text,
-                ),
-              ),
-              ProfileListTile(
-                labelText: customlableText(
-                    context: context, lable: "Next of Kin CNIC"),
-                textField: CustomSimpleImputField(
-                  textcontroller: _userIdtextcontroller.text,
-                  isfieldCircle: false,
-                  hint: "76012-2372832-8",
-                  keyboardtype: TextInputType.number,
-                ),
-              ),
-              ProfileListTile(
-                labelText: customlableText(
-                    context: context, lable: "Next of Kin Contact Number"),
-                textField: CustomSimpleImputField(
-                  textcontroller: _userIdtextcontroller.text,
-                  isfieldCircle: false,
-                  hint: "0331-5389564",
-                  keyboardtype: TextInputType.number,
-                ),
-              ),
-              ProfileListTile(
-                labelText: customlableText(
-                    context: context, lable: "Relation with Next of kin"),
-                textField: CustomSimpleImputField(
-                  textcontroller: _userIdtextcontroller.text,
-                  isfieldCircle: false,
-                  hint: "Wife",
-                  keyboardtype: TextInputType.text,
-                ),
-                trailinig: SizedBox(
-                  width: 24,
-                  height: 24,
-                  child: Image.asset(
-                    "assets/images/edit.png",
-                    fit: BoxFit.contain,
+                ProfileListTile(
+                  labelText:
+                      customlableText(context: context, lable: "User ID"),
+                  textField: CustomSimpleImputField(
+                    textcontroller: _userIdtextcontroller.text,
+                    isfieldCircle: false,
+                    hint: "10092",
+                    keyboardtype: TextInputType.number,
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              AnimatedLongButton(
-                text: "Send",
-                isBgColorWhite: false,
-                width: MediaQuery.of(context).size.width * 0.9,
-                color: [
-                  Color(0xFFFF708C),
-                  Color(0xFFF2E07D),
-                ],
-              ),
-              SizedBox(
-                height: 40,
-              ),
-            ],
+                ProfileListTile(
+                  labelText:
+                      customlableText(context: context, lable: "User Name"),
+                  textField: CustomSimpleImputField(
+                    textcontroller: _userIdtextcontroller.text,
+                    isfieldCircle: false,
+                    hint: "Khurram Shahzad",
+                    keyboardtype: TextInputType.text,
+                  ),
+                ),
+                ProfileListTile(
+                  labelText:
+                      customlableText(context: context, lable: "Father Name"),
+                  textField: CustomSimpleImputField(
+                    textcontroller: _userIdtextcontroller.text,
+                    isfieldCircle: false,
+                    hint: "Muhammad Ismail",
+                    keyboardtype: TextInputType.text,
+                  ),
+                ),
+                ProfileListTile(
+                  labelText: customlableText(context: context, lable: "CNIC"),
+                  textField: CustomSimpleImputField(
+                    textcontroller: _userIdtextcontroller.text,
+                    isfieldCircle: false,
+                    hint: "6101-172538-8",
+                    keyboardtype: TextInputType.number,
+                  ),
+                ),
+                ProfileListTile(
+                  labelText:
+                      customlableText(context: context, lable: "Email ID"),
+                  textField: CustomSimpleImputField(
+                    textcontroller: _userIdtextcontroller.text,
+                    isfieldCircle: false,
+                    hint: "minad_hand@yahoo.com",
+                    keyboardtype: TextInputType.emailAddress,
+                  ),
+                ),
+                ProfileListTile(
+                  labelText: customlableText(context: context, lable: "Mobile"),
+                  textField: CustomSimpleImputField(
+                    textcontroller: _userIdtextcontroller.text,
+                    isfieldCircle: false,
+                    hint: "03215166978",
+                    keyboardtype: TextInputType.phone,
+                  ),
+                ),
+                ProfileListTile(
+                  labelText:
+                      customlableText(context: context, lable: "Address"),
+                  textField: CustomSimpleImputField(
+                    textcontroller: _userIdtextcontroller.text,
+                    isfieldCircle: false,
+                    hint: "H# 237, st. 5, F-15/2",
+                    keyboardtype: TextInputType.multiline,
+                  ),
+                ),
+                ProfileListTile(
+                  labelText:
+                      customlableText(context: context, lable: "Next of Kin"),
+                  textField: CustomSimpleImputField(
+                    textcontroller: _userIdtextcontroller.text,
+                    isfieldCircle: false,
+                    hint: "Mrs.Khurram",
+                    keyboardtype: TextInputType.text,
+                  ),
+                ),
+                ProfileListTile(
+                  labelText: customlableText(
+                      context: context, lable: "Next of Kin CNIC"),
+                  textField: CustomSimpleImputField(
+                    textcontroller: _userIdtextcontroller.text,
+                    isfieldCircle: false,
+                    hint: "76012-2372832-8",
+                    keyboardtype: TextInputType.number,
+                  ),
+                ),
+                ProfileListTile(
+                  labelText: customlableText(
+                      context: context, lable: "Next of Kin Contact Number"),
+                  textField: CustomSimpleImputField(
+                    textcontroller: _userIdtextcontroller.text,
+                    isfieldCircle: false,
+                    hint: "0331-5389564",
+                    keyboardtype: TextInputType.number,
+                  ),
+                ),
+                ProfileListTile(
+                  labelText: customlableText(
+                      context: context, lable: "Relation with Next of kin"),
+                  textField: CustomSimpleImputField(
+                    textcontroller: _userIdtextcontroller.text,
+                    isfieldCircle: false,
+                    hint: "Wife",
+                    keyboardtype: TextInputType.text,
+                  ),
+                  trailinig: SizedBox(
+                    width: 24,
+                    height: 24,
+                    child: Image.asset(
+                      "assets/images/edit.png",
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                AnimatedLongButton(
+                  text: "Send",
+                  isBgColorWhite: false,
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  color: [
+                    Color(0xFFFF708C),
+                    Color(0xFFF2E07D),
+                  ],
+                ),
+                SizedBox(
+                  height: 40,
+                ),
+              ],
+            ),
           ),
         ),
       ),

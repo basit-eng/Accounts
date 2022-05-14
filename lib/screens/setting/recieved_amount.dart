@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:show_up_animation/show_up_animation.dart';
 import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
 import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
 
@@ -42,18 +43,33 @@ class _RecievedAmountState extends State<RecievedAmount> {
                       style: Theme.of(context)
                           .textTheme
                           .bodyText1!
-                          .copyWith(fontSize: 12),
+                          .copyWith(fontSize: 12, color: Color(0xff606060)),
+                    ),
+                    SizedBox(
+                      width: 12,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: Expanded(
                         flex: 1,
-                        child: SmallRadiusButton(
-                          text: "05-10-2021",
-                          color: [
-                            Colors.grey.withOpacity(1),
-                            Colors.grey.withOpacity(1)
-                          ],
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.withOpacity(0.6),
+                                    blurStyle: BlurStyle.inner,
+                                    blurRadius: 3,
+                                    spreadRadius: 3,
+                                    offset: Offset(2, 4))
+                              ]),
+                          child: SmallRadiusButton(
+                            text: "05-10-2021",
+                            color: [
+                              Colors.grey.withOpacity(1),
+                              Colors.grey.withOpacity(1)
+                            ],
+                          ),
                         ),
                       ),
                     )
@@ -84,39 +100,53 @@ class _RecievedAmountState extends State<RecievedAmount> {
                         leading: CircleAvatar(
                             radius: 45,
                             backgroundColor: Colors.purple,
-                            child: Image.asset("assets/images/coin.png")),
+                            child: Image.asset("assets/images/coinsl.png")),
                       );
                     }),
                   ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    itemCount: 20,
-                    itemBuilder: ((context, index) {
-                      return CustomSingleTile(
-                        title: "Total recieved",
-                        subtitle: "254,000,000",
-                        leading: CircleAvatar(
-                            radius: 45,
-                            backgroundColor: Colors.purple,
-                            child: Image.asset("assets/images/coin.png")),
-                      );
-                    }),
+                  ShowUpAnimation(
+                    delayStart: Duration(milliseconds: 0),
+                    animationDuration: Duration(milliseconds: 500),
+                    curve: Curves.fastOutSlowIn,
+                    direction: Direction.horizontal,
+                    offset: 0.7,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      physics: ClampingScrollPhysics(),
+                      itemCount: 20,
+                      itemBuilder: ((context, index) {
+                        return CustomSingleTile(
+                          title: "Total recieved",
+                          subtitle: "254,000,000",
+                          leading: CircleAvatar(
+                              radius: 45,
+                              backgroundColor: Colors.purple,
+                              child: Image.asset("assets/images/coinsl.png")),
+                        );
+                      }),
+                    ),
                   ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    itemCount: 20,
-                    itemBuilder: ((context, index) {
-                      return CustomSingleTile(
-                        title: "Total recieved",
-                        subtitle: "254,000,000",
-                        leading: CircleAvatar(
-                            radius: 45,
-                            backgroundColor: Colors.purple,
-                            child: Image.asset("assets/images/coin.png")),
-                      );
-                    }),
+                  ShowUpAnimation(
+                    delayStart: Duration(milliseconds: 0),
+                    animationDuration: Duration(milliseconds: 500),
+                    curve: Curves.fastOutSlowIn,
+                    direction: Direction.horizontal,
+                    offset: 0.7,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      physics: ClampingScrollPhysics(),
+                      itemCount: 20,
+                      itemBuilder: ((context, index) {
+                        return CustomSingleTile(
+                          title: "Total recieved",
+                          subtitle: "254,000,000",
+                          leading: CircleAvatar(
+                              radius: 45,
+                              backgroundColor: Colors.purple,
+                              child: Image.asset("assets/images/coin.png")),
+                        );
+                      }),
+                    ),
                   ),
                 ],
               ),

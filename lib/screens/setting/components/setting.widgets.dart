@@ -152,7 +152,10 @@ class CustomSingleTile extends StatelessWidget {
               ),
               title: Text(
                 title ?? "",
-                style: Theme.of(context).textTheme.bodyText1,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1!
+                    .copyWith(fontSize: 14, fontWeight: FontWeight.w400),
               ),
               subtitle: Text(subtitle ?? "",
                   style: Theme.of(context).textTheme.bodyText2!),
@@ -501,7 +504,7 @@ class _CustomTabBarState extends State<CustomTabBar>
                     tabs: [
                       for (int i = 0; i < widget.tabs.length; i++)
                         Container(
-                          height: size.height * 0.06,
+                          height: size.height * 0.057,
                           alignment: Alignment.center,
                           child: Text(
                             widget.tabs[i],
@@ -532,7 +535,7 @@ class _CustomTabBarState extends State<CustomTabBar>
                     const EdgeInsets.symmetric(horizontal: 08.0, vertical: 10),
                 child: Container(
                   alignment: Alignment.center,
-                  height: size.height * 0.06,
+                  height: size.height * 0.057,
                   // width: 30,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
@@ -708,6 +711,8 @@ class CustomTopBar extends StatelessWidget {
               topbartitle,
               style: Theme.of(context).textTheme.headline6!.copyWith(
                     fontWeight: FontWeight.w800,
+                    fontFamily: "Montserrat",
+                    color: Color(0xff606060),
                   ),
             ),
           ),
@@ -755,14 +760,14 @@ class CustomBriefCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: Container(
-        height: size.height * 0.18,
+        height: size.height * 0.2,
         decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(26)),
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           ListTile(
             leading: CircleAvatar(
-                radius: 24,
+                radius: 23,
                 backgroundColor: color_v1,
                 child: Icon(
                   icon_v1,
@@ -784,7 +789,7 @@ class CustomBriefCard extends StatelessWidget {
           ),
           ListTile(
             leading: CircleAvatar(
-                radius: 24,
+                radius: 23,
                 backgroundColor: color_v2 ?? Colors.transparent,
                 child: Icon(
                   icon_v2,
@@ -845,7 +850,7 @@ class PaymentHistoryCard extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     backgroundColor: color,
-                    radius: 24,
+                    radius: 22,
                     child: Container(
                       height: 35,
                       width: 35,

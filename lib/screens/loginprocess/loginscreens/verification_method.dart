@@ -4,6 +4,7 @@ import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart
 import 'package:theaccounts/screens/loginprocess/components/widgets.dart';
 import 'package:theaccounts/screens/dashboard/dashboard.screens/dashboard.dart';
 import 'package:theaccounts/screens/dashboard/dashboard.screens/showcapital.screen.dart';
+import 'package:theaccounts/screens/loginprocess/loginscreens/pin_screen.dart';
 
 final primaryColor = Color(0xfff1f1f2);
 
@@ -26,34 +27,54 @@ class _VerificationScreenState extends State<VerificationScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                AnimatedCircularBar(
-                  child: Center(
-                    child: SizedBox(
-                      height: 80,
-                      width: 80,
-                      child: Image.asset(
-                        "assets/images/notifi.png",
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PinScreen(),
+                      ),
+                    );
+                  },
+                  child: AnimatedCircularBar(
+                    child: Center(
+                      child: SizedBox(
+                        height: 80,
+                        width: 80,
+                        child: Image.asset(
+                          "assets/images/notifi.png",
+                        ),
                       ),
                     ),
+                    radius: 170,
+                    color: Colors.grey.withOpacity(0.3),
                   ),
-                  radius: 170,
-                  color: Colors.grey.withOpacity(0.3),
                 ),
                 SizedBox(
                   height: 70,
                 ),
-                AnimatedCircularBar(
-                  child: Center(
-                    child: SizedBox(
-                      height: 80,
-                      width: 80,
-                      child: Image.asset(
-                        "assets/images/message.png",
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PinScreen(),
+                      ),
+                    );
+                  },
+                  child: AnimatedCircularBar(
+                    child: Center(
+                      child: SizedBox(
+                        height: 80,
+                        width: 80,
+                        child: Image.asset(
+                          "assets/images/message.png",
+                        ),
                       ),
                     ),
+                    radius: 170,
+                    color: Colors.grey.withOpacity(0.3),
                   ),
-                  radius: 170,
-                  color: Colors.grey.withOpacity(0.3),
                 ),
                 SizedBox(
                   height: 70,

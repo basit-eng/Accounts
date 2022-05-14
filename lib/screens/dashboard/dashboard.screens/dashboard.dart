@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:show_up_animation/show_up_animation.dart';
 import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
 import 'package:theaccounts/screens/loginprocess/loginscreens/forget_pass.dart';
 import 'package:theaccounts/screens/setting/bimonthly_ratio.dart';
@@ -111,74 +112,81 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 borderRadius: BorderRadius.circular(28),
               ),
               alignment: Alignment.center,
-              child: GridView.builder(
-                shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  // mainAxisExtent: 100,
-                  mainAxisSpacing: 20,
-                  crossAxisSpacing: 20,
-                ),
-                itemCount: 12,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => views[index],
+              child: ShowUpAnimation(
+                delayStart: Duration(milliseconds: 0),
+                animationDuration: Duration(milliseconds: 500),
+                curve: Curves.fastOutSlowIn,
+                direction: Direction.horizontal,
+                offset: 0.7,
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    // mainAxisExtent: 100,
+                    mainAxisSpacing: 20,
+                    crossAxisSpacing: 20,
+                  ),
+                  itemCount: 12,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => views[index],
+                          ),
+                        );
+                      },
+                      child: Container(
+                        // height: size(context: context).height / 9,
+                        // width: size(context: context).width / 9,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).cardColor,
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Theme.of(context)
+                                    .shadowColor
+                                    .withOpacity(0.9),
+                                blurRadius: 0.7,
+                                spreadRadius: 0.8,
+                                // offset: Offset(0.2, 0.3),
+                                blurStyle: BlurStyle.outer),
+                          ],
                         ),
-                      );
-                    },
-                    child: Container(
-                      // height: size(context: context).height / 9,
-                      // width: size(context: context).width / 9,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).cardColor,
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Theme.of(context)
-                                  .shadowColor
-                                  .withOpacity(0.9),
-                              blurRadius: 0.7,
-                              spreadRadius: 0.8,
-                              // offset: Offset(0.2, 0.3),
-                              blurStyle: BlurStyle.outer),
-                        ],
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            grid_menu_icons[index],
-                            height: 25,
-                            width: 25,
-                            fit: BoxFit.contain,
-                            // color: Color.fromARGB(255, 107, 4, 91),
-                          ),
-                          SizedBox(
-                            height: 05,
-                          ),
-                          SizedBox(
-                            width: 90,
-                            child: Text(
-                              grid_menu_name[index],
-                              textAlign: TextAlign.center,
-                              maxLines: 2,
-                              overflow: TextOverflow.visible,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2!
-                                  .copyWith(fontWeight: FontWeight.w400),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              grid_menu_icons[index],
+                              height: 25,
+                              width: 25,
+                              fit: BoxFit.contain,
+                              // color: Color.fromARGB(255, 107, 4, 91),
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                              height: 05,
+                            ),
+                            SizedBox(
+                              width: 90,
+                              child: Text(
+                                grid_menu_name[index],
+                                textAlign: TextAlign.center,
+                                maxLines: 2,
+                                overflow: TextOverflow.visible,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2!
+                                    .copyWith(fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
             ),
           ),

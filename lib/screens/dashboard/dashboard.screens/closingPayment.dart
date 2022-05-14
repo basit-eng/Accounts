@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:theaccounts/screens/dashboard/custom.widgets/custom.widgets.dart';
 import 'package:theaccounts/screens/setting/components/setting.widgets.dart';
 
-import 'alerts.dart';
-
 class ClosingPaymentScreen extends StatelessWidget {
   ClosingPaymentScreen({Key? key}) : super(key: key);
   static const routeName = '/closing_payment-screen';
@@ -12,6 +10,7 @@ class ClosingPaymentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Theme.of(context).cardColor,
         // bottomNavigationBar: dashboard.bottombar(context: context),
         body: Container(
           alignment: Alignment.bottomCenter,

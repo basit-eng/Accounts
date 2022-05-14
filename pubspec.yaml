@@ -46,6 +46,7 @@ dependencies:
   page_transition: ^2.0.4
   stacked_card_carousel: ^0.0.2+1
   firebase_auth:
+  show_up_animation: ^2.0.0
 
 
 
@@ -98,9 +99,9 @@ flutter:
       fonts:
           - asset: fonts/Roboto_Bold.ttf
           
-    - family: Montserrat
-      fonts:
-        - asset: fonts/Montserrat-Regular.ttf
+    # - family: Montserrat
+    #   fonts:
+    #     - asset: fonts/Montserrat-Regular.ttf
 
     - family:  NopCart
       fonts:
